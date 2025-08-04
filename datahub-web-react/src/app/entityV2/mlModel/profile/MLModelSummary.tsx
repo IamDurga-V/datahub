@@ -34,7 +34,7 @@ const InfoItemContent = styled.div`
 `;
 
 const JobLink = styled(Link)`
-    color: ${colors.blue[700]};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     &:hover {
         text-decoration: underline;
     }

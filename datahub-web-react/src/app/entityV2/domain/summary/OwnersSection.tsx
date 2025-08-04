@@ -1,4 +1,3 @@
-import { UserOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
 import React from 'react';
 import styled from 'styled-components';
@@ -8,13 +7,15 @@ import OwnerDetail from '@app/entityV2/domain/summary/OwnerDetail';
 import { REDESIGN_COLORS } from '@app/entityV2/shared/constants';
 import { getOwnershipTypeName } from '@app/entityV2/shared/containers/profile/sidebar/Ownership/ownershipUtils';
 import { SummaryTabHeaderTitle } from '@app/entityV2/shared/summary/HeaderComponents';
+import { UserOutlined } from '@ant-design/icons';
+
 
 import { Owner, OwnershipTypeEntity } from '@types';
 
 const OwnershipTypeNameText = styled(Typography.Text)`
     font-weight: 500;
     font-size: 12px;
-    color: ${REDESIGN_COLORS.DARK_GREY};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 const OwnersContainer = styled.div`
@@ -73,11 +74,11 @@ const OwnersSection = () => {
                 {ownershipTypeNames.map((ownershipTypeName) => {
                     const owners = ownersByTypeMap.get(ownershipTypeName) as Owner[];
                     return (
-                        <OwnershipContainer>
+                        <OwnershipContainer key={ownershipTypeName}>
                             <OwnershipTypeNameText>{ownershipTypeName}</OwnershipTypeNameText>
                             <OwnersContainer>
                                 {owners.map((owner) => (
-                                    <OwnerDetail owner={owner} />
+                                    <OwnerDetail key={owner?.owner?.urn} owner={owner} />
                                 ))}
                             </OwnersContainer>
                         </OwnershipContainer>

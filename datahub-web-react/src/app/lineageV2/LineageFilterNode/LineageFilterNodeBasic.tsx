@@ -21,8 +21,8 @@ import { EntityType } from '@types';
 export const LINEAGE_FILTER_NODE_NAME = 'lineage-filter';
 
 const NodeWrapper = styled.div`
-    background-color: white;
-    border: 1px solid ${LINEAGE_COLORS.NODE_BORDER};
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']}; // Change
     border-radius: 12px;
     cursor: pointer;
     padding: 8px;
@@ -30,8 +30,8 @@ const NodeWrapper = styled.div`
 `;
 
 const ExtraCard = styled.div<{ bottom: number }>`
-    background-color: white;
-    border: 1px solid #eee;
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']}; // Change
     border-radius: 12px;
     bottom: ${({ bottom }) => bottom}px;
     height: 40px;
@@ -54,11 +54,13 @@ const Title = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 const TitleCount = styled.span`
     font-weight: bold;
     margin: 0 1px;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 const CustomHandle = styled(Handle)<{ position: Position }>`
@@ -145,17 +147,19 @@ function SubtypeEntry({ agg, index }: EntryProps<SubtypeAggregate>) {
 const EntryWrapper = styled.span<{ includeBefore: boolean }>`
     align-items: center;
     display: flex;
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 
     ${({ includeBefore }) =>
         includeBefore &&
         `::before {
-             content: ',';
-             margin-right: 4px;
-         }`})
+                content: ',';
+                margin-right: 4px;
+            }`}
 `;
 
 const CountWrapper = styled.span`
     margin-left: 4px;
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 function LineageFilterEntry(

@@ -2,7 +2,6 @@ import { TagFilled, TagOutlined } from '@ant-design/icons';
 import * as React from 'react';
 import styled from 'styled-components';
 
-import RoleEntityProfile from '@app/entity/Access/RoleEntityProfile';
 import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '@app/entity/Entity';
 import { getDataForEntityType } from '@app/entity/shared/containers/profile/utils';
 import { urlEncodeUrn } from '@app/entity/shared/utils';

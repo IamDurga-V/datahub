@@ -44,7 +44,7 @@ const StyledTerm = styled(Tag)<{ fontSize?: number; highlightTerm?: boolean; sho
             `}
     }
     ${(props) => props.fontSize && `font-size: ${props.fontSize}px;`}
-    color: ${REDESIGN_COLORS.TEXT_HEADING};
+    color: ${(props) => props.theme.styles['text-color']};
     font-weight: 400;
     padding: 3px 8px;
     margin-right: 0;
@@ -65,7 +65,7 @@ const StyledTerm = styled(Tag)<{ fontSize?: number; highlightTerm?: boolean; sho
 `;
 
 const PropagateThunderbolt = styled(ThunderboltOutlined)`
-    color: rgba(0, 143, 100, 0.95);
+    color: ${(props) => props.theme.styles['tertiary-green']};
     margin-right: -4px;
     font-weight: bold;
 `;

@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 const DomainTitle = styled.div`
     font-size: 16px;
     font-weight: bold;
-    color: #374066;
+    color: ${(props) => props.theme.styles['text-color']};
 `;
 
 const StyledButton = styled(Button)`
@@ -26,7 +26,9 @@ const StyledButton = styled(Button)`
     svg {
         width: 20px;
         height: 20px;
+        color: ${(props) => props.theme.styles['text-color']};
     }
+    background-color: ${(props) => props.theme.styles['component-background']};
 `;
 
 export default function DomainsSidebarHeader() {

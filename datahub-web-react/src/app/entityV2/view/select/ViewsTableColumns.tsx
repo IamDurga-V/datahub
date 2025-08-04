@@ -13,6 +13,7 @@ import { DataHubViewType } from '@types';
 
 const StyledDescription = styled.div`
     max-width: 300px;
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 const ActionButtonsContainer = styled.div`
@@ -55,7 +56,9 @@ export function NameColumn({ name, record, onEditView }: NameColumnProps) {
                 {isGlobalDefault && <GlobalDefaultViewIcon title="Your organization's default View." />}
             </IconPlaceholder>
             <Button type="text" onClick={() => onEditView(record.urn)}>
-                <Typography.Text strong>{name}</Typography.Text>
+                <Typography.Text strong>
+                    <span style={{ color: "white" }}>{name}</span>
+                </Typography.Text>
             </Button>
         </NameContainer>
     );
@@ -78,7 +81,7 @@ type ViewTypeColumnProps = {
 };
 
 export function ViewTypeColumn({ viewType }: ViewTypeColumnProps) {
-    return <ViewTypeLabel color={ANTD_GRAY[8]} type={viewType} />;
+    return <ViewTypeLabel type={viewType} />;
 }
 
 type ActionColumnProps = {

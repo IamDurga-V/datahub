@@ -30,7 +30,7 @@ export const DomainsPaginationContainer = styled.div`
     justify-content: center;
     padding: 12px;
     padding-left: 16px;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid ${(props) => props.theme.styles['border-color-base']};
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -139,7 +139,7 @@ export const DomainsList = () => {
             <DomainsContainer>
                 <TabToolbar>
                     <Button id={DOMAINS_CREATE_DOMAIN_ID} type="text" onClick={() => setIsCreatingDomain(true)}>
-                        <PlusOutlined /> New Domain
+                        <PlusOutlined style={{ color: (props) => props.theme.styles['text-color'] }} /> New Domain
                     </Button>
                     <SearchBar
                         initialQuery={query || ''}
@@ -148,6 +148,8 @@ export const DomainsList = () => {
                         style={{
                             maxWidth: 220,
                             padding: 0,
+                            backgroundColor: (props) => props.theme.styles['component-background'],
+                            color: (props) => props.theme.styles['text-color'],
                         }}
                         inputStyle={{
                             height: 32,

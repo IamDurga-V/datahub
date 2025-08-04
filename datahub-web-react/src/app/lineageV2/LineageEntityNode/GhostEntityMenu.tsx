@@ -1,5 +1,5 @@
 import { MoreOutlined } from '@ant-design/icons';
-import { Button, Dropdown } from 'antd';
+import { Button, Dropdown, Menu } from 'antd';
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 
@@ -12,9 +12,10 @@ const Wrapper = styled.div`
     position: absolute;
     right: 3px;
     top: 8px;
+    color: ${(p) => p.theme.styles['text-color']}; // Change
 
     :hover {
-        color: ${(p) => p.theme.styles['primary-color']};
+        color: ${(p) => p.theme.styles['link-color']}; // Change
     }
 `;
 
@@ -48,14 +49,14 @@ export default function GhostEntityMenu({ urn }: Props) {
     const { displayedMenuNode, setDisplayedMenuNode } = useContext(LineageDisplayContext);
     const isMenuVisible = displayedMenuNode === urn;
 
-    function handleMenuClick(e: React.MouseEvent<HTMLElement, MouseEvent>) {
+    const handleMenuClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
         onClickPreventSelect(e);
         if (isMenuVisible) {
             setDisplayedMenuNode(null);
         } else {
             setDisplayedMenuNode(urn);
         }
-    }
+    };
 
     return (
         <Wrapper>
@@ -68,7 +69,7 @@ export default function GhostEntityMenu({ urn }: Props) {
                         items: [
                             {
                                 key: 'copyUrn',
-                                label: 'Copy URN',
+                                label: <span style={{ color: "black" }}>Copy URN</span>, // Change
                                 onClick: () => navigator.clipboard.writeText(urn),
                             },
                         ],

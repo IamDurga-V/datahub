@@ -19,6 +19,7 @@ const PersonaCard = styled.div<{ selected: boolean }>`
     display: flex;
     height: 88px;
     font-family: Mulish;
+    background-color: ${(props) => props.theme.styles['component-background']};
 
     &:hover {
         cursor: pointer;
@@ -48,7 +49,7 @@ const Content = styled.div`
 `;
 
 const Text = styled.div`
-    color: rgb(129, 135, 159);
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     line-height: 16px;
     font-size: 12px;
     margin-bottom: 4px;
@@ -66,8 +67,8 @@ export const PersonaSelector = ({ onSelect, selectedPersona }: Props) => {
                 Select a Persona
             </Heading>
             {PERSONA_TYPES_TO_DISPLAY.map((urn) => (
-                <PersonaCard onClick={() => onSelect(urn)} key={urn} selected={urn === selectedPersona}>
-                    <StyledIcon>{PERSONA_TYPE_TO_VIEW_ICON[urn]}</StyledIcon>
+                <PersonaCard onClick={() => onSelect(urn)} key={urn} selected={urn === selectedPersona} style={{ color: (props) => props.theme.styles['text-color'] }}>
+                    <StyledIcon style={{ color: (props) => props.theme.styles['text-color'] }}>{PERSONA_TYPE_TO_VIEW_ICON[urn]}</StyledIcon>
                     <Content>
                         <Heading size="md" type="h5" weight="semiBold">
                             {PERSONA_TYPE_TO_LABEL[urn]}

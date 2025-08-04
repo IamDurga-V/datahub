@@ -8,7 +8,9 @@ import { TRANSITION_DURATION_MS } from '@app/lineageV2/common';
 
 const StyledZoomButton = styled(Button)`
     border-radius: 8px;
-    border: 1px solid #00000015;
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']}; // Change
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.02);
     height: 40px;
     width: 40px;
@@ -19,7 +21,7 @@ const StyledZoomButton = styled(Button)`
     display: flex;
     &:focus {
         color: unset;
-        border-color: #00000015;
+        border-color: ${(props) => props.theme.styles['border-color-base']}; // Change
     }
 `;
 

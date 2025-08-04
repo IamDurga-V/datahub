@@ -14,6 +14,17 @@ const StyledOptionWrapper = styled.div`
     width: 100%;
 `;
 
+const StyledSelect = styled(Select)`
+  &&& .ant-select-item-option {
+    background-color: ${(props) => props.theme.styles['component-background']} !important;
+    color: ${(props) => props.theme.styles['text-color']} !important;
+  }
+
+  &&& .ant-select-item-option-active {
+    background-color: ${(props) => props.theme.styles['highlight-color']} !important;
+  }
+`;
+
 type Props = {
     selectedUrns: string[];
     entityTypes: EntityType[];

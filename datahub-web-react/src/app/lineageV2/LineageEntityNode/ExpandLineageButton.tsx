@@ -15,7 +15,7 @@ const VerticalDivider = styled.hr<{ margin: number }>`
     align-self: stretch;
     height: auto;
     margin: 0 ${({ margin }) => margin}px;
-    border: 0.5px solid ${ANTD_GRAY[5]};
+    border: 0.5px solid ${(props) => props.theme.styles['divider-color']}; // Change
     vertical-align: text-top;
 `;
 

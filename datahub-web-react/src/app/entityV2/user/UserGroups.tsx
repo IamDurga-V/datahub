@@ -1,5 +1,5 @@
 import { Tooltip } from '@components';
-import { Col, Pagination, Row } from 'antd';
+import { Col, Pagination, Row, Typography } from 'antd';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -9,12 +9,6 @@ import { useEntityRegistry } from '@app/useEntityRegistry';
 
 import { useGetUserGroupsLazyQuery } from '@graphql/user.generated';
 import { CorpGroup, EntityRelationship, EntityType } from '@types';
-
-type Props = {
-    urn: string;
-    initialRelationships?: Array<EntityRelationship> | null;
-    pageSize: number;
-};
 
 const GroupsViewWrapper = styled.div`
     height: calc(100vh - 173px);
@@ -32,6 +26,13 @@ const GroupsViewWrapper = styled.div`
         -ms-transform: translateX(-50%);
         transform: translateX(-50%);
     }
+    .ant-pagination-item a,
+    .ant-pagination-jump-next .ant-pagination-item-link,
+    .ant-pagination-jump-prev .ant-pagination-item-link,
+    .ant-pagination-prev .ant-pagination-item-link,
+    .ant-pagination-next .ant-pagination-item-link {
+        color: ${(props) => props.theme.styles['text-color-secondary']};
+    }
 `;
 
 const GroupItemColumn = styled(Col)`
@@ -39,12 +40,13 @@ const GroupItemColumn = styled(Col)`
 `;
 
 const GroupItem = styled.div`
-    border: 1px solid #eaeaea;
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']}; // Change
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
     padding: 10px;
     min-height: 107px;
     max-height: 107px;
     border-radius: 5px;
-
+    
     .title-row {
         padding: 9px 11px 9px 11px;
     }
@@ -58,7 +60,7 @@ const GroupTitle = styled.span`
     font-size: 14px;
     line-height: 22px;
     font-weight: bold;
-    color: #262626;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -68,15 +70,15 @@ const GroupMember = styled.span`
     font-weight: 500;
     font-size: 12px;
     line-height: 23px;
-    color: #8c8c8c;
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     padding-left: 7px;
 `;
 
-const GroupDescription = styled.span`
+const GroupDescription = styled(Typography.Text)`
     font-weight: 500;
     font-size: 12px;
     line-height: 20px;
-    color: #262626;
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -117,10 +119,8 @@ export default function UserGroups({ urn, initialRelationships, pageSize }: Prop
                                             </GroupMember>
                                         </Row>
                                         <Row className="description-row">
-                                            <GroupDescription>
-                                                <Tooltip title={item.info?.description}>
-                                                    {item.info?.description}
-                                                </Tooltip>
+                                            <GroupDescription ellipsis={{ tooltip: item.info?.description }}>
+                                                {item.info?.description}
                                             </GroupDescription>
                                         </Row>
                                     </GroupItem>

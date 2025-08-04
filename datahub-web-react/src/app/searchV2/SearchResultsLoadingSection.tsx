@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 
 const cardStyle = {
-    backgroundColor: ANTD_GRAY[2],
+    backgroundColor: (props) => props.theme.styles['component-background'],
     height: 120,
     minWidth: '98%',
     borderRadius: 8,

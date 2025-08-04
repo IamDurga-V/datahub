@@ -16,14 +16,14 @@ const SelectWrapper = styled.span`
         padding: 0px;
         margin: 0px;
     }
+
     .ant-select-selection-item {
-        // !important is necessary because updating Select styles for antd is impossible
-        color: ${ANTD_GRAY[8]} !important;
+        color: ${(props) => props.theme.styles['text-color']} !important;
         font-weight: 700;
     }
 
     .ant-select-selection-placeholder {
-        color: ${ANTD_GRAY[8]};
+        color: ${(props) => props.theme.styles['text-color']};
         font-weight: 700;
     }
 `;

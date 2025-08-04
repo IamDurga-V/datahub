@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import getAvatarColor from '@app/shared/avatar/getAvatarColor';
-import { useShowNavBarRedesign } from '@src/app/useShowNavBarRedesign';
+import { useShowNavBarRedesign } from '@app/useShowNavBarRedesign';
 
 const PreviewImage = styled.img<{ $isShowNavBarRedesign?: boolean }>`
     color: white;
@@ -16,13 +16,13 @@ const PreviewImage = styled.img<{ $isShowNavBarRedesign?: boolean }>`
         props.$isShowNavBarRedesign ? props.theme.styles['border-radius-navbar-redesign'] : '16px'};
     border-top-right-radius: ${(props) =>
         props.$isShowNavBarRedesign ? props.theme.styles['border-radius-navbar-redesign'] : '16px'};
-    ${(props) => !props.$isShowNavBarRedesign && 'border: 2px solid #ffffff;'}
+    ${(props) => !props.$isShowNavBarRedesign && `border: 2px solid ${props.theme.styles['border-color-base']};`}
 `;
 
 const PreviewLetter = styled.div<{ color: string; $isShowNavBarRedesign?: boolean }>`
     background-color: ${(props) => props.color};
     font-size: 52px;
-    color: white;
+    color: ${(props) => props.theme.styles['text-color']};
     width: 100%;
     display: flex;
     align-items: center;
@@ -31,7 +31,7 @@ const PreviewLetter = styled.div<{ color: string; $isShowNavBarRedesign?: boolea
         props.$isShowNavBarRedesign ? props.theme.styles['border-radius-navbar-redesign'] : '16px'};
     border-top-right-radius: ${(props) =>
         props.$isShowNavBarRedesign ? props.theme.styles['border-radius-navbar-redesign'] : '16px'};
-    ${(props) => !props.$isShowNavBarRedesign && 'border: 2px solid #ffffff;'}
+    ${(props) => !props.$isShowNavBarRedesign && `border: 2px solid ${props.theme.styles['border-color-base']};`}
 `;
 
 type Props = {

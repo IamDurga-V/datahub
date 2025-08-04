@@ -26,7 +26,7 @@ const CloseButton = styled.div`
         cursor: pointer;
     }
     && {
-        color: ${ANTD_GRAY[7]};
+        color: ${(props) => props.theme.styles['text-color-secondary']};
     }
 `;
 

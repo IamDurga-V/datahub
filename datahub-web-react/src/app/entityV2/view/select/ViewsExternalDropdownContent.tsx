@@ -23,6 +23,8 @@ const Wrapper = styled.div`
 
 const StyledDropdownContainer = styled(DefaultDropdownContainer)`
     display: flex;
+    background-color: ${(props) => props.theme.styles['component-background']};
+    border-color: ${(props) => props.theme.styles['border-color-base']};
 `;
 
 const DropdownContentHeader = styled.div`
@@ -39,6 +41,7 @@ const DropdownContent = styled.div`
     max-height: 240px; // height to show up to three rows
     overflow-y: auto;
     overflow-x: hidden;
+    color: ${(props) => props.theme.styles['text-color']};
 
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(${VIEW_CARD_MIN_WIDTH}px, 1fr));

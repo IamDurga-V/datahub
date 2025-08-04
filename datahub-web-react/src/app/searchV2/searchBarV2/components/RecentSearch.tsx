@@ -1,9 +1,8 @@
 import { MagnifyingGlass } from '@phosphor-icons/react';
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled, { useTheme } from 'styled-components/macro';
 
 import { Text } from '@src/alchemy-components';
-import colors from '@src/alchemy-components/theme/foundations/colors';
 
 const RecommendedOptionWrapper = styled.div`
     margin-left: 0;
@@ -17,9 +16,11 @@ interface Props {
 }
 
 export default function RecentSearch({ text }: Props) {
+    const theme = useTheme();
+
     return (
         <RecommendedOptionWrapper>
-            <MagnifyingGlass size={20} color={colors.gray[500]} />
+            <MagnifyingGlass size={20} color={theme.styles['text-color-secondary']} />
             <Text weight="semiBold">{text}</Text>
         </RecommendedOptionWrapper>
     );

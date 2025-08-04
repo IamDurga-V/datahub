@@ -9,8 +9,8 @@ export const MenuItem = styled.div`
     padding: 5px 50px 5px 5px;
     font-size: 14px;
     font-weight: 500;
-    color: ${colors.gray[600]};
-    font-family: ${typography.fonts.body};
+    color: ${(props) => props.theme.styles['text-secondary']};
+    font-family: ${(props) => props.theme.styles['font-family-body']};
 `;
 
 const ActionIcons = styled.div`
@@ -19,17 +19,19 @@ const ActionIcons = styled.div`
     gap: 12px;
 
     div {
-        border: 1px solid ${colors.gray[100]};
+        border: 1px solid ${(props) => props.theme.styles['border-default']};
         border-radius: 200px;
         width: 24px;
         height: 24px;
         padding: 4px;
-        color: ${colors.gray[1800]};
+        color: ${(props) => props.theme.styles['text-primary']};
+
         :hover {
             cursor: pointer;
         }
     }
 `;
+
 
 interface Props {
     dropdownItems?: ItemType[];

@@ -36,7 +36,7 @@ export default function PageBanner({
     content,
     localStorageKey,
     icon,
-    backgroundColor = colors.red[0],
+    backgroundColor = (props) => props.theme.styles['red-light'],
     exitColor = 'red',
 }: Props) {
     const [isBannerHidden, setIsBannerHidden] = useState(!!localStorage.getItem(localStorageKey));

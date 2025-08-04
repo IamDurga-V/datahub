@@ -17,16 +17,16 @@ const LinkButton = styled.a<{ $isShowNavBarRedesign?: boolean }>`
     display: flex;
     align-items: center;
     line-height: 16px;
-    background-color: #fff;
+    background-color: ${(props) => props.theme.styles['component-background']};
 
     ${(props) =>
         props.$isShowNavBarRedesign &&
         `
-        border: 1px solid ${colors.gray[100]};
+        border: 1px solid ${props.theme.styles['border-color-base']};
         border-radius: 8px;
 
         :hover {
-            border: 1px solid ${SEARCH_COLORS.LINK_BLUE};
+            border: 1px solid ${props.theme.styles['link-color']};
         }
     `}
 `;
@@ -55,7 +55,7 @@ const TextColumn = styled.div`
 const Title = styled.div``;
 
 const Description = styled.div`
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     padding-top: 4px;
 `;
 

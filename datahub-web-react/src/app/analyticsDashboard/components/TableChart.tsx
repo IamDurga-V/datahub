@@ -19,6 +19,22 @@ type TableCellProps = {
 const StyledTable = styled(Table)`
     padding-top: 16px;
     width: 100%;
+    .ant-table-container {
+        border: 1px solid ${(props) => props.theme.styles['border-color-base']};
+        background-color: ${(props) => props.theme.styles['component-background']};
+        color: ${(props) => props.theme.styles['text-color']};
+        border-radius: 8px;
+    }
+    .ant-table-thead > tr > th {
+        background-color: ${(props) => props.theme.styles['component-background']};
+        border-color: ${(props) => props.theme.styles['border-color-base']};
+        color: ${(props) => props.theme.styles['text-color']};
+    }
+    .ant-table-tbody > tr > td {
+        background-color: ${(props) => props.theme.styles['component-background']};
+        border-color: ${(props) => props.theme.styles['border-color-base']};
+        color: ${(props) => props.theme.styles['text-color']};
+    }
 `;
 
 const TableLink = styled(Button)`
@@ -27,6 +43,7 @@ const TableLink = styled(Button)`
         font-weight: 400;
         margin-top: -6px;
         margin-bottom: -6px;
+        color: ${(props) => props.theme.styles['link-color']};
     }
 `;
 

@@ -35,7 +35,7 @@ const PreviewImage = styled.div`
     width: auto;
     object-fit: contain;
     margin-right: 10px;
-    background-color: transparent;
+    background-color: {( props ) => props.theme.styles['component-background']}; // Change
 `;
 
 const EntityTitle = styled(Typography.Text)`
@@ -51,7 +51,7 @@ const PlatformText = styled(Typography.Text)`
     font-size: 12px;
     line-height: 20px;
     font-weight: 700;
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 const DescriptionContainer = styled.div`

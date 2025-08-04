@@ -26,7 +26,7 @@ const Header = styled(Text)`
     gap: 6px;
     margin-bottom: 8px;
 
-    color: ${colors.gray[600]};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     font-size: 14px;
     line-height: 1.2;
 `;

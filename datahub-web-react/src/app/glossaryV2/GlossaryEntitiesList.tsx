@@ -15,7 +15,7 @@ const SectionTitle = styled(Typography)`
     margin: 12px 0 12px 16px;
     font-size: 12px;
     font-weight: 400;
-    color: ${REDESIGN_COLORS.SUBTITLE};
+    color: ${(props) => props.theme.styles['text-color-secondary']}
 `;
 
 const GlossaryNodes = styled.div<{ isGrid?: boolean }>`

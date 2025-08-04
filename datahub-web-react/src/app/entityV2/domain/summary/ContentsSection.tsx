@@ -25,11 +25,11 @@ import { useEntityRegistry } from '@app/useEntityRegistry';
 import { useGetDomainEntitySummaryQuery } from '@graphql/domain.generated';
 
 const ViewAllButton = styled.div`
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     padding: 2px;
     :hover {
         cursor: pointer;
-        color: ${ANTD_GRAY[8]};
+        color: ${(props) => props.theme.styles['text-color']}; // Change
         text-decoration: underline;
     }
 `;

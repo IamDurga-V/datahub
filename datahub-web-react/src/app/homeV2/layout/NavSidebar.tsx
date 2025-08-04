@@ -25,7 +25,7 @@ const Content = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    background-color: #3b2d94;
+    background-color: ${(props) => props.theme.styles['component-background']};
     border-radius: 32px;
     height: 100%;
     width: 52px;
@@ -39,10 +39,9 @@ const Icon = styled.div`
     width: 44px;
     height: 44px;
     border-radius: 38px;
-    border: 1px solid #32267d;
-    background: #4c39be;
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']};
+    background: ${(props) => props.theme.styles['primary-color-dark']};
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    margin-bottom: 10px;
 
     & svg {
         height: 22px;
@@ -92,7 +91,11 @@ const NavSkeleton = () => {
     return (
         <>
             <SkeletonButton active shape="circle" />
-            <SkeletonButton active shape="circle" style={{ height: '380px', borderRadius: '48px' }} />
+            <SkeletonButton active shape="circle" style={{
+                height: '380px',
+                borderRadius: '48px',
+                backgroundColor: (props) => props.theme.styles['highlight-color']
+            }} />
             <Spacer />
             <UserIcon>
                 <SkeletonButton active shape="circle" />

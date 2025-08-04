@@ -17,7 +17,7 @@ const ExtraButtons = styled.div`
 
     flex-direction: column;
     align-items: end;
-    background-color: ${REDESIGN_COLORS.WHITE};
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
 `;
 
 const Wrapper = styled.div`
@@ -40,8 +40,8 @@ const Button = styled.div`
     all: unset;
     align-items: center;
     border-radius: 20px;
-    background-color: ${REDESIGN_COLORS.WHITE};
-    color: ${ANTD_GRAY[9]};
+    background-color: ${(props) => props.theme.styles['background-color-light']}; // Change
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     cursor: pointer;
     display: flex;
     font-size: 10px;
@@ -52,7 +52,7 @@ const Button = styled.div`
         background-color: ${(props) =>
             applyOpacity(
                 props.theme.styles['primary-color'] || getColor('primary', 500, props.theme),
-                REDESIGN_COLORS.WHITE,
+                props.theme.styles['component-background'], // Change
                 10,
             )};
         color: ${(props) => props.theme.styles['primary-color']};
@@ -82,8 +82,8 @@ export function ShowMoreButton({ data, numMatches }: Props) {
                 // To zoom in on newly added nodes on click, uncomment below and pass into setDisplayVersion
                 // Should match useProcessData.applyFilters logic
                 // const newNodes = [
-                //     id,
-                //     ...contents.slice(maximum - filters.limit - increment, maximum - filters.limit),
+                //     id,
+                //     ...contents.slice(maximum - filters.limit - increment, maximum - filters.limit),
                 // ];
                 filters.limit = value;
                 setDisplayVersion(([v, n]) => [v + 1, n]);

@@ -10,7 +10,7 @@ import { toLocalDateString, toRelativeTimeString } from '@app/shared/time/timeUt
 
 const LastUpdatedContainer = styled.div<{ color: string }>`
     align-items: center;
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     display: flex;
     flex-direction: row;
     gap: 5px;
@@ -23,7 +23,7 @@ const LastUpdatedContainer = styled.div<{ color: string }>`
 const PopoverContent = styled.div`
     align-items: center;
     display: flex;
-    color: ${REDESIGN_COLORS.DARK_GREY};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 type Props = {

@@ -23,9 +23,10 @@ const Wrapper = styled.div`
     position: absolute;
     right: 3px;
     top: 8px;
+    color: ${(p) => p.theme.styles['text-color']}; // Change
 
     :hover {
-        color: ${(p) => p.theme.styles['primary-color']};
+        color: ${(p) => p.theme.styles['link-color']}; // Change
     }
 `;
 
@@ -35,6 +36,16 @@ const StyledIcon = styled(MoreOutlined)`
 
 const StyledMenuItem = styled(Menu.Item)`
     padding: 0;
+    .ant-dropdown-menu-title-content {
+        color: ${(props) => props.theme.styles['text-color']}; // Change
+        &:hover {
+            color: ${(props) => props.theme.styles['link-color']}; // Change
+        }
+    }
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
+    &:hover {
+        background-color: ${(props) => props.theme.styles['highlight-color']}; // Change
+    }
 `;
 
 const MenuItemContent = styled.div`
@@ -111,14 +122,17 @@ export default function ManageLineageMenu({ node, refetch, isRootUrn }: Props) {
         setIsModalVisible(true);
     }
 
-    function handleMenuClick(e: React.MouseEvent<HTMLElement, MouseEvent>) {
-        onClickPreventSelect(e);
-        if (isMenuVisible) {
-            setDisplayedMenuNode(null);
-        } else {
-            setDisplayedMenuNode(node.urn);
-        }
-    }
+    const handleMenuClick = useCallback(
+        (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+            onClickPreventSelect(e);
+            if (isMenuVisible) {
+                setDisplayedMenuNode(null);
+            } else {
+                setDisplayedMenuNode(node.urn);
+            }
+        },
+        [isMenuVisible, node.urn, setDisplayedMenuNode],
+    );
 
     const hideMenu = useCallback(() => setIsModalVisible(false), []);
 

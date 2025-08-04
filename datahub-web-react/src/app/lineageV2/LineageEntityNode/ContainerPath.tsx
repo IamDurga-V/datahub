@@ -29,7 +29,7 @@ const EmptyContainer = styled.div`
 // TODO: Put ellipsis on last item correctly
 const ContainerEntry = styled(MatchTextSizeWrapper)<{ numItems?: number; isLast: boolean }>`
     align-items: center;
-    color: ${REDESIGN_COLORS.TEXT_GREY};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     display: flex;
     flex-direction: row;
     max-width: ${({ numItems, isLast }) => (numItems && !isLast ? 100 / numItems : 100)}%;
@@ -47,7 +47,7 @@ const VerticalDivider = styled.hr<{ margin: number }>`
     align-self: stretch;
     height: auto;
     margin: 0 ${({ margin }) => margin}px;
-    border: 0.5px solid;
+    border: 0.5px solid ${(props) => props.theme.styles['divider-color']}; // Change
     opacity: 0.1;
     vertical-align: text-top;
 `;
@@ -78,9 +78,9 @@ export default function ContainerPath({ parents, className }: Props) {
                     <ContainerIconBase container={container} />
                     <ContainerText ellipsis={{ tooltip: { showArrow: false } }}>
                         {/*
-                            Browse paths with no entity are stored as { name: ... }, with no type.
-                            Entity registry will return empty string display name for undefined type.
-                         */}
+                             Browse paths with no entity are stored as { name: ... }, with no type.
+                             Entity registry will return empty string display name for undefined type.
+                            */}
                         {entityRegistry.getDisplayName(container.type, container) || container.name}
                     </ContainerText>
                 </ContainerEntry>

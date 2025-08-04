@@ -15,9 +15,9 @@ const { Option } = Select;
 
 const StyledSelect = styled(Select)`
     border-radius: 5px;
-    background: ${ANTD_GRAY[4]};
+    background: ${(props) => props.theme.styles['input-bg']};
     :hover {
-        background: ${ANTD_GRAY[4.5]};
+        background: ${(props) => props.theme.styles['input-hover-bg']};
     }
 `;
 

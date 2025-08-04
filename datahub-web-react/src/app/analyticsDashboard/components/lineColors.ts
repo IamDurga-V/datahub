@@ -1,14 +1,15 @@
 import { cyan, gold, lime, orange, purple, red, volcano, yellow } from '@ant-design/colors';
 
+// These colors are optimized for a dark theme
 export const lineColors = [
-    cyan[6],
-    red[3],
+    cyan[4],
+    red[5],
     orange[4],
     yellow[5],
     lime[5],
-    cyan[2],
-    purple[2],
-    red[5],
+    cyan[3],
+    purple[5],
+    red[6],
     red[9],
     volcano[5],
     volcano[9],
@@ -16,8 +17,8 @@ export const lineColors = [
     purple[9],
     cyan[5],
     cyan[9],
-    lime[2],
+    lime[4],
     lime[9],
-    gold[2],
+    gold[4],
     gold[9],
 ];

@@ -20,6 +20,7 @@ const ContentWrapper = styled.div<{ $isShowNavBarRedesign?: boolean; $isEntityPr
     flex: 1;
     overflow: hidden;
     gap: ${(props) => (props.$isShowNavBarRedesign ? '12px' : '0')};
+    background-color: ${(props) => props.theme.styles['component-background']};
     ${(props) => !props.$isEntityProfile && props.$isShowNavBarRedesign && 'padding: 5px;'}
 `;
 

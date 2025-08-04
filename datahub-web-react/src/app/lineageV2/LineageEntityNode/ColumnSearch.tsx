@@ -6,7 +6,9 @@ import { onClickPreventSelect } from '@app/lineageV2/common';
 
 const SearchInput = styled(Input)`
     border-radius: 4px;
-    border: 0.5px solid #d9d9d9;
+    border: 0.5px solid ${(props) => props.theme.styles['border-color-base']}; // Change
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     cursor: text;
     font-size: 10px;
     height: 22px;
@@ -15,7 +17,7 @@ const SearchInput = styled(Input)`
 
     :focus,
     :hover {
-        border: 0.5px solid #1890ff;
+        border: 0.5px solid ${(props) => props.theme.styles['primary-color']}; // Change
         box-shadow: none;
         outline: none;
     }

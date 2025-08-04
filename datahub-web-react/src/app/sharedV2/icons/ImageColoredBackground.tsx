@@ -41,7 +41,7 @@ export default function ImageColoredBackground({ children, className }: Props): 
                     };
                     image.onerror = () => {
                         image.removeAttribute('crossOrigin');
-                        setBackground(REDESIGN_COLORS.BACKGROUND_GREY);
+                        setBackground(props.theme.styles['background-color-light']);
                     };
                 }
             }

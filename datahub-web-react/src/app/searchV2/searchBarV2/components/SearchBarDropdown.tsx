@@ -12,7 +12,7 @@ const DropdownContainer = styled.div`
     overflow: auto;
     box-shadow: ${BOX_SHADOW};
     border-radius: ${radius.lg};
-    background: ${colors.white};
+    background: ${(props) => props.theme.styles['component-background']};
 `;
 
 interface Props {

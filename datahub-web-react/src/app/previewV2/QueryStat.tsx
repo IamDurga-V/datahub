@@ -5,7 +5,7 @@ import { REDESIGN_COLORS } from '@app/entityV2/shared/constants';
 import { formatNumber } from '@app/shared/formatNumber';
 
 const Container = styled.div`
-    color: ${REDESIGN_COLORS.FOUNDATION_BLUE_4};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     font-size: 12px;
     white-space: nowrap;
 `;

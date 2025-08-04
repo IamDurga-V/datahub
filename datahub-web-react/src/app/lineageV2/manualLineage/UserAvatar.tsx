@@ -10,7 +10,7 @@ import { useEntityRegistry } from '@app/useEntityRegistry';
 import { CorpUser, EntityType } from '@types';
 
 const StyledAvatar = styled(Avatar)<{ $backgroundColor: string }>`
-    color: #fff;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     background-color: ${(props) => props.$backgroundColor};
     margin-right: 20px;
     height: 22px;
@@ -30,6 +30,7 @@ const LineageIcon = styled(PartitionOutlined)`
 const PopoverWrapper = styled.div`
     display: flex;
     align-items: center;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 interface Props {

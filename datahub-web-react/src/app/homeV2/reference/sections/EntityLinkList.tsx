@@ -14,7 +14,7 @@ import { Entity, EntityType } from '@types';
 
 const Title = styled.div<{ hasAction: boolean }>`
     ${(props) => props.hasAction && `:hover { cursor: pointer; }`}
-    color: #403d5c;
+    color: ${(props) => props.theme.styles['text-color']};
     font-weight: 600;
     font-size: 16px;
     margin-bottom: 8px;
@@ -29,10 +29,10 @@ const List = styled.div`
 const ShowMoreButton = styled.div`
     margin-top: 12px;
     padding: 0px;
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     :hover {
         cursor: pointer;
-        color: ${ANTD_GRAY[8]};
+        color: ${(props) => props.theme.styles['text-color']};
         text-decoration: underline;
     }
 `;
@@ -96,7 +96,6 @@ export const EntityLinkList = ({
                 {(!isEmpty &&
                     entities.map((entity) => {
                         return (
-                            // eslint-disable-next-line
                             <span key={`${title}-${entity?.urn}`} onClick={() => onClickEntity?.(entity?.urn || '')}>
                                 <EntityLink
                                     entity={
@@ -113,7 +112,8 @@ export const EntityLinkList = ({
                                 />
                             </span>
                         );
-                    })) || <>{empty || <DefaultEmptyEntityList />}</>}
+                    })) ||
+                    (empty || <DefaultEmptyEntityList />)}
             </List>
             {showMore && (
                 <ShowMoreButton onClick={onClickMore}>

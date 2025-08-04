@@ -12,6 +12,8 @@ export const ReferenceSectionDivider = styled.hr`
     height: 1px;
     opacity: 0.1;
     width: 100%;
+    background-color: ${(props) => props.theme.styles['divider-color']};
+    border: none;
     margin: 20px 0px;
 `;
 

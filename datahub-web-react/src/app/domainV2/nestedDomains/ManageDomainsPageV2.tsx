@@ -22,6 +22,7 @@ const PageWrapper = styled.div<{ $isShowNavBarRedesign?: boolean }>`
     border-radius: ${(props) =>
         props.$isShowNavBarRedesign ? props.theme.styles['border-radius-navbar-redesign'] : '8px'};
     margin-left: ${(props) => (props.$isShowNavBarRedesign ? '0' : '12px')};
+    background-color: ${(props) => props.theme.styles['component-background']};
     ${(props) => props.$isShowNavBarRedesign && `box-shadow: ${props.theme.styles['box-shadow-navbar-redesign']};`}
 `;
 

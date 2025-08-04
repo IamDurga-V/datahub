@@ -85,7 +85,7 @@ const PaginationContainer = styled.div`
 `;
 
 const NeverExpireText = styled.span`
-    color: ${red[5]};
+    color: ${(props) => props.theme.styles['red-error']};
 `;
 
 const SelectContainer = styled.div`
@@ -107,7 +107,6 @@ export const AccessTokens = () => {
     const [owner, setOwner] = useState('All');
     const [filters, setFilters] = useState<Array<FacetFilterInput> | null>(null);
     const [query, setQuery] = useState<undefined | string>(undefined);
-    // Current User Urn
     const authenticatedUser = useUserContext();
     const entityRegistry = useEntityRegistry();
     const currentUserUrn = authenticatedUser?.user?.urn || '';
@@ -129,12 +128,10 @@ export const AccessTokens = () => {
 
     const canManageToken = authenticatedUser?.platformPrivileges?.manageTokens;
 
-    // Access Tokens list paging.
     const [page, setPage] = useState(1);
     const pageSize = DEFAULT_PAGE_SIZE;
     const start = (page - 1) * pageSize;
 
-    // Call list Access Token Mutation
     const {
         loading: tokensLoading,
         error: tokensError,
@@ -160,7 +157,6 @@ export const AccessTokens = () => {
                 query: (query?.length && query) || undefined,
             },
         },
-        fetchPolicy: 'no-cache',
     });
 
     useEffect(() => {
@@ -179,7 +175,6 @@ export const AccessTokens = () => {
         } else if (filters) {
             setFilters(filters.filter((filter) => filter?.field !== 'expiresAt'));
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [canManageToken, owner, statusFilter]);
 
     const renderSearchResult = (entity: any) => {
@@ -204,13 +199,11 @@ export const AccessTokens = () => {
 
     const [revokeAccessToken, { error: revokeTokenError }] = useRevokeAccessTokenMutation();
 
-    // Revoke token Handler
     const onRemoveToken = (token: any) => {
         Modal.confirm({
             title: 'Are you sure you want to revoke this token?',
             content: `Anyone using this token will no longer be able to access the DataHub API. You cannot undo this action.`,
             onOk() {
-                // Hack to deal with eventual consistency.
                 const newTokenIds = [...removedTokens, token.id];
                 setRemovedTokens(newTokenIds);
 
@@ -348,7 +341,6 @@ export const AccessTokens = () => {
             </PersonTokenDescriptionText>
             <TabToolbar>
                 <div>
-                    {/* NOTE: only for SaaS. If this is brought into OSS, we will need to disable the dropdown and have the button onClick open the personal token modal */}
                     <Dropdown
                         disabled={!canGeneratePersonalAccessTokens}
                         placement="bottom"
@@ -442,7 +434,6 @@ export const AccessTokens = () => {
                 forRemoteExecutor={createTokenFor === 'remote-executor'}
                 onClose={() => setCreateTokenFor(undefined)}
                 onCreateToken={() => {
-                    // Hack to deal with eventual consistency.
                     setTimeout(() => {
                         tokensRefetch?.();
                     }, 3000);

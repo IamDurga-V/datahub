@@ -4,9 +4,9 @@ import styled from 'styled-components';
 
 const SummaryButton = styled.div<{ maxWidth: number }>`
     align-items: center;
-    border: 1px solid #328980;
+    border: 1px solid ${(props) => props.theme.styles['primary-color']};
     border-radius: 4px;
-    background: #328980;
+    background: ${(props) => props.theme.styles['primary-color']};
     color: white;
     display: flex;
     max-width: ${(props) => props.maxWidth}px;

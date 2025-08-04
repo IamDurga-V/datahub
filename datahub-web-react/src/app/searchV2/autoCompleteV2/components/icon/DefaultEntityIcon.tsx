@@ -16,7 +16,7 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background: ${colors.gray[1500]};
+    background: ${(props) => props.theme.styles['component-background']};
     height: 28px;
     width: 28px;
     border-radius: ${radius.full};

@@ -48,6 +48,36 @@ const OptionalWrapper = styled.span`
 
 const StyledButton = styled(Button)`
     padding: 0;
+    color: ${(props) => props.theme.styles['text-color-secondary']};
+`;
+
+const StyledModal = styled(Modal)`
+    &&& .ant-modal-content {
+        background-color: ${(props) => props.theme.styles['component-background']};
+        color: ${(props) => props.theme.styles['text-color']};
+    }
+    &&& .ant-modal-header {
+        background-color: ${(props) => props.theme.styles['component-background']};
+        border-color: ${(props) => props.theme.styles['border-color-base']};
+        color: ${(props) => props.theme.styles['text-color']};
+    }
+    &&& .ant-collapse {
+        background-color: ${(props) => props.theme.styles['component-background']};
+    }
+    &&& .ant-collapse-header {
+        background-color: ${(props) => props.theme.styles['component-background']};
+        color: ${(props) => props.theme.styles['text-color']};
+    }
+    &&& .ant-collapse-content {
+        background-color: ${(props) => props.theme.styles['component-background']};
+        color: ${(props) => props.theme.styles['text-color']};
+    }
+    &&& .ant-collapse-item {
+        border-color: ${(props) => props.theme.styles['border-color-base']};
+    }
+    &&& .ant-collapse-arrow {
+        color: ${(props) => props.theme.styles['text-color-secondary']};
+    }
 `;
 
 // Ensures that any newly added datatype is automatically included in the user dropdown.
@@ -68,7 +98,6 @@ export default function CreateBusinessAttributeModal({ open, onClose, onCreateBu
 
     const [stagedId, setStagedId] = useState<string | undefined>(undefined);
 
-    // Function to handle the close or cross button of Create Business Attribute Modal
     const onModalClose = () => {
         form.resetFields();
         onClose();
@@ -108,7 +137,6 @@ export default function CreateBusinessAttributeModal({ open, onClose, onCreateBu
         setDocumentation('');
     };
 
-    // Handle the Enter press
     useEnterKeyListener({
         querySelectorToExecuteClick: '#createBusinessAttributeButton',
     });
@@ -120,8 +148,12 @@ export default function CreateBusinessAttributeModal({ open, onClose, onCreateBu
 
     return (
         <>
-            <Modal
-                title="Create Business Attribute"
+            <StyledModal
+                title={
+                    <Typography.Text strong style={{ color: (props) => props.theme.styles['text-color'] }}>
+                        Create Business Attribute
+                    </Typography.Text>
+                }
                 open={open}
                 onCancel={onModalClose}
                 footer={
@@ -251,7 +283,16 @@ export default function CreateBusinessAttributeModal({ open, onClose, onCreateBu
                         </Collapse.Panel>
                     </Collapse>
                 </Form>
-            </Modal>
+            </StyledModal>
+            {isDocumentationModalVisible && (
+                <DescriptionModal
+                    title="Add Documentation"
+                    onClose={() => setIsDocumentationModalVisible(false)}
+                    onSubmit={addDocumentation}
+                    description={documentation}
+                />
+            )}
         </>
     );
 }
+

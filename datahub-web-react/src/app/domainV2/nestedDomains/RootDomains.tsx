@@ -21,11 +21,11 @@ const ResultWrapper = styled.div`
     margin-bottom: 12px;
     display: flex;
     align-items: center;
-    background-color: #ffffff;
+    background-color: ${(props) => props.theme.styles['component-background']};
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0px 1px 2px 0px rgba(33, 23, 95, 0.07);
-    border: 1px solid #ebecf0;
+    box-shadow: ${(props) => props.theme.styles['box-shadow']};
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']};
 `;
 
 interface Props {

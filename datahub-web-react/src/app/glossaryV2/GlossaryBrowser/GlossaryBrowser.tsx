@@ -1,5 +1,5 @@
 import { LoadingOutlined } from '@ant-design/icons';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/macro';
 
 import { sortGlossaryNodes } from '@app/entityV2/glossaryNode/utils';
@@ -16,7 +16,7 @@ import { useGetRootGlossaryNodesQuery, useGetRootGlossaryTermsQuery } from '@gra
 import { ChildGlossaryTermFragment } from '@graphql/glossaryNode.generated';
 
 const BrowserWrapper = styled.div`
-    color: ${ANTD_GRAY[11]};
+    color: ${(props) => props.theme.styles['text-color']};
     font-size: 12px;
     max-height: calc(100% - 104px);
     padding: 0;
@@ -31,7 +31,7 @@ const LoadingWrapper = styled.div`
     svg {
         height: 15px;
         width: 15px;
-        color: ${ANTD_GRAY[8]};
+        color: ${(props) => props.theme.styles['text-color']};
     }
 `;
 
@@ -88,7 +88,6 @@ function GlossaryBrowser(props: Props) {
         }
     }, [refreshBrowser, refetchNodes, refetchTerms]);
 
-    // if node(s) or term(s) need to be refreshed at the root level, check if these special cases are in `urnsToUpdate`
     useEffect(() => {
         if (urnsToUpdate.includes(ROOT_NODES)) {
             refetchNodes();

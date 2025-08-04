@@ -27,7 +27,7 @@ export const FilterPill = ({ filter, onToggle }: Props) => {
             <Pill
                 label={labelString}
                 customIconRenderer={() => filter.icon}
-                color="gray"
+                color="text-color-secondary"
                 variant="outline"
                 clickable
                 onPillClick={onToggle}

@@ -34,7 +34,7 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-    background-color: #ffffff;
+    background-color: ${(props) => props.theme.styles['component-background']};
     padding: 20px;
 
     .ant-select-selection-item {
@@ -56,7 +56,7 @@ const Content = styled.div`
 `;
 
 const Title = styled.div`
-    color: #374066;
+    color: ${(props) => props.theme.styles['text-color']};
     text-align: center;
     font: 700 35px Mulish;
     line-height: 44px;
@@ -64,7 +64,7 @@ const Title = styled.div`
 `;
 
 const Subtitle = styled.div`
-    color: #5f6685;
+    color: ${(props) => props.theme.styles['text-color']};
     width: 268px;
     text-align: center;
     font: 400 13px Mulish;
@@ -76,7 +76,7 @@ const DoneButton = styled(Button)`
     width: 290px;
     height: 45px;
     flex-shrink: 0;
-    background-color: #3f54d1;
+    background-color: ${(props) => props.theme.styles['component-background']};
     color: #fff;
     margin-top: 12px;
 `;
@@ -204,7 +204,7 @@ const Footer = styled.div`
 `;
 
 const SkipButton = styled.div`
-    color: ${colors.gray[400]};
+    color: ${(props) => props.theme.styles['text-color']};
     font-weight: 700;
     :hover {
         cursor: pointer;

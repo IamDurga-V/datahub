@@ -14,12 +14,12 @@ const IconContainer = styled.div`
 `;
 
 const UnhealthyIcon = styled(WarningCircle)`
-    color: ${colors.red[500]};
+    color: ${(props) => props.theme.styles['primary-color-dark']}; // Change
     font-size: 20px;
 `;
 
 const HealthyIcon = styled(CheckCircle)`
-    color: ${colors.green[500]};
+    color: ${(props) => props.theme.styles['primary-color']}; // Change
     font-size: 20px;
 `;
 

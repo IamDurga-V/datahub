@@ -20,9 +20,8 @@ const FilterWrapper = styled.span`
     display: flex;
     align-items: center;
 `;
-
 const FilterValuesWrapper = styled.div`
-    color: ${ANTD_GRAY[9]};
+    color: ${(props) => props.theme.styles['text-primary']};
     margin: 4px;
 `;
 
@@ -32,9 +31,10 @@ const ConditionWrapper = styled.div`
     height: 24px;
     display: flex;
     align-items: center;
-    color: ${ANTD_GRAY[9]};
-    background: ${ANTD_GRAY[2]};
+    color: ${(props) => props.theme.styles['text-primary']};
+    background: ${(props) => props.theme.styles['background-tertiary']};
 `;
+
 
 function getEntityTypeToSubType(nestedSubTypes?: string[]): { [key: string]: string[] } {
     const entityTypeToSubTypes = {};

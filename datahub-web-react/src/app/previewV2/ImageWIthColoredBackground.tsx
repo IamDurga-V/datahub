@@ -1,6 +1,6 @@
 import ColorThief from 'colorthief';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components'; // Change
 
 import { REDESIGN_COLORS } from '@app/entityV2/shared/constants';
 import { getLighterRGBColor } from '@app/sharedV2/icons/colorUtils';
@@ -39,6 +39,7 @@ const DEFAULT_BORDER_RADIUS = 4;
 const ImageWithColoredBackground = ({ src, alt, imgSize, backgroundSize, borderRadius }: Props) => {
     const imgRef = React.useRef<HTMLImageElement>(null);
     const [platformBackground, setPlatformBackground] = React.useState<string | undefined>(undefined);
+    const theme = useTheme(); // Change
 
     const logo = (
         <PreviewImage
@@ -59,7 +60,7 @@ const ImageWithColoredBackground = ({ src, alt, imgSize, backgroundSize, borderR
                 const img = imgRef.current;
                 if (img) {
                     img.removeAttribute('crossOrigin');
-                    setPlatformBackground(REDESIGN_COLORS.BACKGROUND_GREY);
+                    setPlatformBackground(theme.styles['component-background']); // Change
                 }
             }}
         />

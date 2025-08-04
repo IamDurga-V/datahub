@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { ANTD_GRAY, LINEAGE_COLORS } from '@app/entityV2/shared/constants';
 
 export const ExpandContractButton = styled.div<{ expandOnHover?: boolean }>`
-    background-color: white;
-    border: 1px solid ${ANTD_GRAY[5]};
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']}; // Change
     border-radius: 10px;
-    color: ${LINEAGE_COLORS.BLUE_1};
+    color: ${(props) => props.theme.styles['primary-color']}; // Change
     cursor: pointer;
     display: flex;
     font-size: 18px;
@@ -36,8 +36,9 @@ export const DownstreamWrapper = styled(ExpandContractButton)`
 export const Button = styled.span`
     border-radius: 20%;
     line-height: 0;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 
     :hover {
-        background-color: ${LINEAGE_COLORS.BLUE_1}30;
+        background-color: ${(props) => props.theme.styles['highlight-color']}; // Change
     }
 `;

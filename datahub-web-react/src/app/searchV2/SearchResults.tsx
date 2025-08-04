@@ -28,7 +28,6 @@ import { Entity, FacetFilterInput, MatchedField, SearchSuggestion } from '@types
 const SearchResultsWrapper = styled.div<{ v2Styles: boolean }>`
     display: flex;
     flex: 1;
-
     ${(props) =>
         props.v2Styles &&
         `
@@ -47,7 +46,6 @@ const SearchBody = styled.div`
 const ResultContainer = styled.div<{ v2Styles: boolean }>`
     flex: 1;
     overflow: auto;
-
     ${(props) =>
         props.v2Styles
             ? `
@@ -85,20 +83,22 @@ const SearchResultsScrollContainer = styled.div<{ $isShowNavBarRedesign?: boolea
 
 const LeftControlsContainer = styled.div`
     display: flex;
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-color'] ?? '#FFFFFF'};
     gap: 4px;
 `;
 
 const StyledTabToolbar = styled.div`
-    background-color: #fff;
+    background-color: ${(props) => props.theme.styles['component-background'] ?? '#1E1E2F'};
+    color: ${(props) => props.theme.styles['text-color'] ?? '#FFFFFF'};
     border-radius: 12px;
     margin: 4px 16px 4px 8px;
     padding: 12px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1.5px solid ${ANTD_GRAY[4]};
+    border: 1.5px solid ${(props) => props.theme.styles['border-color-base'] ?? '#2D2D3A'};
 `;
+
 
 const SearchResultListContainer = styled.div<{ v2Styles: boolean; $isShowNavBarRedesign?: boolean }>`
     display: flex;

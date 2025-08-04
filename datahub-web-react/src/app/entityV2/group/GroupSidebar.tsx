@@ -18,7 +18,7 @@ type Props = {
 
 export const MemberCount = styled.div`
     font-size: 10px;
-    color: ${REDESIGN_COLORS.WHITE};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     font-weight: 400;
     text-align: left;
 `;

@@ -12,7 +12,7 @@ const Details = styled.div`
     display: flex;
     align-items: center;
     gap: 5px;
-    color: ${REDESIGN_COLORS.SUBTITLE};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     font-size: 14px;
     font-weight: 500;
 `;

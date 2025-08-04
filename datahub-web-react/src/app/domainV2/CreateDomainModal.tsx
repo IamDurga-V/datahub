@@ -21,6 +21,9 @@ const ClickableTag = styled(Tag)`
     :hover {
         cursor: pointer;
     }
+    && {
+        color: ${(props) => props.theme.styles['text-color']};
+    }
 `;
 
 const FormItem = styled(Form.Item)`
@@ -39,11 +42,40 @@ const FormItemNoMargin = styled(FormItem)`
 
 const FormItemLabel = styled(Typography.Text)`
     font-weight: 600;
-    color: #373d44;
+    color: ${(props) => props.theme.styles['text-color']};
 `;
 
 const AdvancedLabel = styled(Typography.Text)`
-    color: #373d44;
+    color: ${(props) => props.theme.styles['text-color']};
+`;
+
+const StyledModal = styled(Modal)`
+    &&& .ant-modal-content {
+        background-color: ${(props) => props.theme.styles['component-background']};
+        color: ${(props) => props.theme.styles['text-color']};
+    }
+    &&& .ant-modal-header {
+        background-color: ${(props) => props.theme.styles['component-background']};
+        border-color: ${(props) => props.theme.styles['border-color-base']};
+        color: ${(props) => props.theme.styles['text-color']};
+    }
+    &&& .ant-collapse {
+        background-color: ${(props) => props.theme.styles['component-background']};
+    }
+    &&& .ant-collapse-header {
+        background-color: ${(props) => props.theme.styles['component-background']};
+        color: ${(props) => props.theme.styles['text-color']};
+    }
+    &&& .ant-collapse-content {
+        background-color: ${(props) => props.theme.styles['component-background']};
+        color: ${(props) => props.theme.styles['text-color']};
+    }
+    &&& .ant-collapse-item {
+        border-color: ${(props) => props.theme.styles['border-color-base']};
+    }
+    &&& .ant-collapse-arrow {
+        color: ${(props) => props.theme.styles['text-color-secondary']};
+    }
 `;
 
 type Props = {
@@ -111,15 +143,18 @@ export default function CreateDomainModal({ onClose, onCreate }: Props) {
         onClose();
     };
 
-    // Handle the Enter press
     useEnterKeyListener({
         querySelectorToExecuteClick: '#createDomainButton',
     });
 
     return (
-        <Modal
-            title="Create New Domain"
-            visible
+        <StyledModal
+            title={
+                <Typography.Text style={{ color: (props) => props.theme.styles['text-color'] }}>
+                    Create New Domain
+                </Typography.Text>
+            }
+            open
             onCancel={onClose}
             footer={
                 <ModalButtonContainer>
@@ -224,12 +259,16 @@ export default function CreateDomainModal({ onClose, onCreate }: Props) {
                                     }),
                                 ]}
                             >
-                                <Input data-testid="create-domain-id" placeholder="engineering" />
+                                <Input
+                                    placeholder="classification"
+                                    onChange={(event) => setStagedId(event.target.value)}
+                                />
                             </FormItemNoMargin>
                         </FormItemWithMargin>
                     </Collapse.Panel>
                 </Collapse>
             </Form>
-        </Modal>
+        </StyledModal>
     );
 }
+

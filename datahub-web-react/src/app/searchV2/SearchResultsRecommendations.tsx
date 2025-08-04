@@ -20,10 +20,11 @@ const RecommendationContainer = styled.div`
 const ThinDivider = styled(Divider)`
     margin-top: 12px;
     margin-bottom: 12px;
+    background-color: ${(props) => props.theme.styles['divider-color']};
 `;
 
 const RecommendationTitle = styled(Typography.Title)`
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
 `;
 
 type Props = {

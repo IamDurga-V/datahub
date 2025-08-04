@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { ANTD_GRAY } from '@app/entityV2/shared/constants';
+import { ANTD_GRAY } from '@app/entity/shared/constants';
 import { Editor } from '@app/entityV2/shared/tabs/Documentation/components/editor/Editor';
 import { toRelativeTimeString } from '@app/shared/time/timeUtils';
 
@@ -22,6 +22,7 @@ const Text = styled.div`
     align-items: start;
     flex-direction: column;
     padding: 0px;
+    color: ${(props) => props.theme.styles['text-color']};
     &&&&& .remirror-editor.ProseMirror {
         padding: 0px;
     }
@@ -30,13 +31,14 @@ const Text = styled.div`
 const Title = styled.div`
     font-size: 20px;
     word-break: break-word;
+    color: ${(props) => props.theme.styles['text-color']};
     margin-bottom: 10px;
     font-weight: 600;
 `;
 
 const Time = styled.div`
     font-size: 12px;
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
 `;
 
 type Props = {

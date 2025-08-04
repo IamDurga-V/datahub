@@ -9,15 +9,15 @@ import { formatNumber, formatNumberWithoutAbbreviation } from '@app/shared/forma
 
 const Card = styled(Link)`
     align-items: center;
-    background-color: ${ANTD_GRAY[1]};
-    border: 1.5px solid ${ANTD_GRAY_V2[5]};
+    background-color: ${(props) => props.theme.styles['component-background']};
+    border: 1.5px solid ${(props) => props.theme.styles['border-color-base']};
     border-radius: 10px;
     display: flex;
     justify-content: start;
     min-width: 180px;
     padding: 16px;
     :hover {
-        border: 1.5px solid ${REDESIGN_COLORS.BLUE};
+        border: 1.5px solid ${(props) => props.theme.styles['primary-color-dark']};
         cursor: pointer;
     }
 `;
@@ -28,7 +28,7 @@ const Text = styled.div`
 
 const Name = styled.div`
     font-size: 16px;
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color']};
     overflow: hidden;
     text-overflow: ellipsis;
     text-transform: capitalize;
@@ -39,7 +39,7 @@ const Name = styled.div`
 const IconWrapper = styled.div<{ color?: string; backgroundColor?: string }>`
     align-items: center;
     border-radius: 12px;
-    background-color: ${({ backgroundColor }) => backgroundColor || ANTD_GRAY[3]};
+    background-color: ${({ backgroundColor }) => backgroundColor || '#303030'};
     display: flex;
     height: 50px;
     justify-content: center;
@@ -54,7 +54,7 @@ const IconWrapper = styled.div<{ color?: string; backgroundColor?: string }>`
 
 const Count = styled.div`
     font-size: 20px;
-    color: ${ANTD_GRAY[10]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

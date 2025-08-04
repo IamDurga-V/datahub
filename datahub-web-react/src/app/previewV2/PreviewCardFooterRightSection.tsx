@@ -29,7 +29,7 @@ const Container = styled.div`
 
 const StyledDivider = styled(Divider)`
     height: 16px;
-    color: ${REDESIGN_COLORS.FOUNDATION_BLUE_2};
+    color: ${(props) => props.theme.styles['divider-color']}; // Change
 `;
 
 interface Props {

@@ -5,34 +5,31 @@ import styled from 'styled-components';
 
 import { DataHubViewType } from '@types';
 
-const StyledLockOutlined = styled(LockOutlined)<{ color }>`
-    color: ${(props) => props.color};
+const StyledLockOutlined = styled(LockOutlined)`
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     margin-right: 4px;
 `;
 
-const StyledGlobalOutlined = styled(GlobalOutlined)<{ color }>`
-    color: ${(props) => props.color};
+const StyledGlobalOutlined = styled(GlobalOutlined)`
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     margin-right: 4px;
 `;
 
-const StyledText = styled(Typography.Text)<{ color }>`
+const StyledText = styled(Typography.Text)`
     && {
-        color: ${(props) => props.color};
+        color: ${(props) => props.theme.styles['text-color-secondary']};
     }
 `;
 
 type Props = {
     type: DataHubViewType;
-    color: string;
     onClick?: () => void;
 };
 
 /**
  * Label used to describe View Types
- *
- * @param param0 the color of the text and iconography
  */
-export const ViewTypeLabel = ({ type, color, onClick }: Props) => {
+export const ViewTypeLabel = ({ type, onClick }: Props) => {
     const copy =
         type === DataHubViewType.Personal ? (
             <>
@@ -48,8 +45,8 @@ export const ViewTypeLabel = ({ type, color, onClick }: Props) => {
     return (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
         <div onClick={onClick}>
-            <Icon color={color} />
-            <StyledText color={color} type="secondary">
+            <Icon />
+            <StyledText type="secondary">
                 {copy}
             </StyledText>
         </div>

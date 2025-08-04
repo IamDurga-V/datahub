@@ -1,111 +1,69 @@
 import { BookmarkSimple, BookmarksSimple } from '@phosphor-icons/react';
-import { Tooltip } from 'antd';
+import { Tooltip, Typography } from 'antd';
+import { Maybe } from 'graphql/jsutils/Maybe';
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { GenericEntityProperties } from '@app/entity/shared/types';
-import { ANTD_GRAY_V2, REDESIGN_COLORS } from '@app/entityV2/shared/constants';
+import { ANTD_GRAY, ANTD_GRAY_V2, REDESIGN_COLORS } from '@app/entityV2/shared/constants';
 import { useGenerateGlossaryColorFromPalette } from '@app/glossaryV2/colorUtils';
 import { colors } from '@src/alchemy-components';
 
-import { EntityType, Maybe } from '@types';
+import { DisplayProperties } from '@types';
 
-const SmallDescription = styled.div`
-    color: ${REDESIGN_COLORS.SUB_TEXT};
-    overflow: hidden;
-`;
+interface GlossaryItemCardHeaderProps {
+    color: string;
+}
 
-const EntityDetailsLeftColumn = styled.div`
+const DISABLED_TEXT_COLOR = (props) => props.theme.styles['text-color-secondary'];
+
+const GlossaryItemCardHeader = styled.div<GlossaryItemCardHeaderProps>`
     display: flex;
-    gap: 15px;
-    align-items: center;
-`;
+    padding: 20px 20px 20px 30px;
+    justify-content: start;
+    border-radius: 12px 12px 0px 0px;
+    position: relative;
+    overflow: hidden;
+    gap: 5px;
+    background-color: ${(props) => props.color};
 
-const EntityDetailsRightColumn = styled.div`
-    margin-right: 5px;
     svg {
-        display: none;
+        height: 22px;
+        width: 22px;
+        path {
+            fill: ${(props) => props.theme.styles['text-color']};
+        }
     }
 `;
 
-const BookmarkIconWrapper = styled.div<{ $background: string }>`
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: ${(props) => props.$background};
-    border-radius: 11px;
-    margin-right: 12px;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0; /* Prevents the icon from being squashed */
-`;
-
-const EntityDetails = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid ${REDESIGN_COLORS.LIGHT_GREY};
-    padding: 20px 0 20px 0;
-    margin: 0 23px 0 19px;
-`;
-
-const EntityDetailsWrapper = styled.div<{ type: EntityType }>`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 16px;
-    border: 1px solid #ebecf0;
-    margin: 0px 12px;
-    border-radius: 16px;
-    position: relative;
-    overflow: hidden;
-
-    &:hover > ${EntityDetails} > ${EntityDetailsLeftColumn} > ${BookmarkIconWrapper} > svg > g > path {
-        transition: 0.15s;
-        fill: rgba(216, 160, 75, 1);
-    }
-
-    &:hover > ${EntityDetails} > ${EntityDetailsRightColumn} > svg {
-        transition: 0.15s;
-        display: block;
-    }
+const GlossaryItemCardWrapper = styled.div`
+    padding: 12px;
+    border-radius: 13px;
 
     &:hover {
         transition: 0.15s;
-        background-color: ${colors.gray[100]};
+        background-color: ${(props) => props.theme.styles['highlight-color']};
     }
 `;
 
-const EntityName = styled.div`
-    color: ${REDESIGN_COLORS.SUBTITLE};
-    font-size: 14px;
-    font-weight: 400;
-    font-weight: bold;
-`;
-
-const EntityTitleWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    align-items: center;
-`;
-
-const NameAndDescription = styled.div`
+const GlossaryItemCard = styled.div`
     display: flex;
     flex-direction: column;
-    overflow hidden;
-`;
+    border-radius: 13px;
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']};
+    background: ${(props) => props.theme.styles['component-background']};
+    transition: 0.15s;
+    height: 100%;
+    width: 100%;
 
-const BookmarkRibbon = styled.span`
-    position: absolute;
-    left: -11px;
-    top: 7px;
-    width: 40px;
-    transform: rotate(-45deg);
-    padding: 4px;
-    opacity: 1;
-    background-color: rgba(0, 0, 0, 0.2);
+    &:hover {
+        transition: 0.15s;
+        border-color: ${(props) => props.theme.styles['primary-color']};
+    }
+
+    &:hover > ${GlossaryItemCardHeader} {
+        transition: 0.15s;
+        opacity: 0.9 !important;
+    }
 `;
 
 const GlossaryItemCount = styled.span<{ count: number }>`
@@ -113,37 +71,67 @@ const GlossaryItemCount = styled.span<{ count: number }>`
     align-items: center;
     gap: 5px;
     border-radius: 20px;
-    background: ${ANTD_GRAY_V2[14]};
-    color: ${(props) => (props.count > 0 ? REDESIGN_COLORS.SUB_TEXT : colors.gray[400])};
+    background: ${(props) => (props.count > 0 ? props.theme.styles['background-color-light'] : props.theme.styles['background-color-light'])};
+    color: ${(props) => (props.count > 0 ? props.theme.styles['text-color-secondary'] : DISABLED_TEXT_COLOR)};
     padding: 5px 10px;
     width: max-content;
     svg {
         height: 14px;
         width: 14px;
         path {
-            fill: ${(props) => (props.count > 0 ? REDESIGN_COLORS.SUB_TEXT : colors.gray[400])};
+            fill: ${(props) => (props.count > 0 ? props.theme.styles['text-color-secondary'] : DISABLED_TEXT_COLOR)};
         }
     }
     border: 1px solid transparent;
     :hover {
-        border: 1px solid ${(props) => (props.count > 0 ? ANTD_GRAY_V2[13] : 'transparent')};
+        border: 1px solid ${(props) => (props.count > 0 ? props.theme.styles['border-color-base'] : 'transparent')};
     }
+`;
+
+const GlossaryItemBadge = styled.span`
+    position: absolute;
+    left: -35px;
+    top: 8px;
+    width: 100px;
+    transform: rotate(-45deg);
+    padding: 8px;
+    opacity: 1;
+    background-color: ${(props) => props.theme.styles['box-shadow']};
+`;
+
+const GlossaryItemCardDetails = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 13px 16px;
+    gap: 10px;
+`;
+
+const GlossaryCardHeader = styled(Typography)`
+    color: ${(props) => props.theme.styles['text-color']};
+    font-size: 16px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+`;
+
+const GlossaryItemCardDescription = styled(Typography)`
+    color: ${(props) => props.theme.styles['text-color-secondary']};
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 1px;
+    width: 100%;
+    min-height: 30px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 `;
 
 const CountText = styled.span`
     font-size: 10px;
     font-weight: 400;
 `;
-
-const Icons = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
-`;
-
-const MAX_DESCRIPTION_LENGTH = 100;
-const MAX_DEPTH_QUERIED = 4;
 
 interface Props {
     name: string;
@@ -155,6 +143,15 @@ interface Props {
     termCount?: Maybe<number>;
     maxDepth?: number;
 }
+
+const Icons = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+`;
+
+const MAX_DEPTH_QUERIED = 4;
 
 const GlossaryListCard = (props: Props) => {
     const { name, description, type, entityData } = props;

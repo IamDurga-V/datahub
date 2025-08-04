@@ -21,8 +21,8 @@ const Item = styled.pre`
     padding: 6px;
     font-size: 12px;
     border-radius: 2px;
-    background-color: ${ANTD_GRAY[3]};
-    color: ${ANTD_GRAY[8]};
+    background-color: ${(props) => props.theme.styles['component-background']};
+  color: ${(props) => props.theme.styles['text-color']};
 `;
 
 interface Props {

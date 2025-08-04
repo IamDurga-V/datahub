@@ -117,7 +117,18 @@ const CreateNewApplicationModal: React.FC<CreateNewApplicationModalProps> = ({ o
     ];
 
     return (
-        <Modal title="Create New Application" onCancel={onClose} buttons={buttons} open={open} centered width={500}>
+        <Modal
+            title="Create New Application"
+            onCancel={onClose}
+            buttons={buttons}
+            open={open}
+            centered
+            width={500}
+            style={{ 
+                backgroundColor: (props) => props.theme.styles['component-background'],
+                color: (props) => props.theme.styles['text-color']
+            }}
+        >
             <ApplicationDetailsSection
                 applicationName={applicationName}
                 setApplicationName={setApplicationName}

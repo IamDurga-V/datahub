@@ -21,19 +21,29 @@ const ToggleLabel = styled.span`
     display: flex;
     align-items: center;
     gap: 4px;
-    color: ${ANTD_GRAY[9]};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 const StyledInfoPopover = styled(InfoPopover)`
     position: relative;
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 const PopoverWrapper = styled.div`
     max-width: 200px;
 `;
 
-const StyledSwitch = styled(Switch)``;
+const StyledSwitch = styled(Switch)`
+    &&&.ant-switch {
+        background-color: ${(props) => props.theme.styles['background-color-light']}; // Change
+    }
+    &&&.ant-switch-checked {
+        background-color: ${(props) => props.theme.styles['primary-color']}; // Change
+    }
+    &&&.ant-switch-disabled {
+        background-color: ${(props) => props.theme.styles['disabled-color']}; // Change
+    }
+`;
 
 export default function LineageSearchFilters() {
     const {

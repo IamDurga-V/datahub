@@ -17,13 +17,13 @@ const PopoverTitle = styled.div`
     font-weight: bold;
     font-size: 14px;
     padding: 6px 0px;
-    color: #eeecfa;
+    color: ${(props) => props.theme.styles['text-color']};
 `;
 
 const PopoverDescription = styled.div`
     max-width: 340px;
     font-size: 14px;
-    color: #eeecfa;
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     display: inline;
     padding: 0px 0px 8px 0px;
 `;
@@ -39,7 +39,7 @@ const PopoverAttribute = styled.div`
 
 const PopoverAttributeTitle = styled.div`
     font-size: 14px;
-    color: #eeecfa;
+    color: ${(props) => props.theme.styles['text-color']};
     font-weight: bold;
     margin: 8px 0px;
     overflow: hidden;
@@ -95,7 +95,7 @@ export default function DocumentationPropagationDetails({ sourceDetail }: Props)
 
     return (
         <Popover
-            overlayInnerStyle={{ backgroundColor: '#272D48' }}
+            overlayInnerStyle={{ backgroundColor: (props) => props.theme.styles['component-background'] }}
             showArrow={false}
             title={
                 <PopoverTitle>

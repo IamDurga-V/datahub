@@ -13,13 +13,14 @@ import { toLocalDateTimeString, toRelativeTimeString } from '@app/shared/time/ti
 import { countFormatter, needsFormatting } from '@utils/formatter';
 
 const StatText = styled.span`
-    color: ${ANTD_GRAY[8]};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     @media (min-width: 1024px) {
         white-space: nowrap;
+    }
 `;
 
 const HelpIcon = styled(QuestionCircleOutlined)`
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     padding-left: 4px;
 `;
 
@@ -53,7 +54,7 @@ export const DashboardStatsSummary = ({
             <ExpandingStat
                 disabled={!needsFormatting(chartCount)}
                 render={(isExpanded) => (
-                    <StatText color={ANTD_GRAY[8]}>
+                    <StatText>
                         <b>{isExpanded ? formatNumberWithoutAbbreviation(chartCount) : countFormatter(chartCount)}</b>{' '}
                         charts
                     </StatText>
@@ -97,7 +98,7 @@ export const DashboardStatsSummary = ({
                     <>
                         {createdMs && <div>Created on {toLocalDateTimeString(createdMs)}.</div>}
                         <div>
-                            Changed on {toLocalDateTimeString(lastUpdatedMs)}.{' '}
+                            Changed on {toLocalDateTimeString(lastUpdatedMs)}.
                             <Tooltip title="The time at which the dashboard was last changed in the source platform">
                                 <HelpIcon />
                             </Tooltip>

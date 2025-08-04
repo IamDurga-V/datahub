@@ -6,10 +6,9 @@ import styled from 'styled-components';
 import { navigateToSearchUrl } from '@app/searchV2/utils/navigateToSearchUrl';
 
 import { SearchSuggestion } from '@types';
-
 const TextWrapper = styled.div`
     font-size: 14px;
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-color']};
     margin: 8px 0px 0px 12px;
 `;
 

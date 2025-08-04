@@ -16,21 +16,21 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     padding: 10px 12px 10px 12px;
-    background-color: #ffffff;
+    background-color: ${(props) => props.theme.styles['component-background']};
     border-radius: 10px;
     min-width: 200px;
     max-width: 260px;
-    border: 1.5px solid #0000001a;
+    border: 1.5px solid ${(props) => props.theme.styles['border-color-base']};
     gap: 12px;
 
     :hover {
-        border: 1.5px solid ${SEARCH_COLORS.LINK_BLUE};
+        border: 1.5px solid ${(props) => props.theme.styles['primary-color-dark']};
     }
 `;
 
 const Name = styled.div`
     font-size: 14px;
-    color: #565657;
+    color: ${(props) => props.theme.styles['text-color']};
     margin-bottom: 4px;
     font-weight: 500;
     overflow: hidden;
@@ -46,7 +46,7 @@ const Context = styled.div`
 
 const SubHeader = styled.div`
     font-size: 14px;
-    color: ${ANTD_GRAY[5]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     margin-top: 4px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -54,7 +54,7 @@ const SubHeader = styled.div`
 
 const Type = styled.div`
     font-size: 14px;
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;

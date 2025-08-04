@@ -56,7 +56,7 @@ const MetadataAnalyticsPlaceholder = styled.span`
     margin: 25px;
     margin-bottom: 50px;
     font-size: 18px;
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
 `;
 
 const DomainSelect = styled(Select)`
@@ -69,7 +69,7 @@ const StyledSearchBar = styled(Input)`
     &&& {
         margin-left: 10px;
         border-radius: 70px;
-        color: ${ANTD_GRAY[7]};
+        color: ${(props) => props.theme.styles['text-color-secondary']};
         width: 250px;
     }
 `;

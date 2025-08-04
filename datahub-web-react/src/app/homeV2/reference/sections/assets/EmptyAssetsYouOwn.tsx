@@ -5,7 +5,7 @@ import { ANTD_GRAY } from '@app/entity/shared/constants';
 
 const Text = styled.div`
     font-size: 14px;
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
 `;
 
 export const EmptyAssetsYouOwn = () => {

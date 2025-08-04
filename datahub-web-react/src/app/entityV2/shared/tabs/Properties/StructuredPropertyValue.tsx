@@ -19,7 +19,7 @@ const ValueText = styled(Typography.Text)<{ size: number }>`
     font-family: 'Manrope';
     font-weight: 400;
     font-size: ${(props) => props.size}px;
-    color: ${ANTD_GRAY[9]};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     display: block;
     width: 100%;
     .remirror-editor.ProseMirror {

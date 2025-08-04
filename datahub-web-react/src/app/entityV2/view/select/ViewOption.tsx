@@ -18,14 +18,14 @@ const ViewDetailsContainer = styled.div<{ selected: boolean; $isShowNavBarRedesi
     display: flex;
     align-items: center;
     position: relative;
-    background: ${(props) => (props.selected ? props.theme.styles['primary-color'] : '')};
+    background: ${(props) => (props.selected ? props.theme.styles['primary-color-light'] : '')}; // Change
     ${(props) => !props.$isShowNavBarRedesign && 'padding: 10px;'}
     width: 100%;
     border-radius: 16px;
     ${(props) =>
         !props.$isShowNavBarRedesign &&
         `
-        border: 1px solid ${props.selected ? props.theme.styles['primary-color'] : REDESIGN_COLORS.BORDER_1};
+        border: 1px solid ${props.selected ? props.theme.styles['primary-color'] : props.theme.styles['border-color-base']}; // Change
     `}
 
     &:hover {
@@ -45,14 +45,14 @@ const ViewDetailsContainer = styled.div<{ selected: boolean; $isShowNavBarRedesi
     & .default-view-icon-container {
         border: 1px solid
             ${(props) =>
-                props.selected ? props.theme.styles['primary-color'] : REDESIGN_COLORS.BACKGROUND_OVERLAY_BLACK};
+                props.selected ? props.theme.styles['primary-color'] : props.theme.styles['background-color-light']}; // Change
         border-radius: 100%;
     }
     & .close-container {
         position: absolute;
         top: -10px;
         right: -5px;
-        background-color: ${ANTD_GRAY[1]};
+        background-color: ${(props) => props.theme.styles['component-background']}; // Change
         display: flex;
         align-items: center;
         border-radius: 100%;

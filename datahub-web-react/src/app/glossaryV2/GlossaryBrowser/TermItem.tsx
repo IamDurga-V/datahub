@@ -12,24 +12,24 @@ import { ChildGlossaryTermFragment } from '@graphql/glossaryNode.generated';
 const TermWrapper = styled.div<{ $isSelected: boolean; $depth: number }>`
     padding: 13px 0;
     padding-left: calc(${(props) => (props.$depth ? props.$depth * 18 + 12 : 18)}px);
-    background-color: ${(props) => props.$isSelected && REDESIGN_COLORS.HIGHLIGHT_PURPLE};
+    background-color: ${(props) => props.$isSelected && props.theme.styles['highlight-color']};
     display: flex;
 `;
 
-const nameStyles = `
+const nameStyles = (props) => `
     display: inline-block;
     height: 100%;
     width: 100%;
     font-size: 12px;
     font-weight: 400;
     line-height: normal;
-    color: ${REDESIGN_COLORS.TEXT_HEADING};
+    color: ${props.theme.styles['text-color']};
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 
     &:hover {
-        color: ${REDESIGN_COLORS.HOVER_PURPLE_2};
+        color: ${props.theme.styles['link-color']};
         opacity: 1;
     }
 `;
@@ -42,21 +42,21 @@ interface TermLinkProps {
 }
 
 export const TermLink = styled(Link)<TermLinkProps>`
-    ${nameStyles}
+    ${(props) => nameStyles(props)}
 
     ${(props) => props.$isChildNode && `opacity: 1;`}
-    ${(props) => props.$areChildrenVisible && `color: ${REDESIGN_COLORS.HOVER_PURPLE_2}; font-weight: 500; opacity: 1;`}
-    ${(props) => props.$isSelected && `color: ${REDESIGN_COLORS.HOVER_PURPLE}; font-weight: 700; opacity: 1;`}
+    ${(props) => props.$areChildrenVisible && `color: ${props.theme.styles['link-color']}; font-weight: 500; opacity: 1;`}
+    ${(props) => props.$isSelected && `color: ${props.theme.styles['link-color']}; font-weight: 700; opacity: 1;`}
 `;
 
 export const NameWrapper = styled.span<{ showSelectStyles?: boolean }>`
-    ${nameStyles}
+    ${(props) => nameStyles(props)}
 
     &:hover {
         ${(props) =>
             props.showSelectStyles &&
             `
-        background-color: ${ANTD_GRAY[3]};
+        background-color: ${props.theme.styles['highlight-color']};
         cursor: pointer;
         `}
     }

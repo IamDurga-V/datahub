@@ -1,75 +1,101 @@
-import { grey } from '@ant-design/colors';
-import { Divider, Typography } from 'antd';
-import React from 'react';
-import { useParams } from 'react-router';
+import { TagFilled, TagOutlined } from '@ant-design/icons';
+import * as React from 'react';
 import styled from 'styled-components';
 
-import { decodeUrn } from '@app/entityV2/shared/utils';
-import { Message } from '@app/shared/Message';
+import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '@app/entityV2/Entity';
+import { TYPE_ICON_CLASS_NAME } from '@app/entityV2/shared/components/subtypes';
+import { getDataForEntityType } from '@app/entityV2/shared/containers/profile/utils';
+import { urlEncodeUrn } from '@app/entityV2/shared/utils';
+import DefaultPreviewCard from '@app/previewV2/DefaultPreviewCard';
 
-import { useGetExternalRoleQuery } from '@graphql/accessrole.generated';
+import { EntityType, Role, SearchResult } from '@types';
 
-const PageContainer = styled.div`
-    padding: 32px 100px;
+const PreviewTagIcon = styled(TagOutlined)`
+    font-size: 20px;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
+// /**
+//  * Definition of the DataHub Access Role entity.
+//  */
+export class RoleEntity implements Entity<Role> {
+    type: EntityType = EntityType.Role;
 
-const LoadingMessage = styled(Message)`
-    margin-top: 10%;
-`;
+    icon = (fontSize?: number, styleType?: IconStyleType, color?: string) => {
+        if (styleType === IconStyleType.TAB_VIEW) {
+            return <TagFilled className={TYPE_ICON_CLASS_NAME} style={{ fontSize, color: color || 'white' }} />; // Change
+        }
 
-type RolePageParams = {
-    urn: string;
-};
+        if (styleType === IconStyleType.HIGHLIGHT) {
+            return <TagFilled className={TYPE_ICON_CLASS_NAME} style={{ fontSize, color: color || '#B37FEB' }} />;
+        }
 
-const TitleLabel = styled(Typography.Text)`
-    &&& {
-        color: ${grey[2]};
-        font-size: 12px;
-        display: block;
-        line-height: 20px;
-        font-weight: 700;
-    }
-`;
+        return (
+            <TagOutlined
+                className={TYPE_ICON_CLASS_NAME}
+                style={{
+                    fontSize,
+                    color: color || '#BFBFBF',
+                }}
+            />
+        );
+    };
 
-const DescriptionLabel = styled(Typography.Text)`
-    &&& {
-        text-align: left;
-        font-weight: bold;
-        font-size: 14px;
-        line-height: 28px;
-        color: rgb(38, 38, 38);
-    }
-`;
+    isSearchEnabled = () => true;
 
-const TitleText = styled(Typography.Text)`
-    &&& {
-        color: ${grey[10]};
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 28px;
-        display: inline-block;
-        margin: 0px 7px;
-    }
-`;
+    isBrowseEnabled = () => false;
 
-const { Paragraph } = Typography;
+    isLineageEnabled = () => false;
 
-export default function RoleEntityProfile() {
-    const { urn: encodedUrn } = useParams<RolePageParams>();
-    const urn = decodeUrn(encodedUrn);
-    const { data, loading } = useGetExternalRoleQuery({ variables: { urn } });
+    getAutoCompleteFieldName = () => 'name';
 
-    return (
-        <PageContainer>
-            {loading && <LoadingMessage type="loading" content="Loading..." />}
-            <TitleLabel>Role</TitleLabel>
-            <TitleText>{data?.role?.properties?.name}</TitleText>
-            <Divider />
-            {/* Role Description */}
-            <DescriptionLabel>About</DescriptionLabel>
-            <Paragraph style={{ fontSize: '12px', lineHeight: '15px', padding: '5px 0px' }}>
-                {data?.role?.properties?.description}
-            </Paragraph>
-        </PageContainer>
-    );
+    getPathName: () => string = () => 'role';
+
+    getCollectionName: () => string = () => 'Roles';
+
+    getEntityName: () => string = () => 'Role';
+
+    renderProfile: (urn: string) => JSX.Element = (_) => <RoleEntityProfile />;
+
+    renderPreview = (previewType: PreviewType, data: Role) => {
+        const genericProperties = this.getGenericEntityProperties(data);
+        return (
+            <DefaultPreviewCard
+                data={genericProperties}
+                description={data?.properties?.description || ''}
+                name={this.displayName(data)}
+                urn={data.urn}
+                url={`/${this.getPathName()}/${urlEncodeUrn(data.urn)}`}
+                logoComponent={<PreviewTagIcon />}
+                entityType={EntityType.Role}
+                typeIcon={this.icon(14, IconStyleType.ACCENT)}
+                previewType={previewType}
+            />
+        );
+    };
+
+    renderSearch = (result: SearchResult) => {
+        return this.renderPreview(PreviewType.SEARCH, result.entity as Role);
+    };
+
+    displayName = (data: Role) => {
+        return data.properties?.name || data.urn;
+    };
+
+    getOverridePropertiesFromEntity = (data: Role) => {
+        return {
+            name: data.properties?.name,
+        };
+    };
+
+    getGenericEntityProperties = (role: Role) => {
+        return getDataForEntityType({ data: role, entityType: this.type, getOverrideProperties: (data) => data });
+    };
+
+    supportedCapabilities = () => {
+        return new Set([EntityCapabilityType.OWNERS]);
+    };
+
+    getGraphName = () => {
+        return 'roleEntity';
+    };
 }

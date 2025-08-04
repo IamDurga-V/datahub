@@ -15,7 +15,7 @@ const Container = styled.div`
 `;
 
 const Type = styled.div`
-    color: ${ANTD_GRAY[8]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
 `;
 
 type Props = {

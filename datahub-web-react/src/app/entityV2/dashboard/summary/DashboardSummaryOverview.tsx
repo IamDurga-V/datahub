@@ -22,7 +22,8 @@ const Count = styled.div`
     display: flex;
     justify-content: center;
     border-radius: 10px;
-    background-color: #e5ece9;
+    background-color: ${(props) => props.theme.styles['background-color-light']}; // Change
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     font-size: 10px;
     font-weight: 400;
     margin-left: 8px;
@@ -35,7 +36,7 @@ const EntityItem = styled.div`
     gap: 8px;
     font-size: 14px;
     font-weight: 500;
-    color: ${REDESIGN_COLORS.SUBTITLE};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 const AssetSections = styled.div`
@@ -104,7 +105,7 @@ export default function DashboardSummaryOverview() {
                             </StyledTitle>
                             <EntitiesList>
                                 {dataSources.map((dataSource) => (
-                                    <Link to={entityRegistry.getEntityUrl(dataSource.type, dataSource.urn)}>
+                                    <Link key={dataSource.urn} to={entityRegistry.getEntityUrl(dataSource.type, dataSource.urn)}>
                                         <HoverEntityTooltip placement="bottom" entity={dataSource} showArrow={false}>
                                             <EntityItem>
                                                 <PlatformIcon
@@ -134,7 +135,7 @@ export default function DashboardSummaryOverview() {
                             </StyledTitle>
                             <EntitiesList>
                                 {charts.map((chart) => (
-                                    <Link to={entityRegistry.getEntityUrl(chart.type, chart.urn)}>
+                                    <Link key={chart.urn} to={entityRegistry.getEntityUrl(chart.type, chart.urn)}>
                                         <HoverEntityTooltip placement="bottom" entity={chart} showArrow={false}>
                                             <EntityItem>
                                                 <PlatformIcon

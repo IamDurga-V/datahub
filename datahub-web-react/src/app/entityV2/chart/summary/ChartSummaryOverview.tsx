@@ -19,7 +19,8 @@ const Count = styled.div`
     display: flex;
     justify-content: center;
     border-radius: 10px;
-    background-color: #e5ece9;
+    background-color: ${(props) => props.theme.styles['background-color-light']}; // Change
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     font-size: 10px;
     font-weight: 400;
     margin-left: 8px;
@@ -97,7 +98,7 @@ export default function ChartSummaryOverview() {
                 </FirstRow>
                 {workbook && (
                     <>
-                        <StyledTitle>{SubType.TableauWorkbook}</StyledTitle>
+                        <StyledTitle>{entityRegistry.getCollectionName(workbook.type)}</StyledTitle>
                         <SummaryEntityCard entity={workbook} />
                     </>
                 )}
@@ -105,7 +106,7 @@ export default function ChartSummaryOverview() {
             {!!dashboards?.length && (
                 <>
                     <StyledTitle>
-                        {entityRegistry.getEntityName(EntityType.Dashboard)}
+                        {entityRegistry.getCollectionName(EntityType.Dashboard)}
                         <Count>{dashboards?.length}</Count>
                     </StyledTitle>
                     <HorizontalList>

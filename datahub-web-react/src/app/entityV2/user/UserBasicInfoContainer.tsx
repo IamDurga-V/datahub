@@ -37,7 +37,7 @@ export const UserBasicInfoContainer = ({ name, dataHubRoleName, email, role, sla
                         </Tooltip>
                         {dataHubRoleName ? <RoleName>{dataHubRoleName}</RoleName> : null}
                     </Name>
-                    <TitleRole>{role || <EmptyValue color={REDESIGN_COLORS.WHITE} />}</TitleRole>
+                        <TitleRole>{role || <EmptyValue color={(props) => props.theme.styles['text-color-secondary']} />}</TitleRole>
                 </NameTitleContainer>
                 <Divider />
                 <SocialInfo>

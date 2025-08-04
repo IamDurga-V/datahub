@@ -41,7 +41,7 @@ const LinkWrapper = styled.span`
     line-height: 0;
     box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0);
     transition: all 200ms ease;
-    color: #f9fafc;
+    color: ${(props) => props.theme.styles['text-color']};
 
     &:hover {
         cursor: pointer;
@@ -68,14 +68,14 @@ const SubMenu = styled.div`
 // Used to style the submenu
 const SubMenuContent = styled.div`
     border-radius: 12px;
-    background: rgba(92, 63, 209, 0.95);
+    background: ${(props) => props.theme.styles['component-background']};
     box-shadow: 0px 8px 8px 4px rgba(0, 0, 0, 0.25);
     padding: 8px;
 `;
 
 const SubMenuTitle = styled.div`
     border-radius: 12px;
-    background: #2f2477;
+    background: ${(props) => props.theme.styles['component-background']};
     padding: 8px 12px;
     font: 700 12px/20px Mulish;
     margin-bottom: 4px;
@@ -86,7 +86,7 @@ const SubMenuLink = styled.div`
     padding: 4px 12px 12px 12px;
 
     &:hover {
-        background-color: #4b39bc;
+        background-color:${(props) => props.theme.styles['component-background']};
     }
 `;
 

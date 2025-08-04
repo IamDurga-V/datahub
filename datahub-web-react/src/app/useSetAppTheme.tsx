@@ -29,10 +29,11 @@ export function useSetAppTheme() {
     }, [customThemeId]);
 
     useEffect(() => {
-        // here is where we can start adding new custom themes based on customThemeId
-
+        // Here, we have hardcoded the logic to use the dark theme for the new UI.
+        // This bypasses any flags or local storage settings to ensure the dark theme is always applied.
+        // The old UI remains untouched because its theming is handled separately.
         if (isThemeV2) {
-            import('../conf/theme/theme_v2.config.json').then((theme) => updateTheme(theme));
+            import('../conf/theme/theme_v2dark.config.json').then((theme) => updateTheme(theme));
         } else {
             import('../conf/theme/theme_light.config.json').then((theme) => updateTheme(theme));
         }

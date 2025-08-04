@@ -20,7 +20,7 @@ const Header = styled.div`
 
 const Title = styled(Typography.Title)`
     && {
-        color: ${ANTD_GRAY[9]};
+        color: ${(props) => props.theme.styles['text-color']}; // Change
         padding: 0px;
         margin: 0px;
         display: flex;
@@ -40,6 +40,14 @@ const ThinDivider = styled(Divider)`
 const Documentation = styled.div`
     .remirror-editor.ProseMirror {
         padding: 0px 8px;
+        color: ${(props) => props.theme.styles['text-color']}; // Change
+        background-color: ${(props) => props.theme.styles['component-background']}; // Change
+    }
+    .remirror-editor-wrapper {
+        border-color: ${(props) => props.theme.styles['border-color-base']}; // Change
+    }
+    .ProseMirror {
+        color: ${(props) => props.theme.styles['text-color']}; // Change
     }
 `;
 

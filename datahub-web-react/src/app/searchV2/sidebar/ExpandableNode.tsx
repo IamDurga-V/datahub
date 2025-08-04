@@ -4,8 +4,6 @@ import { Typography } from 'antd';
 import React, { MouseEventHandler, ReactNode } from 'react';
 import styled from 'styled-components';
 
-import { ANTD_GRAY } from '@app/entity/shared/constants';
-import { SEARCH_COLORS } from '@app/entityV2/shared/constants';
 import { BaseButton, BodyContainer, BodyGridExpander, RotatingButton } from '@app/shared/components';
 
 const Layout = styled.div`
@@ -44,19 +42,30 @@ ExpandableNode.Header = styled.div<{
     user-select: none;
     padding: 4px;
     gap: 4px;
-    border-bottom: 1px solid ${(props) => (props.isOpen || !props.showBorder ? 'transparent' : ANTD_GRAY[4])};
+    border-bottom: 1px solid
+        ${(props) =>
+            props.isOpen || !props.showBorder
+                ? 'transparent'
+                : props.theme.styles['border-color-base']};
 `;
 
 ExpandableNode.SelectableHeader = styled(ExpandableNode.Header)<{ $isSelected: boolean }>`
     & {
-        border: 1px solid ${(props) => (props.$isSelected ? SEARCH_COLORS.BACKGROUND_PURPLE : 'transparent')};
-        background-color: ${(props) => (props.$isSelected ? SEARCH_COLORS.BACKGROUND_PURPLE : 'transparent')};
+        border: 1px solid
+            ${(props) =>
+                props.$isSelected
+                    ? props.theme.styles['background-color-selection']
+                    : 'transparent'};
+        background-color: ${(props) =>
+            props.$isSelected
+                ? props.theme.styles['background-color-selection']
+                : 'transparent'};
         border-radius: 8px;
         overflow: hidden;
     }
 
     &:hover {
-        background-color: ${SEARCH_COLORS.BACKGROUND_PURPLE};
+        background-color: ${(props) => props.theme.styles['background-color-selection']};
     }
 `;
 
@@ -76,7 +85,7 @@ ExpandableNode.HeaderLeft = styled.div`
 
 const ChevronRightIconStyle = styled(ChevronRightIcon)<{ isVisible?: boolean }>`
     &&& {
-        color: ${ANTD_GRAY[6]};
+        color: ${(props) => props.theme.styles['icon-color-secondary']};
         visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
         font-size: 18px;
     }
@@ -134,7 +143,6 @@ ExpandableNode.CircleButton = ({ isOpen, color }: { isOpen: boolean; color: stri
     );
 };
 
-// Reduce the ellipsis tolerance the deeper we get into the browse path
 const BaseTitleContainer = styled.div<{ depth: number; maxWidth: number; padLeft: boolean; dynamicWidth?: boolean }>`
     ${(props) =>
         props.dynamicWidth
@@ -152,7 +160,7 @@ const BaseTitleContainer = styled.div<{ depth: number; maxWidth: number; padLeft
 
 const BaseTitle = styled(Typography.Text)<{ color: string; size: number }>`
     font-size: ${(props) => props.size}px;
-    color: ${(props) => props.color};
+    color: ${(props) => props.color ?? props.theme.styles['text-color']};
 `;
 
 ExpandableNode.Title = ({

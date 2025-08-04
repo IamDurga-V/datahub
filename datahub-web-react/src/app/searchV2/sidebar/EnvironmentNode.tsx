@@ -19,7 +19,7 @@ import useToggle from '@app/shared/useToggle';
 
 const Count = styled(Typography.Text)`
     font-size: 12px;
-    color: ${(props) => props.color};
+    color: ${(props) => props.theme.styles['text-color']};
     padding-right: 8px;
 `;
 
@@ -44,8 +44,6 @@ const EnvironmentNode = () => {
         facets: [PLATFORM_FILTER_NAME],
     });
 
-    const color = '#000';
-
     return (
         <ExpandableNode
             isOpen={isOpen && !isClosing && loaded}
@@ -57,11 +55,14 @@ const EnvironmentNode = () => {
                             isVisible={!!count}
                             onClick={onClickHeader}
                         />
-                        <ExpandableNode.Title color={color} size={14}>
+                        <ExpandableNode.Title
+                            color={(props) => props.theme.styles['text-color']}
+                            size={14}
+                        >
                             {environmentAggregation?.value}
                         </ExpandableNode.Title>
                     </ExpandableNode.HeaderLeft>
-                    <Count color={color}>{formatNumber(count)}</Count>
+                    <Count>{formatNumber(count)}</Count>
                 </ExpandableNode.Header>
             }
             body={

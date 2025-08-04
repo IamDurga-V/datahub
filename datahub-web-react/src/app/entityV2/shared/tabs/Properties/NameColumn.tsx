@@ -8,7 +8,7 @@ import StructuredPropertyTooltip from '@app/entityV2/shared/tabs/Properties/Stru
 import { PropertyRow } from '@app/entityV2/shared/tabs/Properties/types';
 
 const ParentNameText = styled(Typography.Text)`
-    color: #373d44;
+    color:{( props ) => props.theme.styles['text-color-secondary']}; // Change
     font-size: 14px;
     font-family: Manrope;
     font-weight: 600;
@@ -21,7 +21,7 @@ const ParentNameText = styled(Typography.Text)`
 
 const ChildNameText = styled(Typography.Text)`
     align-self: stretch;
-    color: #373d44;
+    color: ${( props ) => props.theme.styles['text-color-secondary']}; // Change
     font-size: 12px;
     font-family: Manrope;
     font-weight: 500;
@@ -37,7 +37,7 @@ const NameLabelWrapper = styled.span`
 `;
 
 const ChildCountText = styled.span`
-    color: #373d44;
+    color: #{( props ) => props.theme.styles['text-color-secondary']}; // Change
     font-size: 12px;
 `;
 
@@ -65,7 +65,7 @@ export default function NameColumn({ propertyRow, filterText }: Props) {
             ) : (
                 <NameLabelWrapper>
                     <Tooltip
-                        color="#373D44"
+                        color="#{( props ) => props.theme.styles['component-background']}" // Change
                         placement="topRight"
                         overlayStyle={{ minWidth: 'min-content' }}
                         title={structuredProperty ? <StructuredPropertyTooltip propertyRow={propertyRow} /> : ''}

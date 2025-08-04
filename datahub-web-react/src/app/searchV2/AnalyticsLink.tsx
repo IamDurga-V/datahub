@@ -2,7 +2,6 @@ import { Typography } from 'antd';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
 const StyledAnalyticsLink = styled(Typography.Text)`
     display: flex;
     margin-right: 20px;
@@ -12,9 +11,10 @@ const StyledAnalyticsLink = styled(Typography.Text)`
         color: ${(props) => props.theme.styles['layout-header-color']};
     }
     &&:hover {
-        color: #000;
+        color: ${(props) => props.theme.styles['text-color']};
     }
 `;
+
 
 export default function AnalyticsLink() {
     return (

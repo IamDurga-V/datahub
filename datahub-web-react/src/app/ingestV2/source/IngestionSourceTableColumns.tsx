@@ -29,7 +29,7 @@ const PreviewImage = styled(Image)`
 `;
 
 const TextContainer = styled(Typography.Text)<{ $shouldUnderline?: boolean }>`
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-primary']}
     ${(props) =>
         props.$shouldUnderline &&
         `
@@ -42,7 +42,7 @@ const TextContainer = styled(Typography.Text)<{ $shouldUnderline?: boolean }>`
 const SourceNameText = styled(Typography.Text)<{ $shouldUnderline?: boolean }>`
     font-size: 14px;
     font-weight: 600;
-    color: ${colors.gray[600]};
+    color: ${(props) => props.theme.styles['text-secondary']}
     line-height: normal;
     ${(props) =>
         props.$shouldUnderline &&
@@ -56,7 +56,7 @@ const SourceNameText = styled(Typography.Text)<{ $shouldUnderline?: boolean }>`
 const SourceTypeText = styled(Typography.Text)`
     font-size: 14px;
     font-weight: 400;
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-primary']}
     line-height: normal;
 `;
 
@@ -143,9 +143,9 @@ export function ScheduleColumn({ schedule, timezone }: { schedule: string; timez
                 tooltip: {
                     title: scheduleText,
                     color: 'white',
-                    overlayInnerStyle: { color: colors.gray[1700] },
+                    overlayInnerStyle: { color: props.theme.styles['text-primary'] },
                     showArrow: false,
-                },
+                }
             }}
         >
             {scheduleText || '-'}

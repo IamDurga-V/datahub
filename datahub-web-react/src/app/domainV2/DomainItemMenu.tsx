@@ -1,6 +1,7 @@
 import { DeleteOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, Modal, message } from 'antd';
 import React from 'react';
+import styled from 'styled-components';
 
 import { MenuIcon } from '@app/entity/shared/EntityDropdown/EntityDropdown';
 import { useEntityRegistry } from '@app/useEntityRegistry';
@@ -54,7 +55,7 @@ export default function DomainItemMenu({ name, urn, onDelete }: Props) {
         <Dropdown
             trigger={['click']}
             overlay={
-                <Menu>
+                <Menu theme="dark">
                     <Menu.Item onClick={onConfirmDelete} key="delete">
                         <DeleteOutlined /> &nbsp;Delete
                     </Menu.Item>

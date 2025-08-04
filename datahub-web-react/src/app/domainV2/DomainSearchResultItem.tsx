@@ -30,8 +30,8 @@ const SearchResult = styled(Link)`
     padding: 6px 8px;
     width: 100%;
     &:hover {
-        background-color: ${ANTD_GRAY[3]};
-        color: #262626;
+        background-color: ${(props) => props.theme.styles['highlight-color']};
+        color: ${(props) => props.theme.styles['text-color']};
     }
 `;
 
@@ -49,7 +49,8 @@ const highlightMatchStyle = {
     fontWeight: 'bold',
     background: 'none',
     padding: 0,
-    color: colors.gray[600],
+    color: (props) => props.theme.styles['text-color'],
+
 };
 
 function DomainSearchResultItem({ entity, entityRegistry, query, onResultClick }: Props) {

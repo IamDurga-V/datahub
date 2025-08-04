@@ -38,15 +38,16 @@ const AVATAR_STYLE = {
     zIndex: '2',
     height: '36px',
     width: '36px',
-    backgroundColor: REDESIGN_COLORS.AVATAR_STYLE_WHITE_BACKGROUND,
+    backgroundColor: 'white', // Change
 };
 
 const AvatarWithTitleContainer = styled.div`
     display: flex;
     padding: 10px;
-    background: ${REDESIGN_COLORS.GROUP_AVATAR_STYLE_GRADIENT}};
+    background: ${(props) => props.theme.styles['background-color-light']}; // Change
     gap: 0.5rem;
 `;
+
 
 type Props = {
     sidebarData: SidebarData;

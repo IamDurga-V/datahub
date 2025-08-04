@@ -17,10 +17,10 @@ const ViewHeader = styled.div<{ $isShowNavBarRedesign?: boolean }>`
         gap: 1rem;
         align-items: center;
         .select-view-icon {
-            color: ${(props) => (props.$isShowNavBarRedesign ? colors.gray[1800] : REDESIGN_COLORS.BLACK)};
+            color: ${(props) => (props.$isShowNavBarRedesign ? props.theme.styles['text-color'] : props.theme.styles['text-color'])}; // Change
             display: flex;
             gap: 0.5rem;
-            background: ${(props) => (props.$isShowNavBarRedesign ? colors.white : ANTD_GRAY[1])};
+            background: ${(props) => (props.$isShowNavBarRedesign ? props.theme.styles['component-background'] : props.theme.styles['component-background'])}; // Change
             border-radius: 30px;
             padding: ${(props) => (props.$isShowNavBarRedesign ? '4px' : '2px')};
             > div {
@@ -31,13 +31,14 @@ const ViewHeader = styled.div<{ $isShowNavBarRedesign?: boolean }>`
                 cursor: pointer;
                 &.active {
                     background: ${(props) => props.theme.styles['primary-color']};
-                    color: ${ANTD_GRAY[1]};
+                    color: ${(props) => props.theme.styles['layout-header-color']}; // Change
                 }
             }
         }
         .select-view-label {
             font-size: 14px;
             font-weight: 700;
+            color: ${(props) => props.theme.styles['text-color']}; // Change
         }
     }
     .search-manage-container {
@@ -45,7 +46,7 @@ const ViewHeader = styled.div<{ $isShowNavBarRedesign?: boolean }>`
         gap: 1rem;
         align-items: center;
         .manage {
-            color: ${(props) => (props.$isShowNavBarRedesign ? colors.gray[1700] : REDESIGN_COLORS.VIEW_PURPLE)};
+            color: ${(props) => (props.$isShowNavBarRedesign ? props.theme.styles['text-color'] : props.theme.styles['primary-color'])}; // Change
             font-size: 12px;
             font-weight: 700;
             cursor: pointer;

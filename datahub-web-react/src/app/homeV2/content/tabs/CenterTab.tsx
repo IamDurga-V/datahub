@@ -13,15 +13,15 @@ const Tab = styled.div<{ selected: boolean; disabled: boolean }>`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    ${(props) => !props.selected && `color: ${ANTD_GRAY[9]};`}
-    ${(props) => props.disabled && `color: ${ANTD_GRAY[6]};`}
+    ${(props) => !props.selected && `color: ${props.theme.styles['text-color']};`}
+    ${(props) => props.disabled && `color: ${props.theme.styles['disabled-color']};`}
     ${(props) => props.selected && `background-color: ${props.theme.styles['primary-color']};`}
-    ${(props) => props.selected && 'color: #ffffff;'}
+    ${(props) => props.selected && `color: ${props.theme.styles['white-text-color']};`}
     ${(props) =>
         !props.disabled &&
         `:hover {
             cursor: pointer;
-            ${!props.selected && `color: ${props.theme.styles['primary-color']};`}
+            ${!props.selected && `color: ${props.theme.styles['text-color']};`}
         }`}
 `;
 
@@ -32,6 +32,7 @@ const Name = styled.div`
 const tabIconStyle = {
     fontSize: '16px',
     marginRight: '10px',
+    color: 'black',
 };
 
 type Props = {
@@ -57,7 +58,7 @@ export const CenterTab = ({ id, name, description, icon: Icon, selected, count, 
             >
                 {Icon && <Icon style={tabIconStyle} />}
                 <Name>{name}</Name>
-                {(count && <CountBadge count={count} />) || null}
+                {(count && <CountBadge count={count} color={selected ? 'white' : 'gray'} />) || null}
             </Tab>
         </Tooltip>
     );

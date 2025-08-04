@@ -83,7 +83,7 @@ export const BarChart = ({ chartData, width, height }: Props) => {
 
     return (
         <>
-            <svg width={width + WIDTH_MARGIN_SIZE} height={height}>
+            <svg width={width + WIDTH_MARGIN_SIZE} height={height} style={{background: (props) => props.theme.styles['component-background']}}>
                 <rect x={0} y={0} width={width} height={height} fill="white" rx={14} />
                 <Group top={HEIGHT_MARGIN_SIZE} left={WIDTH_MARGIN_SIZE}>
                     <BarStack<(typeof transformedChartData)[0], (typeof keys)[number]>
@@ -127,10 +127,12 @@ export const BarChart = ({ chartData, width, height }: Props) => {
                     left={WIDTH_MARGIN_SIZE}
                     scale={xAxisScale}
                     tickLabelProps={(_) => ({
+                        fill: (props) => props.theme.styles['text-color-secondary'],
                         fontSize: 11,
                         textAnchor: 'start',
                         angle: 40,
                     })}
+                    stroke={(props) => props.theme.styles['border-color-base']}
                 />
                 <AxisRight
                     labelOffset={1000}
@@ -139,11 +141,13 @@ export const BarChart = ({ chartData, width, height }: Props) => {
                     left={xMax + WIDTH_MARGIN_SIZE}
                     scale={yAxisScale}
                     tickLabelProps={() => ({
+                        fill: (props) => props.theme.styles['text-color-secondary'],
                         fontSize: 10,
                         dx: '3px',
                         dy: '1px',
                         textAnchor: 'start',
                     })}
+                    stroke={(props) => props.theme.styles['border-color-base']}
                 />
             </svg>
             <Legend ordinalScale={segmentScale} />

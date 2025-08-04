@@ -47,7 +47,7 @@ const GroupProfileWrapper = styled.div`
         margin: 0;
     }
 
-    background-color: ${REDESIGN_COLORS.WHITE};
+    background-color: ${(props) => props.theme.styles['background-color-light']}; // Change
     border-radius: 8px;
     overflow: hidden;
     height: 100%;

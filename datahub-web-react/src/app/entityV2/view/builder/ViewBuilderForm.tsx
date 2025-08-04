@@ -13,6 +13,23 @@ import { DataHubViewType } from '@types';
 
 const StyledFormItem = styled(Form.Item)`
     margin-bottom: 8px;
+    .ant-typography-strong {
+        color: ${(props) => props.theme.styles['text-color']}; // Change
+    }
+    .ant-typography {
+        color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
+    }
+    .ant-form-item-label > label {
+        color: ${(props) => props.theme.styles['text-color']}; // Change
+    }
+    .ant-select-selector, .ant-input-affix-wrapper, .ant-input-affix-wrapper-focused, .ant-input {
+        background-color: ${(props) => props.theme.styles['component-background']} !important; // Change
+        color: ${(props) => props.theme.styles['text-color']} !important; // Change
+        border-color: ${(props) => props.theme.styles['border-color-base']} !important; // Change
+    }
+    .ant-select-arrow {
+        color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
+    }
 `;
 
 type Props = {
@@ -95,10 +112,10 @@ export const ViewBuilderForm = ({ urn, mode, state, updateState }: Props) => {
                             disabled={!canManageGlobalViews || isEditing || mode === ViewBuilderMode.PREVIEW}
                         >
                             <Select.Option value={DataHubViewType.Personal}>
-                                <ViewTypeLabel type={DataHubViewType.Personal} color={ANTD_GRAY[9]} />
+                                <ViewTypeLabel type={DataHubViewType.Personal} />
                             </Select.Option>
                             <Select.Option value={DataHubViewType.Global}>
-                                <ViewTypeLabel type={DataHubViewType.Global} color={ANTD_GRAY[9]} />
+                                <ViewTypeLabel type={DataHubViewType.Global} />
                             </Select.Option>
                         </Select>
                     </Form.Item>

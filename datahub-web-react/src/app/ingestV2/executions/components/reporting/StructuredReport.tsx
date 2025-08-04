@@ -14,6 +14,8 @@ const Container = styled(Card)`
     display: flex;
     flex-direction: column;
     gap: 12px;
+    background: ${(props) => props.theme.styles['component-background']};
+    color: ${(props) => props.theme.styles['text-color']};
 `;
 
 const TitleContainer = styled.div`
@@ -30,10 +32,10 @@ const StyledPill = styled.div`
     align-items: center;
     gap: 4px;
     border-radius: 200px;
-    background: ${colors.gray[1500]};
+    background: ${(props) => props.theme.styles['highlight-color']};
     font-size: 12px;
     font-weight: 500;
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-color']};
 `;
 
 const ChevronButton = styled.div`
@@ -44,16 +46,16 @@ const ChevronButton = styled.div`
 `;
 
 const ChevronIcon = styled(Icon)`
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-color']};
     font-size: 12px;
 `;
 
-const ERROR_COLOR = colors.red[0];
-const ERROR_TEXT_COLOR = colors.red[1000];
-const WARNING_COLOR = colors.yellow[0];
-const WARNING_TEXT_COLOR = colors.yellow[1000];
-const INFO_COLOR = colors.gray[1500];
-const INFO_TEXT_COLOR = colors.gray[1700];
+const ERROR_COLOR = (props: any) => props.theme.styles['highlight-border-color'];
+const ERROR_TEXT_COLOR = (props: any) => props.theme.styles['text-color'];
+const WARNING_COLOR = (props: any) => props.theme.styles['highlight-border-color'];
+const WARNING_TEXT_COLOR = (props: any) => props.theme.styles['text-color'];
+const INFO_COLOR = (props: any) => props.theme.styles['highlight-color'];
+const INFO_TEXT_COLOR = (props: any) => props.theme.styles['text-color'];
 
 interface Props {
     report: StructuredReportType;

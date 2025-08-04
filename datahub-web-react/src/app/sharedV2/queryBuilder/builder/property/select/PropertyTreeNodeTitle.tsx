@@ -12,6 +12,7 @@ const TitleWrapper = styled.div`
 `;
 
 const ValueTypeText = styled(Typography.Text)`
+    color: ${(props) => props.theme.styles['text-color-secondary']} !important;
     margin-left: 8px;
 `;
 
@@ -42,3 +43,5 @@ export const PropertyTreeNodeTitle = ({ property, selectable = true, valueType }
         </Tooltip>
     );
 };
+
+

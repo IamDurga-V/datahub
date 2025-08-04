@@ -18,8 +18,11 @@ const EmptyWrapper = styled.div`
     align-items: center;
     justify-content: center;
     height: 95%;
-    background-color: ${ANTD_GRAY[3]};
+    background-color: ${(props) => props.theme.styles['body-background']}; // Change
     margin-top: 10px;
+    .ant-empty-description {
+        color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
+    }
 `;
 
 interface Props {

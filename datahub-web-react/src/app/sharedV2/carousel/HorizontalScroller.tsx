@@ -28,15 +28,15 @@ const ScrollButton = styled.button<{
     width: ${({ size }) => size + 6}px;
     height: ${({ size }) => size + 6}px;
     border-radius: 50%;
-    color: ${REDESIGN_COLORS.BLACK};
-    background-color: ${REDESIGN_COLORS.WHITE};
+    box-shadow: ${(props) => props.theme.styles['box-shadow']};
+    color: ${(props) => props.theme.styles['text-color']};
+    background-color: ${(props) => props.theme.styles['component-background']};
     transition:
         background-color 0.3s ease-in-out,
         color 0.3s ease-in-out;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 
     &:hover {
-        color: ${REDESIGN_COLORS.WHITE};
+        color: ${(props) => props.theme.styles['text-color']};
         background-color: ${(props) => props.theme.styles['primary-color']};
     }
 `;

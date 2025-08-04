@@ -27,13 +27,15 @@ const ItemWrapper = styled.div<ItemWrapperProps>`
     font-weight: 700;
     position: relative;
     overflow: ${(props) => !props.$isChildNode && 'hidden'};
+    background-color: ${(props) => props.theme.styles['component-background']};
+    color: ${(props) => props.theme.styles['text-color']};
 `;
 
 const NodeBadge = styled.span<{ color: string }>`
     position: absolute;
     height: 9px;
     width: 50px;
-    background-color: ${({ color }) => color};
+    background-color: ${(props) => props.color};
     top: 0;
     left: -15px;
     transform: rotate(-45deg);
@@ -45,31 +47,31 @@ const NodeWrapper = styled.div<{ $isSelected: boolean; $depth: number }>`
     display: flex;
     font-size: 16px;
     padding: 13px 0;
-    background-color: ${(props) => props.$isSelected && REDESIGN_COLORS.HIGHLIGHT_PURPLE};
+    background-color: ${(props) => props.$isSelected && props.theme.styles['highlight-color']};
     padding-left: calc(${(props) => (props.$depth ? props.$depth * 18 + 12 : 12)}px);
 `;
 
 const StyledRightOutlined = styled(KeyboardArrowRightRounded)<{ isSelected: boolean }>`
     color: ${(props) =>
-        props.isSelected ? `${props.theme.styles['primary-color']}` : `${REDESIGN_COLORS.SECONDARY_LIGHT_GREY}`};
+        props.isSelected ? `${props.theme.styles['primary-color']}` : `${props.theme.styles['text-color-secondary']}`};
     cursor: pointer;
     margin-right: 6px;
     line-height: 0;
     :hover {
         stroke: ${(props) =>
-            props.isSelected ? `${props.theme.styles['primary-color']}` : `${REDESIGN_COLORS.SECONDARY_LIGHT_GREY}`};
+            props.isSelected ? `${props.theme.styles['primary-color']}` : `${props.theme.styles['text-color-secondary']}`};
     }
 `;
 
 const StyledDownOutlined = styled(KeyboardArrowDownRounded)<{ isSelected: boolean }>`
     color: ${(props) =>
-        props.isSelected ? `${props.theme.styles['primary-color']}` : `${REDESIGN_COLORS.HOVER_PURPLE_2}`};
+        props.isSelected ? `${props.theme.styles['primary-color']}` : `${props.theme.styles['text-color-secondary']}`};
     cursor: pointer;
     margin-right: 6px;
     line-height: 0;
     :hover {
         stroke: ${(props) =>
-            props.isSelected ? `${props.theme.styles['primary-color']}` : `${REDESIGN_COLORS.HOVER_PURPLE_2}`};
+            props.isSelected ? `${props.theme.styles['primary-color']}` : `${props.theme.styles['text-color-secondary']}`};
     }
 `;
 
@@ -83,6 +85,7 @@ const LoadingWrapper = styled.div`
     svg {
         height: 15px;
         width: 15px;
+        color: ${(props) => props.theme.styles['text-color']};
     }
 `;
 
@@ -92,8 +95,8 @@ const ChildrenCount = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    background-color: ${colors.gray[100]};
-    color: ${colors.gray[1700]};
+    background-color: ${(props) => props.theme.styles['background-color-light']};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     font-size: 12px;
     height: 22px;
     min-width: 28px;
@@ -104,7 +107,7 @@ const ChildrenCount = styled.div`
 const StyledDivider = styled.div<{ depth: number }>`
     width: calc(100% + 26px + ${(props) => props.depth * 18}px);
     margin-left: calc(-13px - ${(props) => props.depth * 18}px);
-    border-bottom: 1px solid #eae8fb;
+    border-bottom: 1px solid ${(props) => props.theme.styles['divider-color']};
 `;
 
 interface Props {

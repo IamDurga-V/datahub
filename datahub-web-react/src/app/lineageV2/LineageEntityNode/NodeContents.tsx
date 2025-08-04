@@ -6,8 +6,6 @@ import React, { Dispatch, SetStateAction, useCallback } from 'react';
 import { Handle, Position } from 'reactflow';
 import styled from 'styled-components';
 
-import { EventType } from '@app/analytics';
-import analytics from '@app/analytics/analytics';
 import { ANTD_GRAY, LINEAGE_COLORS, REDESIGN_COLORS } from '@app/entityV2/shared/constants';
 import VersioningBadge from '@app/entityV2/shared/versioning/VersioningBadge';
 import Columns from '@app/lineageV2/LineageEntityNode/Columns';
@@ -47,12 +45,12 @@ const NodeWrapper = styled.div<{
     isSearchedEntity: boolean;
 }>`
     align-items: center;
-    background-color: white;
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
     border: 1px solid
-        ${({ color, selected, isGhost }) => {
+        ${({ color, selected, isGhost, theme }) => { // Change
             if (selected) return color;
-            if (isGhost) return `${LINEAGE_COLORS.NODE_BORDER}50`;
-            return LINEAGE_COLORS.NODE_BORDER;
+            if (isGhost) return `${theme.styles['border-color-base']}50`; // Change
+            return theme.styles['border-color-base']; // Change
         }};
     box-shadow: ${({ isSearchedEntity, theme }) =>
         isSearchedEntity ? `0 0 4px 4px ${theme.styles['primary-color']}95` : 'none'};
@@ -108,7 +106,7 @@ const EntityTypeShadow = styled.div<{ color: string; isGhost: boolean }>`
 `;
 
 export const LoadingWrapper = styled.div`
-    color: ${LINEAGE_COLORS.PURPLE_3};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     font-size: 32px;
     line-height: 0;
     pointer-events: none;
@@ -126,7 +124,7 @@ const CustomHandle = styled(Handle)<{ position: Position }>`
 
 const IconsWrapper = styled.div`
     align-items: center;
-    color: ${ANTD_GRAY[10]};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     display: flex;
     flex-direction: column;
     font-size: 24px;
@@ -156,7 +154,7 @@ const SiblingPlatformIcon = styled.img`
 `;
 
 const HorizontalDivider = styled.hr<{ margin: number }>`
-    border: 0.5px solid;
+    border: 0.5px solid ${(props) => props.theme.styles['divider-color']}; // Change
     margin: ${({ margin }) => margin}px 0;
     opacity: 0.1;
     width: 100%;
@@ -198,13 +196,14 @@ const TitleLine = styled.span`
     align-items: center;
     height: min-content;
     gap: 4px;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 const ExpandColumnsWrapper = styled(MatchTextSizeWrapper)`
     align-items: center;
-    border: 0.5px solid ${LINEAGE_COLORS.BLUE_1}50;
+    border: 0.5px solid ${(props) => props.theme.styles['highlight-border-color']}; // Change
     border-radius: 10px;
-    color: ${LINEAGE_COLORS.BLUE_1};
+    color: ${(props) => props.theme.styles['link-color']}; // Change
     display: flex;
     justify-content: center;
     width: 100%;
@@ -214,7 +213,7 @@ const ExpandColumnsWrapper = styled(MatchTextSizeWrapper)`
     max-height: 16px;
 
     :hover {
-        background-color: ${LINEAGE_COLORS.BLUE_1}20;
+        background-color: ${(props) => props.theme.styles['highlight-color']}; // Change
         cursor: pointer;
     }
 `;

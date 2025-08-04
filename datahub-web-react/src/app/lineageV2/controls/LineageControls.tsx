@@ -31,12 +31,16 @@ const StyledPanel = styled(Panel)`
 
 const StyledControlsPanel = styled(ControlPanel)<{ isExpanded: boolean }>`
     padding: 2px;
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
     width: ${({ isExpanded }) => (isExpanded ? '150px' : '50px')};
     transition: width ${TRANSITION_DURATION_MS}ms ease-in-out;
 `;
 
 const StyledExpandContractButton = styled(Button)`
     border-radius: 8px;
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
+    border-color: ${(props) => props.theme.styles['border-color-base']}; // Change
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     height: 56px;
     width: 56px;
     margin-top: 8px;

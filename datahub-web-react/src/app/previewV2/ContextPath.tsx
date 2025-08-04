@@ -23,7 +23,7 @@ const PlatformContentWrapper = styled.div`
     max-width: 100%;
     line-height: 22px;
     overflow: hidden;
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 export const PlatformText = styled.div<{
@@ -40,7 +40,7 @@ export const PlatformText = styled.div<{
 `;
 
 const PlatformDivider = styled.hr`
-    color: ${colors.gray[200]};
+    color: ${(props) => props.theme.styles['divider-color']}; // Change
     align-self: stretch;
     height: auto;
     margin: 4px;
@@ -58,7 +58,7 @@ const PlatFormTitle = styled.span`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 interface Props {

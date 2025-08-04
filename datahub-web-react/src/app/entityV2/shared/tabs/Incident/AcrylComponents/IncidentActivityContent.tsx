@@ -29,6 +29,7 @@ export default function IncidentActivityContent({ incidentActivities }: Timeline
                         display: 'flex',
                         flexDirection: 'row',
                         gap: '4px',
+                        color: theme.styles['text-color'], 
                     }}
                 >
                     <ActivityStatusText>{action}</ActivityStatusText>

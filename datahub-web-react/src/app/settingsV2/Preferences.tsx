@@ -24,13 +24,14 @@ const HeaderContainer = styled.div`
 `;
 
 const StyledCard = styled.div`
-    border: 1px solid ${colors.gray[100]};
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']};
     border-radius: 12px;
-    box-shadow: 0px 1px 2px 0px rgba(33, 23, 95, 0.07);
+    box-shadow: ${(props) => props.theme.styles['box-shadow']};
     padding: 16px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 16px;
+    background-color: ${(props) => props.theme.styles['component-background']};
 `;
 
 const SourceContainer = styled.div`
@@ -58,19 +59,18 @@ const UserSettingRow = styled.div`
 
 const SettingText = styled.div`
     font-size: 16px;
-    color: ${colors.gray[600]};
+    color: ${(props) => props.theme.styles['text-color']};
     font-weight: 700;
 `;
 
 const DescriptionText = styled.div`
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     font-size: 14px;
     font-weight: 400;
     line-height: 1.5;
 `;
 
 export const Preferences = () => {
-    // Current User Urn
     const { user, refetchUser } = useUserContext();
     const isThemeV2 = useIsThemeV2();
     const [isThemeV2Toggleable] = useIsThemeV2Toggleable();
@@ -153,7 +153,6 @@ export const Preferences = () => {
                                                 },
                                             },
                                         });
-                                        // clicking this button toggles, so event is whatever is opposite to what isThemeV2EnabledForUser currently is
                                         analytics.event({
                                             type: isThemeV2EnabledForUser
                                                 ? EventType.RevertV2ThemeEvent
@@ -196,7 +195,7 @@ export const Preferences = () => {
                     </StyledCard>
                 )}
                 {!showSimplifiedHomepageSetting && !isThemeV2Toggleable && !canManageApplicationAppearance && (
-                    <div style={{ color: colors.gray[1700] }}>No appearance settings found.</div>
+                    <div style={{ color: (props) => props.theme.styles['text-color-secondary'] }}>No appearance settings found.</div>
                 )}
             </SourceContainer>
         </Page>

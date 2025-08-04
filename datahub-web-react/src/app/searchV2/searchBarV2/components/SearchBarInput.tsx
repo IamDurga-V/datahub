@@ -7,20 +7,17 @@ import ViewSelectButtonWithPopover from '@app/entityV2/view/select/ViewSelectBut
 import { V2_SEARCH_BAR_VIEWS } from '@app/onboarding/configV2/HomePageOnboardingConfig';
 import { CommandK } from '@app/searchV2/CommandK';
 import { BOX_SHADOW } from '@app/searchV2/searchBarV2/constants';
-import { Icon, SearchBar, colors, radius, transition } from '@src/alchemy-components';
+import { Icon, SearchBar, radius, transition } from '@src/alchemy-components';
 import { useShowNavBarRedesign } from '@src/app/useShowNavBarRedesign';
-
-const PRE_NAV_BAR_REDESIGN_SEARCHBAR_BACKGROUND = '#343444';
 
 const StyledSearchBar = styled(SearchBar)<{ $isShowNavBarRedesign?: boolean }>`
     border-width: 2px !important;
-    border-color: ${colors.gray[100]};
 
     ${(props) =>
         !props.$isShowNavBarRedesign &&
         `
-        background: ${PRE_NAV_BAR_REDESIGN_SEARCHBAR_BACKGROUND};
-        border-color: ${PRE_NAV_BAR_REDESIGN_SEARCHBAR_BACKGROUND};
+        background: ${props.theme.styles['layout-header-color']};
+        border-color: ${props.theme.styles['layout-header-color']};
 
         &:hover,
         &:focus,
@@ -29,8 +26,8 @@ const StyledSearchBar = styled(SearchBar)<{ $isShowNavBarRedesign?: boolean }>`
         }
 
         .ant-input, .ant-input-clear-icon {
-            color: ${colors.white};
-            background: ${PRE_NAV_BAR_REDESIGN_SEARCHBAR_BACKGROUND};
+            color: ${props.theme.styles['text-color']};
+            background: ${props.theme.styles['layout-header-color']};
         }
     `}
 `;
@@ -54,7 +51,7 @@ export const Wrapper = styled.div<{ $open?: boolean; $isShowNavBarRedesign?: boo
         props.$open &&
         props.$isShowNavBarRedesign &&
         `
-        background: ${colors.gray[1500]};
+        background: ${props.theme.styles['layout-body-background']};
         box-shadow: ${BOX_SHADOW};
     `}
 `;
@@ -64,7 +61,7 @@ const SuffixWrapper = styled.div`
     flex-direction: row;
     align-items: center;
     gap: 4px;
-    padding: 4px 0 4px 0;
+    padding: 4px 0;
     line-height: 20px;
 `;
 
@@ -121,14 +118,13 @@ const SearchBarInput = forwardRef<InputRef, Props>(
         }, [onBlur]);
 
         const onKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
-            // disable changing position of cursor by keys used to change selected item in the search bar's response
             if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
                 e.preventDefault();
             }
         }, []);
 
         const onViewSelectContainerClickHandler = (event: React.MouseEvent) => {
-            event.stopPropagation(); // do not open the autocomplete's dropdown by clicking on the views button
+            event.stopPropagation();
         };
 
         const onViewsClickHandler = (isOpen: boolean) => {
@@ -137,7 +133,6 @@ const SearchBarInput = forwardRef<InputRef, Props>(
         };
 
         useEffect(() => {
-            // Automatically close the views select when the autocomplete's dropdown is opened event by keyboard shortcut
             if (isDropdownOpened) setIsViewsSelectOpened?.(false);
         }, [isDropdownOpened, setIsViewsSelectOpened]);
 

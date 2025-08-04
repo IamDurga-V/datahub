@@ -19,7 +19,8 @@ const Container = styled.div`
     border-radius: 4px;
     padding: 12px;
     box-shadow: ${(props) => props.theme.styles['box-shadow']};
-    border: 1px solid ${ANTD_GRAY[4]};
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']}; // Change
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
     margin-bottom: 20px;
 `;
 

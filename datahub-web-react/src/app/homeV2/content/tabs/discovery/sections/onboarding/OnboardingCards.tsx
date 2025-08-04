@@ -20,8 +20,6 @@ export const OnboardingCards = () => {
         return null;
     }
 
-    // We use manage policies here because this determines whether users can invite other users
-    // with particular roles.
     const canManageUsers = platformPrivileges?.managePolicies;
 
     const openInviteUsers = () => {
@@ -32,7 +30,7 @@ export const OnboardingCards = () => {
         <div style={{ display: 'flex', gap: '16px' }} id={HOME_PAGE_ONBOARDING_CARDS_ID}>
             <Link to={`${PageRoutes.INGESTION}`}>
                 <Card
-                    icon={<Plugs color={colors.gray[1800]} size={32} />}
+                    icon={<Plugs color={(props) => props.theme.styles['text-color']} size={32} />}
                     title="Add Data Sources"
                     subTitle="Connect your data platforms"
                     button={<Button variant="text">Add</Button>}
@@ -40,7 +38,7 @@ export const OnboardingCards = () => {
             </Link>
             {canManageUsers ? (
                 <Card
-                    icon={<UserPlus color={colors.gray[1800]} size={32} />}
+                    icon={<UserPlus color={(props) => props.theme.styles['text-color']} size={32} />}
                     title="Invite Users"
                     subTitle="Invite users to DataHub"
                     onClick={openInviteUsers}
@@ -49,7 +47,7 @@ export const OnboardingCards = () => {
             ) : null}
             <Link to={`${PageRoutes.DOMAINS}?create=true`}>
                 <Card
-                    icon={<Globe color={colors.gray[1800]} size={32} />}
+                    icon={<Globe color={(props) => props.theme.styles['text-color']} size={32} />}
                     title="Add Domains"
                     subTitle="Configure your data domains"
                     button={<Button variant="text">Add</Button>}

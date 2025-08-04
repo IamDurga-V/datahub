@@ -21,7 +21,7 @@ const SubHeaderParagraph = styled(Text)`
 `;
 
 const RecipeSection = styled(SectionBase)`
-    border-top: 1px solid ${colors.gray[1400]};
+    border-top: 1px solid ${(props) => props.theme.styles['border-color-base']};
 `;
 
 export const RecipeTab = ({ urn, data }: { urn: string; data: GetIngestionExecutionRequestQuery | undefined }) => {

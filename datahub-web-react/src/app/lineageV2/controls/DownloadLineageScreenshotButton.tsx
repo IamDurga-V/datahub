@@ -45,8 +45,11 @@ export default function DownloadLineageScreenshotButton({ showExpandedText }: Pr
         // Clean the entity name to be safe for filename use
         const cleanEntityName = entityName.replace(/[^a-zA-Z0-9_-]/g, '_');
 
+        const style = document.documentElement.style; // Change
+        const backgroundColor = style.getPropertyValue('--layout-body-background') || '#121212'; // Change
+
         toPng(document.querySelector('.react-flow__viewport') as HTMLElement, {
-            backgroundColor: '#f8f8f8',
+            backgroundColor, // Change
             width: imageWidth,
             height: imageHeight,
             style: {

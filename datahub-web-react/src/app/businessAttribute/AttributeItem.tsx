@@ -10,7 +10,7 @@ const AttributeWrapper = styled.div`
 `;
 
 const nameStyles = `
-    color: #262626;
+    color: ${(props) => props.theme.styles['text-color']};
     display: inline-block;
     height: 100%;
     padding: 3px 4px;
@@ -24,7 +24,7 @@ export const NameWrapper = styled.span<{ showSelectStyles?: boolean }>`
         ${(props) =>
             props.showSelectStyles &&
             `
-                background-color: ${ANTD_GRAY[3]};
+                background-color: ${props.theme.styles['highlight-color']};
                 cursor: pointer;
         `}
     }

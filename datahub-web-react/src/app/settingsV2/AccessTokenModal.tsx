@@ -7,6 +7,8 @@ const ModalSection = styled.div`
     display: flex;
     flex-direction: column;
     padding-bottom: 12px;
+    background-color: ${(props) => props.theme.styles['component-background']};
+    color: ${(props) => props.theme.styles['text-color']};
 `;
 
 const ModalSectionHeader = styled(Typography.Text)`
@@ -32,6 +34,7 @@ const StyledAlert = styled(Alert)`
 
 const StyledInfoCircleOutlined = styled(InfoCircleOutlined)`
     margin-right: 8px;
+    color: ${(props) => props.theme.styles['text-color']};
 `;
 
 type Props = {
@@ -46,15 +49,15 @@ export const AccessTokenModal = ({ visible, onClose, accessToken, expiresInText 
     const accessTokenCurl = `curl -X POST '${baseUrl}/api/graphql' \\
 --header 'Authorization: Bearer ${accessToken}' \\
 --header 'Content-Type: application/json' \\
---data-raw '{"query":"{\\n  me {\\n    corpUser {\\n        username\\n    }\\n  }\\n}","variables":{}}'`;
+--data-raw '{"query":"{\\n  me {\\n    corpUser {\\n        username\\n    }\\n  }\\n}","variables":{}}'`;
 
     return (
         <Modal
             width={700}
             title={
-                <Typography.Text>
-                    <b> New Personal Access Token</b>
-                </Typography.Text>
+                <b style={{ color: (props) => props.theme.styles['text-color'] }}>
+                    New Personal Access Token
+                </b>
             }
             visible={visible}
             onCancel={onClose}

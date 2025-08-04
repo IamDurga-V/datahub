@@ -33,14 +33,14 @@ const StyledMenuItem = styled(Menu.Item)<{ isCollapsed?: boolean }>`
     }
 
     && svg {
-        color: ${colors.gray[1800]};
+        color: ${(props) => props.theme.styles['text-color']};
         width: 20px;
         height: 20px;
     }
 
     && .ant-menu-title-content {
         width: 100%;
-        color: ${colors.gray[1700]};
+        color: ${(props) => props.theme.styles['text-color-secondary']};
         font-family: Mulish;
         font-size: 14px;
         font-style: normal;
@@ -55,22 +55,12 @@ const StyledMenuItem = styled(Menu.Item)<{ isCollapsed?: boolean }>`
 
     &:hover,
     &.ant-menu-item-active {
-        background: linear-gradient(
-            180deg,
-            rgba(243, 244, 246, 0.5) -3.99%,
-            rgba(235, 236, 240, 0.5) 53.04%,
-            rgba(235, 236, 240, 0.5) 100%
-        );
+        background: ${(props) => props.theme.styles['highlight-color']};
         box-shadow: 0px 0px 0px 1px rgba(139, 135, 157, 0.08);
     }
 
     &&.ant-menu-item-selected {
-        background: linear-gradient(
-            180deg,
-            rgba(83, 63, 209, 0.04) -3.99%,
-            rgba(112, 94, 228, 0.04) 53.04%,
-            rgba(112, 94, 228, 0.04) 100%
-        );
+        background: ${(props) => props.theme.styles['highlight-color']};
         box-shadow: 0px 0px 0px 1px rgba(108, 71, 255, 0.08);
     }
 `;
@@ -83,7 +73,7 @@ const Icon = styled.div<{ $isSelected?: boolean; $size?: number }>`
         ${(props) =>
             props.$isSelected
                 ? `fill: url(#menu-item-selected-gradient) ${props.theme.styles['primary-color']};`
-                : 'color: #8088a3;'}
+                : `color: ${props.theme.styles['text-color-secondary']};`}
         width: ${(props) => props.$size ?? 20}px;
         height: ${(props) => props.$size ?? 20}px;
     }
@@ -93,13 +83,7 @@ const StyledText = styled(Text)<{ $isSelected?: boolean }>`
     ${(props) =>
         props.$isSelected &&
         `
-        background: linear-gradient(${getColor('primary', 300, props.theme)} 1%, ${getColor(
-            'primary',
-            500,
-            props.theme,
-        )} 99%);
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: ${props.theme.styles['text-color']};
     `}
 `;
 
@@ -115,7 +99,7 @@ const PillDot = styled.div<{ $isSelected?: boolean }>`
     height: 10px;
     background: ${(props) => props.theme.styles['primary-color']};
     border-radius: 6px;
-    border: 2px solid ${(props) => (props.$isSelected ? '#f9fafc' : '#f2f3fa')};
+    border: 2px solid ${(props) => (props.$isSelected ? props.theme.styles['component-background'] : props.theme.styles['border-color-base'])};
     top: 6px;
     left: 22px;
 `;
@@ -151,7 +135,7 @@ export default function NavBarMenuItem({ item, isCollapsed, isSelected, iconSize
                     </Icon>
                 ) : null}
                 {isCollapsed ? (
-                    <>{item?.badge?.show && <PillDot />}</>
+                    <>{item?.badge?.show && <PillDot $isSelected={isSelected} />}</>
                 ) : (
                     <ItemTitleContentWrapper>
                         <StyledText size="md" type="div" weight="semiBold" $isSelected={isSelected}>

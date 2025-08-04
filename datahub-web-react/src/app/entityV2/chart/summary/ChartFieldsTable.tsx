@@ -15,21 +15,25 @@ const TableContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    .ant-table {
+        background-color: ${(props) => props.theme.styles['component-background']}; // Change
+        color: ${(props) => props.theme.styles['text-color']}; // Change
+    }
     .ant-table-thead > tr > th {
         background-color: transparent;
         font-weight: 700;
         font-size: 14px;
-        color: ${REDESIGN_COLORS.SUBTITLE};
+        color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     }
     && .ant-table-tbody > tr > td {
         padding: 8px 5px;
         border-bottom: none;
-        border-right: 1px solid ${REDESIGN_COLORS.COLD_GREY_TEXT_BLUE_1};
+        border-right: 1px solid ${(props) => props.theme.styles['divider-color']}; // Change
     }
 `;
 
 const SeeMoreLink = styled(Link)`
-    color: ${REDESIGN_COLORS.SUBTITLE};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     font-size: 12px;
     font-weight: 600;
 `;
@@ -89,7 +93,7 @@ export default function ChartFieldsTable({ urn, rows }: Props) {
 }
 
 const TypeWrapper = styled.span`
-    color: ${REDESIGN_COLORS.SUBTITLE};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     margin-right: 4px;
     width: 11px;
 `;
@@ -97,14 +101,14 @@ const TypeWrapper = styled.span`
 const FieldPathText = styled(Typography.Text)`
     font-size: 12px;
     font-weight: 500;
-    color: ${REDESIGN_COLORS.SUBTITLE};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 const Description = styled(Typography.Text)`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: ${REDESIGN_COLORS.SUBTITLE};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 function nameRender(fieldPath: string, row: SchemaField) {

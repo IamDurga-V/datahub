@@ -11,7 +11,7 @@ import { useEntityContext } from '@src/app/entity/shared/EntityContext';
 import { DataProduct, EntityType } from '@types';
 
 const TransparentButton = styled(Button)`
-    color: ${REDESIGN_COLORS.RED_ERROR};
+    color: ${(props) => props.theme.styles['text-color']}; 
     font-size: 12px;
     box-shadow: none;
     border: none;
@@ -25,7 +25,7 @@ const TransparentButton = styled(Button)`
     &:hover {
         transition: 0.15s;
         opacity: 0.9;
-        color: ${REDESIGN_COLORS.RED_ERROR};
+        color:${(props) => props.theme.styles['text-color']}; // Change
     }
 `;
 
@@ -34,7 +34,7 @@ const ResultWrapper = styled.div`
     display: flex;
     align-items: center;
     border: 1px solid #ebecf0;
-    background: ${REDESIGN_COLORS.WHITE};
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
     border-radius: 10px;
 
     &:hover ${TransparentButton} {

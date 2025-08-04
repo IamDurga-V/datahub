@@ -14,9 +14,9 @@ import { useUpdateLastViewedAnnouncementTime } from '@app/homeV2/shared/updateLa
 import OnboardingContext from '@app/onboarding/OnboardingContext';
 
 const Card = styled.div`
-    border: 1px solid ${ANTD_GRAY[4]};
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']};
     border-radius: 11px;
-    background-color: #ffffff;
+    background-color: ${(props) => props.theme.styles['component-background']};
     overflow: hidden;
     padding: 16px 20px 8px 20px;
     width: 380px;
@@ -31,7 +31,7 @@ const Header = styled.div`
 const Title = styled.div`
     font-weight: 600;
     font-size: 14px;
-    color: #434863;
+    color: ${(props) => props.theme.styles['text-color']};
     display: flex;
     align-items: center;
     justify-content: start;
@@ -39,12 +39,12 @@ const Title = styled.div`
 
 const Icon = styled(NotificationOutlined)`
     margin-right: 8px;
-    color: #3cb47a;
+    color: ${(props) => props.theme.styles['tertiary-green']};
     font-size: 16px;
 `;
 
 const StyledCloseOutlined = styled(CloseOutlined)`
-    color: ${ANTD_GRAY[8]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     font-size: 12px;
 `;
 
@@ -55,11 +55,11 @@ const StyledCarousel = styled(Carousel)`
     overflow: hidden;
 
     > .slick-dots li button {
-        background-color: #d9d9d9;
+        background-color: ${(props) => props.theme.styles['border-color-base']};
     }
 
     > .slick-dots li.slick-active button {
-        background-color: #5c3fd1;
+        background-color: ${(props) => props.theme.styles['primary-color-dark']};
     }
 `;
 
@@ -75,6 +75,7 @@ type Props = {
 export const Announcements = ({ setHasAnnouncements }: Props) => {
     const { user } = useUserContext();
     const { announcements, loading } = useGetUnseenAnnouncements();
+
     const { updateLastViewedAnnouncementTime } = useUpdateLastViewedAnnouncementTime();
 
     const { isUserInitializing } = useContext(OnboardingContext);

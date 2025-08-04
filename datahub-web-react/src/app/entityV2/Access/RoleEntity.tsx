@@ -2,7 +2,6 @@ import { TagFilled, TagOutlined } from '@ant-design/icons';
 import * as React from 'react';
 import styled from 'styled-components';
 
-import RoleEntityProfile from '@app/entityV2/Access/RoleEntityProfile';
 import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '@app/entityV2/Entity';
 import { TYPE_ICON_CLASS_NAME } from '@app/entityV2/shared/components/subtypes';
 import { getDataForEntityType } from '@app/entityV2/shared/containers/profile/utils';
@@ -13,6 +12,7 @@ import { EntityType, Role, SearchResult } from '@types';
 
 const PreviewTagIcon = styled(TagOutlined)`
     font-size: 20px;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 // /**
 //  * Definition of the DataHub Access Role entity.
@@ -22,7 +22,7 @@ export class RoleEntity implements Entity<Role> {
 
     icon = (fontSize?: number, styleType?: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <TagFilled className={TYPE_ICON_CLASS_NAME} style={{ fontSize, color }} />;
+            return <TagFilled className={TYPE_ICON_CLASS_NAME} style={{ fontSize, color: color || 'white' }} />; // Change
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {

@@ -6,12 +6,12 @@ import colors from '@src/alchemy-components/theme/foundations/colors';
 import { toLocalDateTimeString, toRelativeTimeString } from '@src/app/shared/time/timeUtils';
 
 const PopoverContent = styled.div`
-    color: ${colors.gray[500]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     font-size: 0.8rem;
 `;
 
 const Title = styled.div`
-    color: ${colors.gray[500]};
+    color: ${(props) => props.theme.styles['text-color']};
     border-bottom: none;
     font-size: 0.8rem;
     font-weight: 600;

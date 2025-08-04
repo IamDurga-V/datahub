@@ -12,6 +12,7 @@ import { LineageDisplayContext, LineageNodesContext } from '@app/lineageV2/commo
 
 const StyledPanel = styled(Panel)`
     margin-top: 20px;
+    background-color: transparent;
 `;
 
 const StyledInput = styled(Input)<{ width: number }>`
@@ -24,25 +25,33 @@ const StyledInput = styled(Input)<{ width: number }>`
     justify-content: center;
 
     font-size: 14px;
-
-    border-color: ${ANTD_GRAY[5]} !important;
+    
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
+    border-color: ${(props) => props.theme.styles['border-color-base']} !important; // Change
     box-shadow: none !important;
+    
+    .ant-input {
+        background-color: transparent;
+        color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
+    }
 `;
 
 const ClosedSearchIcon = styled(SearchOutlined)`
     margin-left: 5px;
     font-size: 16px;
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 const OpenSearchIcon = styled(SearchOutlined)`
-    color: ${REDESIGN_COLORS.PLACEHOLDER_PURPLE};
+    color: ${(props) => props.theme.styles['primary-color']}; // Change
 `;
 
 const VerticalDivider = styled.hr<{ margin: number }>`
     align-self: stretch;
     height: auto;
     margin: 0 ${({ margin }) => margin}px;
-    border: 0.5px solid ${ANTD_GRAY[5]};
+    border: 0.5px solid ${(props) => props.theme.styles['divider-color']}; // Change
     vertical-align: text-top;
 `;
 

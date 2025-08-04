@@ -11,14 +11,15 @@ import { EntityPath, EntityType, LineageDirection, SchemaFieldEntity } from '@ty
 
 export const ResultText = styled.span`
     white-space: nowrap;
+    color: ${(props) => props.theme.styles['link-color']}; // Change
     &:hover {
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid ${(props) => props.theme.styles['link-color']}; // Change
         cursor: pointer;
     }
 `;
 
 const DescriptionWrapper = styled.span`
-    color: ${ANTD_GRAY[8]};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     white-space: nowrap;
 `;
 

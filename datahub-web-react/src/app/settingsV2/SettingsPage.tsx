@@ -35,7 +35,7 @@ const PageContainer = styled.div`
 
 const NavBarContainer = styled.div`
     padding: 20px 20px;
-    background-color: white;
+    background-color: ${(props) => props.theme.styles['component-background']};
     display: flex;
     flex-direction: column;
     border-radius: ${(props) => props.theme.styles['border-radius-navbar-redesign']};
@@ -62,7 +62,7 @@ const NavBarTitle = styled.div`
 
 const NavBarSubTitle = styled.div`
     font-size: 14px;
-    color: ${colors.gray[1700]};
+    background-color: ${(props) => props.theme.styles['component-background']};
     margin-bottom: 8px;
 `;
 
@@ -76,7 +76,7 @@ const ContentContainer = styled.div`
     flex: 1;
     display: flex;
     overflow: auto;
-    background-color: white;
+    background-color: ${(props) => props.theme.styles['component-background']};
     box-shadow: ${(props) => props.theme.styles['box-shadow-navbar-redesign']};
 `;
 

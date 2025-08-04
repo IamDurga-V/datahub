@@ -32,7 +32,7 @@ const LineageList = styled(List)`
 const ItemPlaceholder = styled.div`
     min-height: 100px;
     width: 100%;
-    background-color: ${ANTD_GRAY[2]};
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
 `;
 
 const ListItem = styled(List.Item)`

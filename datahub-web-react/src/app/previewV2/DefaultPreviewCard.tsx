@@ -61,7 +61,7 @@ const TransparentButton = styled(Button)`
         display: flex;
         align-items: center;
         opacity: 0.9;
-        color: ${(p) => p.theme.styles['primary-color']};
+        color: ${(p) => p.theme.styles['link-color']}; // Change
     }
 `;
 
@@ -98,7 +98,7 @@ const InsightsText = styled(Typography.Text)`
     font-size: 12px;
     line-height: 20px;
     font-weight: 600;
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 const InsightIconContainer = styled.span`

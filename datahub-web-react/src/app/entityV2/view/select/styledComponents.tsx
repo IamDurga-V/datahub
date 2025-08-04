@@ -15,7 +15,7 @@ export const NoMarginButton = styled(Button)`
 export const StyledRightOutlined = styled(RightOutlined)`
     && {
         font-size: 8px;
-        color: ${ANTD_GRAY[7]};
+        color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     }
 `;
 
@@ -40,7 +40,7 @@ export const ViewContainer = styled.div<{
         padding: 8px;
         border-radius: 8px;
         display: flex;
-        background-color: white;
+        background-color: ${props.theme.styles['component-background']};
         gap: 8px;
         ${
             props.$fixedWidth
@@ -48,36 +48,36 @@ export const ViewContainer = styled.div<{
                 : `
             width: 100%;
             min-width: ${VIEW_CARD_MIN_WIDTH}px;
-            max-width: ${VIEW_CARD_MIN_WIDTH * 2}px;  // double of min-width to fill all available space in grid
+            max-width: ${VIEW_CARD_MIN_WIDTH * 2}px;
         `
         }
 
         height: 72px;
-        border: 1px solid ${props.$selected ? props.theme.styles['primary-color'] : colors.gray[100]};
+        border: 1px solid ${props.$selected ? props.theme.styles['primary-color'] : props.theme.styles['border-color-base']}; // Change
 
         :hover {
             border: 1px solid ${props.theme.styles['primary-color']};
-            box-shadow: 0px 1px 2px 0px rgba(33, 23, 95, 0.07);
+            box-shadow: 0px 1px 2px 0px rgba(33, 23, 95, 0.07); // Change
         }
     `}
 `;
 
 export const ViewIcon = styled.div<{ $selected?: boolean }>`
-    border: 1px solid ${REDESIGN_COLORS.BORDER_1};
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']}; // Change
     display: flex;
     align-items: center;
     border-radius: 10px;
     padding: 20px;
     position: relative;
-    border: ${(props) => (props.$selected ? `1px solid ${ANTD_GRAY[1]} !important` : '')};
-    background: ${(props) => (props.$selected ? props.theme.styles['primary-color'] : REDESIGN_COLORS.BORDER_1)};
+    border: ${(props) => (props.$selected ? `1px solid ${props.theme.styles['text-color-secondary']} !important` : '')}; // Change
+    background: ${(props) => (props.$selected ? props.theme.styles['primary-color'] : props.theme.styles['component-background'])}; // Change
     &.static {
-        border: 1px solid ${ANTD_GRAY[1]};
+        border: 1px solid ${(props) => props.theme.styles['text-color-secondary']}; // Change
     }
 `;
 
 export const ViewIconNavBarRedesign = styled.div<{ $selected?: boolean }>`
-    background-color: ${(props) => (props.$selected ? colors.gray[1000] : colors.gray[1500])};
+    background-color: ${(props) => (props.$selected ? props.theme.styles['primary-color'] : props.theme.styles['component-background'])}; // Change
     border-radius: 200px;
     height: 32px;
     width: 32px;
@@ -87,23 +87,23 @@ export const ViewIconNavBarRedesign = styled.div<{ $selected?: boolean }>`
     justify-content: center;
 
     svg {
-        color: ${(props) => (props.$selected ? '#705EE4' : colors.gray[1800])};
+        color: ${(props) => (props.$selected ? props.theme.styles['layout-header-color'] : props.theme.styles['text-color'])}; // Change
     }
 `;
 
 export const ViewContent = styled.div<{ $isShowNavBarRedesign?: boolean; $fixedWidth?: boolean }>`
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     ${(props) => !props.$isShowNavBarRedesign && 'min-width: 100px;'}
     ${(props) =>
         props.$isShowNavBarRedesign &&
         `
-        color: black;
         min-width: 160px;
         ${!props.$fixedWidth && 'width: 100%;'}
     `}
 `;
 
 export const ViewLabel = styled.div<{ $isShowNavBarRedesign?: boolean }>`
-    ${(props) => props.$isShowNavBarRedesign && `color: ${colors.gray[600]};`}
+    ${(props) => props.$isShowNavBarRedesign && `color: ${props.theme.styles['text-color-secondary']};`} // Change
     font-size: 14px;
     font-weight: 400;
     white-space: nowrap;
@@ -130,7 +130,7 @@ export const ViewDescription = styled.div<{ $isShowNavBarRedesign?: boolean }>`
         `
         font-size: 14px;
         font-weight: 500;
-        color: ${colors.gray[1700]};
+        color: ${props.theme.styles['text-color-secondary']};
         font-family: ${typography.fonts.body};
     `}
     white-space: nowrap;

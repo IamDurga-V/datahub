@@ -8,9 +8,9 @@ import { NavBarMenuDropdownItem } from '@app/homeV2/layout/navBarRedesign/types'
 import { Text, colors } from '@src/alchemy-components';
 
 const StyledDropdownContentWrapper = styled.div`
-    background-color: white;
+    background-color: ${(props) => props.theme.styles['component-background']};
     border-radius: ${(props) => props.theme.styles['border-radius-navbar-redesign']};
-    box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: ${(props) => props.theme.styles['box-shadow-navbar-redesign']};
     padding: 8px;
 `;
 
@@ -19,17 +19,12 @@ const StyledDropDownOption = styled.div<{ $disabled?: boolean }>`
     border-radius: ${(props) => props.theme.styles['border-radius-navbar-redesign']};
     ${(props) =>
         props.$disabled
-            ? `color: ${colors.gray[1800]};`
+            ? `color: ${props.theme.styles['disabled-color']} !important;`
             : `
-                cursor: pointer;
-                &:hover {
-                    background: linear-gradient(
-                        180deg,
-                        rgba(243, 244, 246, 0.5) -3.99%,
-                        rgba(235, 236, 240, 0.5) 53.04%,
-                        rgba(235, 236, 240, 0.5) 100%
-                    );
-                }
+            cursor: pointer;
+            &:hover {
+                background-color: ${props.theme.styles['highlight-color']};
+            }
     `}
 `;
 
@@ -75,9 +70,11 @@ export default function NavBarMenuItemDropdown({ item, isCollapsed, isSelected, 
                                     onClick={() => onItemClick(dropdownItem.key)}
                                 >
                                     <Text>{dropdownItem.title}</Text>
-                                    <Text size="sm" color="gray">
-                                        {dropdownItem.description}
-                                    </Text>
+                                    {dropdownItem.description && (
+                                        <Text size="sm" color="gray">
+                                            {dropdownItem.description}
+                                        </Text>
+                                    )}
                                 </StyledDropDownOption>
                             );
                         })}

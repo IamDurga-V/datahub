@@ -69,7 +69,6 @@ const AutoCompleteContainer = styled.div<{ viewsEnabled?: boolean; $isShowNavBar
         }
     `}
 `;
-
 const StyledSearchBar = styled(Input)<{
     $textColor?: string;
     $placeholderColor?: string;
@@ -80,25 +79,39 @@ const StyledSearchBar = styled(Input)<{
         border-radius: 8px;
         height: 40px;
         font-size: 14px;
-        color: #dcdcdc;
-        background-color: ${ANTD_GRAY_V2[2]};
+        color: ${(props) =>
+            props.$textColor ||
+            props.theme.styles['text-color'] ||
+            '#dcdcdc'};
+        // CHANGE: background-color to theme
+        background-color: ${(props) =>
+            props.theme.styles['component-background'] ||
+            props.theme.styles['background-color-light'] ||
+            '#222'};  
         border: 2px solid transparent;
         padding-right: 2.5px;
         ${(props) =>
             !props.viewsEnabled &&
             `
-        &:focus-within {
-            border-color: ${props.theme.styles['primary-color']};
-        }`}
+            &:focus-within {
+                border-color: ${props.theme.styles['primary-color'] || '#8A7CFF'};
+            }
+        `}
     }
 
     > .ant-input::placeholder {
         color: ${(props) =>
-            props.$placeholderColor || (props.$isShowNavBarRedesign ? REDESIGN_COLORS.GREY_300 : '#dcdcdc')};
+            props.$placeholderColor ||
+            props.theme.styles['text-color-secondary'] ||
+            (props.$isShowNavBarRedesign ? props.theme.styles['text-color-secondary'] : '#dcdcdc')};
     }
 
     > .ant-input {
-        color: ${(props) => props.$textColor || (props.$isShowNavBarRedesign ? '#000' : '#fff')};
+        color: ${(props) =>
+            props.$textColor ||
+            props.theme.styles['text-color'] ||
+            (props.$isShowNavBarRedesign ? '#000' : '#fff')};
+        background-color: transparent;
     }
 
     .ant-input-clear-icon {
@@ -107,20 +120,14 @@ const StyledSearchBar = styled(Input)<{
     }
 `;
 
-const ClearIcon = styled(CloseCircleFilled)`
-    svg {
-        height: 15px;
-        width: 15px;
-    }
-`;
-
 const ViewSelectContainer = styled.div`
-    color: #fff;
+    color: ${(props) => props.theme.styles['text-color'] || '#fff'};
     line-height: 20px;
     padding-right: 5.6px;
 
     &&& {
-        border-left: 0px solid ${ANTD_GRAY_V2[5]};
+        // border-left used to use ANTD_GRAY_V2[5]
+        border-left: 0px solid ${(props) => props.theme.styles['border-color-base'] || '#343444'};
     }
 `;
 

@@ -27,9 +27,9 @@ export const TRANSFORMATION_NODE_SIZE = 30;
 // TODO: Share with LineageEntityNode
 const HomeNodeBubble = styled.div`
     align-items: center;
-    background-color: ${LINEAGE_COLORS.PURPLE_3};
+    background-color: ${(props) => props.theme.styles['primary-color']}; // Change
     border-radius: 10px;
-    color: white;
+    color: ${(props) => props.theme.styles['layout-header-color']}; // Change
     display: flex;
     font-size: 10px;
     font-weight: 600;
@@ -49,9 +49,9 @@ const NodeWrapper = styled.div<{
     isSearchedEntity: boolean;
     type: EntityType;
 }>`
-    background-color: white;
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
     border: ${({ selected }) => (selected ? 2 : 1)}px solid;
-    border-color: ${({ selected }) => (selected ? LINEAGE_COLORS.PURPLE_3 : LINEAGE_COLORS.NODE_BORDER)};
+    border-color: ${({ selected, theme }) => (selected ? theme.styles['primary-color'] : theme.styles['border-color-base'])}; // Change
     border-radius: 50%;
     box-shadow: ${({ isSearchedEntity, theme }) =>
         isSearchedEntity ? `0 0 3px 3px ${theme.styles['primary-color']}95` : 'none'};
@@ -73,6 +73,7 @@ const NodeWrapper = styled.div<{
 const IconWrapper = styled.div<{ isGhost: boolean }>`
     display: flex;
     opacity: ${({ isGhost }) => (isGhost ? 0.5 : 1)};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 const CustomHandle = styled(Handle)<{ position: Position; $onEdge: boolean }>`

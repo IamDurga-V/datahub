@@ -26,7 +26,7 @@ const IncidentListTitle = styled.div`
 
 const SubTitle = styled(Typography.Text)`
     font-size: 14px;
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 export const IncidentTitleContainer = ({

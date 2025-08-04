@@ -43,7 +43,7 @@ export class ApplicationEntity implements Entity<Application> {
 
     icon = (fontSize?: number, styleType?: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <AppWindow className={TYPE_ICON_CLASS_NAME} />;
+            return <AppWindow className={TYPE_ICON_CLASS_NAME} style={{ fontSize, color: color || 'white' }} />; // Change
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {

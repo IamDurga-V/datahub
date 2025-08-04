@@ -1,5 +1,6 @@
 import { GlobalOutlined } from '@ant-design/icons';
 import * as React from 'react';
+import styled from 'styled-components';
 
 import { Entity, EntityCapabilityType, IconStyleType, PreviewType } from '@app/entityV2/Entity';
 import { Preview } from '@app/entityV2/businessAttribute/preview/Preview';
@@ -19,7 +20,7 @@ import { useGetBusinessAttributeQuery } from '@graphql/businessAttribute.generat
 import { BusinessAttribute, EntityType, SearchResult } from '@types';
 
 /**
- *  Definition of datahub Business Attribute Entity
+ * Definition of datahub Business Attribute Entity
  */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 export class BusinessAttributeEntity implements Entity<BusinessAttribute> {
@@ -27,7 +28,7 @@ export class BusinessAttributeEntity implements Entity<BusinessAttribute> {
 
     icon = (fontSize?: number, styleType?: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <GlobalOutlined style={{ fontSize, color }} />;
+            return <GlobalOutlined style={{ fontSize, color: color || 'white' }} />; // Change
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {

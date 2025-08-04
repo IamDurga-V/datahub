@@ -2,7 +2,7 @@ import { NetworkStatus } from '@apollo/client';
 import { Modal, Table } from '@components';
 import { message } from 'antd';
 import React, { useCallback, useMemo, useState } from 'react';
-
+import styled from 'styled-components/macro';
 import { useUserContext } from '@app/context/useUserContext';
 import { ManageTag } from '@app/tags/ManageTag';
 import {
@@ -27,6 +27,41 @@ interface Props {
     networkStatus: NetworkStatus;
     refetch: () => Promise<any>;
 }
+
+const StyledTable = styled(Table)`
+    // Change: Table styling for dark mode
+    .ant-table-container {
+        border: 1px solid ${(props) => props.theme.styles['border-color-base']} !important;
+        background-color: ${(props) => props.theme.styles['component-background']} !important;
+        color: ${(props) => props.theme.styles['text-color']} !important;
+        border-radius: 8px !important;
+    }
+    .ant-table-thead > tr > th {
+        background-color: ${(props) => props.theme.styles['component-background']} !important;
+        border-color: ${(props) => props.theme.styles['border-color-base']} !important;
+        color: ${(props) => props.theme.styles['text-color']} !important;
+    }
+    .ant-table-tbody > tr > td {
+        background-color: ${(props) => props.theme.styles['component-background']} !important;
+        border-color: ${(props) => props.theme.styles['border-color-base']} !important;
+        color: ${(props) => props.theme.styles['text-color']} !important;
+    }
+    .ant-table-cell-fix-right {
+        background-color: ${(props) => props.theme.styles['component-background']} !important;
+    }
+`;
+
+const StyledModal = styled(Modal)`
+    // Change: Modal styling for dark mode
+    &&& .ant-modal-content {
+        background-color: ${(props) => props.theme.styles['component-background']} !important;
+        color: ${(props) => props.theme.styles['text-color']} !important;
+    }
+    &&& .ant-modal-header {
+        background-color: ${(props) => props.theme.styles['component-background']} !important;
+        border-color: ${(props) => props.theme.styles['border-color-base']} !important;
+    }
+`;
 
 const TagsTable = ({ searchQuery, searchData, loading: propLoading, networkStatus, refetch }: Props) => {
     const entityRegistry = useEntityRegistry();

@@ -11,10 +11,10 @@ import ActiveGlossaryTermIcon from '@images/glossary_bookmark_added.svg?react';
 import ApprovedGlossaryTermIcon from '@images/glossary_verified.svg?react';
 
 const StatusWrapper = styled.div`
-    background-color: ${REDESIGN_COLORS.BACKGROUND_PURPLE_2};
+    background-color: ${(props) => props.theme.styles['component-background']};
     border-radius: 9px;
-    border: 1px solid ${ANTD_GRAY[1]};
-    background: ${ANTD_GRAY[1]};
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']};
+    background: ${(props) => props.theme.styles['component-background']};
     margin-bottom: 10px;
     display: flex;
     justify-content: space-around;
@@ -27,7 +27,7 @@ const IconWrapper = styled.div`
 `;
 
 const CountTerms = styled.div`
-    color: ${REDESIGN_COLORS.BACKGROUND_OVERLAY_BLACK};
+    color: ${(props) => props.theme.styles['text-color']};
     font-family: Mulish;
     font-size: 20px;
     font-style: normal;
@@ -37,7 +37,7 @@ const CountTerms = styled.div`
 `;
 
 const HeaderTitle = styled(Typography)`
-    color: ${REDESIGN_COLORS.BACKGROUND_OVERLAY_BLACK};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     text-align: center;
     font-family: Mulish;
     font-size: 12px;

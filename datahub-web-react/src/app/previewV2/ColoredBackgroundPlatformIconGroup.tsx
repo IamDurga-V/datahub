@@ -86,8 +86,12 @@ export default function ColoredBackgroundPlatformIconGroup(props: Props) {
                                 ))}
                         {isOutputPort && (
                             <Tooltip title="This asset is an output port for this Data Product" placement="topLeft">
-                                <Icon size={backgroundSize} background={ANTD_GRAY[4]} borderRadius={10}>
-                                    <OutputIcon style={{ fontSize: imgSize }} htmlColor={ANTD_GRAY[8]} />
+                                <Icon
+                                    size={backgroundSize}
+                                    background="none" // Change
+                                    borderRadius={10}
+                                >
+                                    <OutputIcon style={{ fontSize: imgSize }} htmlColor="#a8b3be" /> // Change
                                 </Icon>
                             </Tooltip>
                         )}

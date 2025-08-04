@@ -11,7 +11,7 @@ import { Entity, LineageDirection } from '@types';
 
 const ColumnNameWrapper = styled.span<{ isBlack?: boolean }>`
     font-weight: bold;
-    ${(props) => props.isBlack && 'color: black;'}
+    color: ${(props) => (props.isBlack ? 'black' : props.theme.styles['text-color'])};
 `;
 
 interface Props {

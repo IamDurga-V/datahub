@@ -14,15 +14,21 @@ import { Entity, EntityPath, LineageDirection } from '@types';
 const StyledModal = styled(Modal)`
     width: 70vw;
     max-width: 850px;
+    .ant-modal-content {
+        background-color: ${(props) => props.theme.styles['component-background']}; // Change
+    }
+    .ant-modal-title {
+        color: ${(props) => props.theme.styles['heading-color']}; // Change
+    }
 `;
 
 const PathWrapper = styled.div`
     display: inline-block;
     margin: 15px 0 15px -4px;
     padding: 20px;
-    border: 1px solid ${ANTD_GRAY[4]};
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']}; // Change
     border-radius: 8px;
-    box-shadow: 1px 1px 12px 4px #0000000d;
+    box-shadow: 1px 1px 12px 4px rgba(0, 0, 0, 0.5); // Change
     width: 100%;
 `;
 
@@ -34,7 +40,7 @@ const Header = styled.div`
 const ErrorContainer = styled.div`
     font-size: 14px;
     padding: 8px 0px;
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 interface Props {

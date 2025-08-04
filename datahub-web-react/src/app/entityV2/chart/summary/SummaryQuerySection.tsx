@@ -10,7 +10,7 @@ const PreviewSyntax = styled(SyntaxHighlighter)`
     overflow: hidden !important;
     border-radius: 12px;
     max-width: 100%;
-    background: #fafafc !important;
+    background: ${(props) => props.theme.styles['background-color-light']} !important; // Change
 
     span {
         font-family: 'Roboto Mono', monospace;
@@ -20,6 +20,7 @@ const PreviewSyntax = styled(SyntaxHighlighter)`
 const ModalSyntaxContainer = styled.div`
     margin: 20px;
     overflow: auto;
+    background-color: ${(props) => props.theme.styles['component-background']} !important; // Change
 `;
 
 const Container = styled.div`
@@ -35,7 +36,7 @@ const StyledButton = styled(Button)`
     width: fit-content;
 
     :hover {
-        color: ${REDESIGN_COLORS.HOVER_PURPLE};
+        color: ${(props) => props.theme.styles['link-color']}; // Change
         background: transparent;
     }
 `;
@@ -55,6 +56,7 @@ const SummaryQuerySection = ({ query }: Props) => {
                 footer={<Button onClick={() => setShowFullContentModal(false)}>Dismiss</Button>}
                 open={showFullContentModal}
                 onCancel={() => setShowFullContentModal(false)}
+                className="dark-theme-modal" // Add a class to the Modal for custom styling
             >
                 <ModalSyntaxContainer>
                     <SyntaxHighlighter language="sql" wrapLongLines showLineNumbers>

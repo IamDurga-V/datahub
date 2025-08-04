@@ -8,7 +8,7 @@ import OnboardingContext from '@app/onboarding/OnboardingContext';
 const ModalStyle = styled(Modal)`
     .ant-modal-content {
         border-radius: 8px;
-        border: 1px solid #c1c4d0;
+        border: 1px solid ${(props) => props.theme.styles['border-color-base']};
         border-bottom: unset;
     }
 
@@ -34,7 +34,7 @@ const ModalContent = styled.span`
     font-weight: 700;
     display: flex;
     justify-content: center;
-    color: ${REDESIGN_COLORS.TEXT_HEADING};
+    color: ${(props) => props.theme.styles['text-color']};
     padding: 25px 0 0;
     font-size: 16px;
 `;

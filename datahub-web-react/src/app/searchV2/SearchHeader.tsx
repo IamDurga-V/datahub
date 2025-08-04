@@ -17,10 +17,11 @@ import { EntityRegistry } from '@src/entityRegistryContext';
 
 import { AutoCompleteResultForEntity } from '@types';
 
-const getStyles = ($isShowNavBarRedesign?: boolean) => {
+// Utility function to get inline styles (can use theme if passed)
+export const getStyles = ($isShowNavBarRedesign?: boolean) => {
     return {
         input: {
-            backgroundColor: $isShowNavBarRedesign ? 'white' : '#343444',
+            backgroundColor: $isShowNavBarRedesign ? '#343444' : 'white',
         },
         searchBox: {
             maxWidth: $isShowNavBarRedesign ? '100%' : 620,
@@ -36,7 +37,8 @@ const getStyles = ($isShowNavBarRedesign?: boolean) => {
     };
 };
 
-const Wrapper = styled.div<{ $isShowNavBarRedesign?: boolean }>`
+// Fixed wrapper for header
+export const Wrapper = styled.div<{ $isShowNavBarRedesign?: boolean }>`
     position: fixed;
     width: 100%;
     ${(props) =>
@@ -47,22 +49,24 @@ const Wrapper = styled.div<{ $isShowNavBarRedesign?: boolean }>`
     `}
 `;
 
-const Header = styled(Layout)<{ $isNavBarCollapsed?: boolean; $isShowNavBarRedesign?: boolean }>`
+// Header container (with responsive + redesign support)
+export const Header = styled(Layout)<{ $isNavBarCollapsed?: boolean; $isShowNavBarRedesign?: boolean }>`
     background-color: transparent;
     height: ${(props) => (props.$isShowNavBarRedesign ? '56px' : '72px')};
     display: flex;
+    align-items: center;
+
     ${(props) =>
         props.$isShowNavBarRedesign &&
         `
         margin-top: 8px;
         gap: 16px;
         flex-direction: row;
-
-        // preventing of NavBar's overlapping
         position: relative;
         padding-left: ${props.$isNavBarCollapsed ? '224px' : '540px'};
         left: ${props.$isNavBarCollapsed ? '-112px' : '-270px'};
         transition: none;
+
         @media only screen and (min-width: 1280px) {
             padding-left: 540px;
             left: -270px;
@@ -71,23 +75,30 @@ const Header = styled(Layout)<{ $isNavBarCollapsed?: boolean; $isShowNavBarRedes
             transition: padding 250ms ease-in-out;
         }
     `}
-    ${(props) => props.$isShowNavBarRedesign && !props.$isNavBarCollapsed && 'justify-content: space-between;'}
-    align-items: center;
+
+    ${(props) =>
+        props.$isShowNavBarRedesign && !props.$isNavBarCollapsed &&
+        'justify-content: space-between;'}
 `;
 
-const HeaderBackground = styled.div<{ $isShowNavBarRedesign?: boolean }>`
-    ${(props) => !props.$isShowNavBarRedesign && 'background-color: #171723;'}
+// Background layer under header
+export const HeaderBackground = styled.div<{ $isShowNavBarRedesign?: boolean }>`
+    ${(props) =>
+        !props.$isShowNavBarRedesign &&
+        'background-color: white;'}
     position: fixed;
     height: 100px;
     width: 100%;
     z-index: -1;
 `;
 
-const SearchBarContainer = styled.div<{ $isShowNavBarRedesign?: boolean }>`
+// Search bar wrapper
+export const SearchBarContainer = styled.div<{ $isShowNavBarRedesign?: boolean }>`
     display: flex;
     flex: 1;
     align-items: center;
     justify-content: center;
+
     ${(props) =>
         !props.$isShowNavBarRedesign &&
         `
@@ -96,7 +107,8 @@ const SearchBarContainer = styled.div<{ $isShowNavBarRedesign?: boolean }>`
     `}
 `;
 
-const StyledButton = styled(Button)`
+// Button in redesigned header
+export const StyledButton = styled(Button)`
     color: ${REDESIGN_COLORS.BODY_TEXT_GREY};
     text-align: center;
 
@@ -117,10 +129,12 @@ const StyledButton = styled(Button)`
     }
 `;
 
-const NavBarTogglerWrapper = styled.div`
+// Wrapper for toggle button
+export const NavBarTogglerWrapper = styled.div`
     position: fixed;
     left: 68px;
 `;
+
 
 type Props = {
     initialQuery: string;

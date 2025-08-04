@@ -43,7 +43,7 @@ export class ContainerEntity implements Entity<Container> {
 
     icon = (fontSize?: number, styleType?: IconStyleType, color?: string) => {
         if (styleType === IconStyleType.TAB_VIEW) {
-            return <FolderOutlined className={TYPE_ICON_CLASS_NAME} style={{ fontSize, color }} />;
+            return <FolderOutlined className={TYPE_ICON_CLASS_NAME} style={{ fontSize, color: color || 'white' }} />; // Change
         }
 
         if (styleType === IconStyleType.HIGHLIGHT) {
@@ -177,7 +177,7 @@ export class ContainerEntity implements Entity<Container> {
         },
         // TODO: Add back once entity-level recommendations are complete.
         // {
-        //    component: SidebarRecommendationsSection,
+        //  component: SidebarRecommendationsSection,
         // },
     ];
 

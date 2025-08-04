@@ -17,10 +17,10 @@ import { DataPlatform, EntityType } from '@types';
 
 const Card = styled.div<{ $isShowNavBarRedesign?: boolean }>`
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: ${(props) => props.theme.styles['component-background']};
     padding: 16px;
     min-width: 180px;
-    border: ${(props) => (props.$isShowNavBarRedesign ? `1px solid ${colors.gray[100]}` : '2px solid transparent')};
+    border: ${(props) => (props.$isShowNavBarRedesign ? `1px solid ${props.theme.styles['border-color-base']}` : '2px solid transparent')};
     ${(props) => props.$isShowNavBarRedesign && 'border-radius: 8px;'}
     :hover {
         border: ${(props) => (props.$isShowNavBarRedesign ? '1px' : '2px')} solid ${SEARCH_COLORS.LINK_BLUE};
@@ -36,7 +36,7 @@ const Text = styled.div``;
 
 const Name = styled.div`
     font-size: 16px;
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color']};
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 160px;
@@ -45,7 +45,7 @@ const Name = styled.div`
 
 const Count = styled.div`
     font-size: 16px;
-    color: #56668e;
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

@@ -1,5 +1,6 @@
 import { Button, Modal, Select } from 'antd';
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 import { useEntityRegistry } from '@app/useEntityRegistry';
 
@@ -14,17 +15,24 @@ type Props = {
 
 const { Option } = Select;
 
+const StyledSelect = styled(Select)`
+    width: 100%;
+    background-color: ${(props) => props.theme.styles['input-background-color']};
+    color: ${(props) => props.theme.styles['text-color']};
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']};
+`;
+
 export const ChooseEntityTypeModal = ({ defaultValues, onCloseModal, onOk, title }: Props) => {
     const entityRegistry = useEntityRegistry();
     const entityTypes = entityRegistry.getSearchEntityTypes();
 
     const [stagedValues, setStagedValues] = useState(defaultValues || []);
 
-    const addEntityType = (newType) => {
+    const addEntityType = (newType: string) => {
         setStagedValues([...stagedValues, newType]);
     };
 
-    const removeEntityType = (type) => {
+    const removeEntityType = (type: string) => {
         setStagedValues(stagedValues.filter((stagedValue) => stagedValue !== type));
     };
 
@@ -45,9 +53,8 @@ export const ChooseEntityTypeModal = ({ defaultValues, onCloseModal, onOk, title
                 </>
             }
         >
-            <Select
+            <StyledSelect
                 mode="multiple"
-                style={{ width: '100%' }}
                 placeholder="Datasets, Dashboards, Charts, and more..."
                 onSelect={(newValue) => addEntityType(newValue)}
                 onDeselect={(newValue) => removeEntityType(newValue)}
@@ -62,7 +69,7 @@ export const ChooseEntityTypeModal = ({ defaultValues, onCloseModal, onOk, title
                         {entityRegistry.getCollectionName(type)}
                     </Option>
                 ))}
-            </Select>
+            </StyledSelect>
         </Modal>
     );
 };

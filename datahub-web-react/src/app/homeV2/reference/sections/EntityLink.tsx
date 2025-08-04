@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled, { CSSObject } from 'styled-components';
+import styled, { CSSObject, css } from 'styled-components';
 
 import { GenericEntityProperties } from '@app/entity/shared/types';
 import { GlossaryPreviewCardDecoration } from '@app/entityV2/shared/containers/profile/header/GlossaryPreviewCardDecoration';
@@ -24,10 +24,10 @@ const Container = styled.div<{ showHover: boolean; entity: GenericEntityProperti
     border-radius: 8px;
     cursor: pointer;
     width: ${(props) => props.entity.type === EntityType.GlossaryTerm && 'fit-content'};
-    border: ${(props) => (props.entity.type === EntityType.GlossaryTerm ? '1px solid #C1C4D0' : 'none')};
+    border: ${(props) => (props.entity.type === EntityType.GlossaryTerm ? `1px solid ${props.theme.styles['border-color-base']}` : 'none')};
 
     :hover {
-        ${(props) => props.showHover && 'background-color: #f5f7fa;'}
+        ${(props) => props.showHover && `background-color: ${props.theme.styles['highlight-color']};`}
     }
 
     > a {
@@ -43,7 +43,7 @@ const LinkButton = styled(Link)<{ includePadding: boolean }>`
     padding: ${(props) => (props.includePadding ? '2px 4px' : '0px')};
     height: auto;
     margin: 4px 0px 4px 0px;
-    max-width: 100%; /* Ensure the grid container does not exceed its parent's width */
+    max-width: 100%;
     overflow-x: hidden;
     width: 100%;
 
@@ -55,7 +55,7 @@ const LinkButton = styled(Link)<{ includePadding: boolean }>`
 `;
 
 const DisplayNameText = styled.span<{ entity: GenericEntityProperties }>`
-    color: #52596c;
+    color: ${(props) => props.theme.styles['text-color']};
     font-family: Mulish;
     font-size: 12px;
     font-style: normal;

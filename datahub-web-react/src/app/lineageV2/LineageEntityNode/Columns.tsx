@@ -24,6 +24,7 @@ const MainColumnsWrapper = styled.div<{ isGhost: boolean }>`
     font:
         12px 'Roboto Mono',
         monospace;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     width: 100%;
     padding: 8px 11px;
     opacity: ${({ isGhost }) => (isGhost ? 0.5 : 1)};
@@ -38,11 +39,11 @@ const SearchBarWrapper = styled.div`
 `;
 
 const FilterLineageIcon = styled(PartitionOutlined)<{ count: number; selected: boolean }>`
-    ${({ selected }) => (selected ? `color: ${LINEAGE_COLORS.BLUE_1};` : '')};
+    ${({ selected, theme }) => (selected ? `color: ${theme.styles['link-color']};` : `color: ${theme.styles['text-color-secondary']};`)} // Change
     padding-right: 4px;
 
     :hover {
-        color: ${REDESIGN_COLORS.BLUE};
+        color: ${(props) => props.theme.styles['link-color']}; // Change
     }
 
     ::after {
@@ -62,10 +63,28 @@ const ColumnPagination = styled(Pagination)`
     margin-top: 8px;
     overflow: hidden;
     width: 100%;
+
+    .ant-pagination-item a,
+    .ant-pagination-jump-next .ant-pagination-item-link,
+    .ant-pagination-jump-prev .ant-pagination-item-link,
+    .ant-pagination-prev .ant-pagination-item-link,
+    .ant-pagination-next .ant-pagination-item-link {
+        color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
+    }
+
+    .ant-pagination-item-active a {
+        color: ${(props) => props.theme.styles['primary-color']} !important; // Change
+    }
+
+    .ant-pagination-item:focus-visible,
+    .ant-pagination-item:hover {
+        background-color: ${(props) => props.theme.styles['highlight-color']} !important; // Change
+    }
 `;
 
 const HorizontalDivider = styled.hr<{ margin: number }>`
     margin: ${({ margin }) => margin}px 0;
+    border: 0.5px solid ${(props) => props.theme.styles['divider-color']}; // Change
     opacity: 0.1;
     width: 100%;
 `;
@@ -220,7 +239,7 @@ function useComputeAllNeighborsFetched(entity: FetchedEntity): boolean {
                 (child) => child.entity?.urn && !!nodes.get(child.entity.urn)?.entity,
             ),
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        [entity.upstreamChildren, entity.downstreamChildren, nodes, dataVersion],
+        [entity.upstreamRelationships, entity.downstreamRelationships, nodes, dataVersion],
     );
     useEffect(() => {
         if (allNeighborsFetched) {

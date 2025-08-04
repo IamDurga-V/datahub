@@ -11,19 +11,19 @@ const Container = styled.div`
     justify-content: space-between;
     max-width: 470px;
     padding: 52px 65px 65px 52px;
-    background: #191d2e url(${datahubPlatforms}) no-repeat bottom left;
+    background: ${(props) => props.theme.styles['component-background']} url(${datahubPlatforms}) no-repeat bottom left;
 `;
 
 const Title = styled.div`
     max-width: 240px;
     margin-bottom: 30px;
-    color: #374066;
+    color: ${(props) => props.theme.styles['text-color']};
     font: 700 35px/44px Mulish;
 `;
 
 const Subtitle = styled.div`
     width: 371px;
-    color: #5f6685;
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     font: 400 16px/24px Mulish;
 `;
 
@@ -32,7 +32,7 @@ const AcrylTitle = styled.div`
     align-items: center;
     justify-content: start;
     font: 700 14px Mulish;
-    color: #fff;
+    color: ${(props) => props.theme.styles['text-color']};
     letter-spacing: 1px;
 `;
 

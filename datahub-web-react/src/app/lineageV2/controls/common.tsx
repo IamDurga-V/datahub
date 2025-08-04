@@ -7,10 +7,10 @@ export const ControlPanel = styled.div`
     flex-direction: column;
     align-items: flex-start;
 
-    background: #fff;
+    background: ${(props) => props.theme.styles['component-background']}; // Change
     border-radius: 8px;
-    border: 1px solid ${ANTD_GRAY[5]};
-    box-shadow: 0 4px 4px 0 ${REDESIGN_COLORS.BOX_SHADOW};
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']}; // Change
+    box-shadow: 0 4px 4px 0 ${(props) => props.theme.styles['box-shadow']}; // Change
     padding: 16px;
     gap: 2px;
 
@@ -22,11 +22,11 @@ export const ControlPanel = styled.div`
 export const ControlPanelTitle = styled.div`
     font-size: 14px;
     font-weight: 700;
-    color: ${REDESIGN_COLORS.DARK_GREY};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 export const ControlPanelSubtext = styled.div`
-    color: ${REDESIGN_COLORS.TEXT_GREY};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     font-size: 10px;
     font-weight: 500;
     margin-bottom: 8px;

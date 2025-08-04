@@ -36,28 +36,28 @@ export const FilterLabel = styled(Button)<{ $isActive: boolean }>`
     padding: 8px;
     height: 36px;
     border-radius: 8px;
-    background-color: white;
-    color: #6b7280;
+    background-color: ${(props) => props.theme.styles['component-background']};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     font-size: 14px;
     font-weight: 500;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: ${(props) => props.theme.styles['box-shadow']};
     cursor: pointer;
     transition: all 0.2s ease;
     gap: 8px;
     margin: 0 4px;
-    border: 1px solid #ebecf0;
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']};
 
     &:hover,
     &:focus {
         color: inherit;
-        border-color: #ebecf0;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        border-color: ${(props) => props.theme.styles['border-color-base']};
+        box-shadow: ${(props) => props.theme.styles['box-shadow-hover']};
     }
 
     ${(props) =>
         props.$isActive &&
         `
-    color: #374066;
+    color: ${props.theme.styles['text-color']};
     font-weight: 600;
   `}
 `;

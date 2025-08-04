@@ -40,16 +40,16 @@ const ExpirationDurationSelect = styled(Select)`
 `;
 
 const OptionText = styled.span<{ isRed: boolean }>`
-    ${(props) => props.isRed && `color: ${red[5]}`}
+    ${(props) => props.isRed && `color: ${(props) => props.theme.styles['red-error']}`};
 `;
 
-export default function CreateTokenModal({
+const CreateTokenModal: React.FC<Props> = ({
     currentUserUrn,
     forRemoteExecutor,
     visible,
     onClose,
     onCreateToken,
-}: Props) {
+}) => {
     const [selectedTokenDuration, setSelectedTokenDuration] = useState<AccessTokenDuration | null>(null);
 
     const [showModal, setShowModal] = useState(false);
@@ -59,28 +59,24 @@ export default function CreateTokenModal({
 
     const [form] = Form.useForm<FormProps>();
 
-    // For remote executors they default to never
     useEffect(() => {
         if (forRemoteExecutor) {
             form.setFieldValue('duration', AccessTokenDuration.NoExpiry);
         }
     }, [forRemoteExecutor, form]);
 
-    // Check and show the modal once the data for createAccessToken will generate
     useEffect(() => {
         if (data && data.createAccessToken?.accessToken) {
             setShowModal(true);
         }
     }, [data, setShowModal]);
 
-    // Function to handle the close or cross button of Access Token Modal
     const onDetailModalClose = () => {
         setSelectedTokenDuration(null);
         setShowModal(false);
         onClose();
     };
 
-    // Function to handle the close or cross button of Create Token Modal
     const onModalClose = () => {
         form.resetFields();
         onClose();
@@ -116,15 +112,34 @@ export default function CreateTokenModal({
         onModalClose();
     };
 
-    const accessToken = data && data.createAccessToken?.accessToken;
-    const selectedExpiresInText = selectedTokenDuration && getTokenExpireDate(selectedTokenDuration);
-
-    // Handle the Enter press
     useEnterKeyListener({
         querySelectorToExecuteClick: '#createTokenButton',
     });
 
     const hasSelectedNoExpiration = selectedTokenDuration === AccessTokenDuration.NoExpiry;
+
+    const accessToken = data && data.createAccessToken?.accessToken;
+    const selectedExpiresInText = selectedTokenDuration && getTokenExpireDate(selectedTokenDuration);
+
+    const buttons: ModalButton[] = [
+        {
+            text: 'Cancel',
+            color: 'violet',
+            variant: 'text',
+            onClick: onModalClose,
+            buttonDataTestId: 'create-tag-modal-cancel-button',
+        },
+        {
+            text: 'Create',
+            id: 'createNewTagButton',
+            color: 'violet',
+            variant: 'filled',
+            onClick: onCreateNewToken,
+            disabled: !tagName || isLoading,
+            isLoading,
+            buttonDataTestId: 'create-tag-modal-create-button',
+        },
+    ];
 
     return (
         <>
@@ -204,7 +219,7 @@ export default function CreateTokenModal({
                             {({ getFieldValue }) => (
                                 <Typography.Text
                                     type="secondary"
-                                    style={hasSelectedNoExpiration ? { color: `${red[5]}` } : {}}
+                                    style={hasSelectedNoExpiration ? { color: `${(props) => props.theme.styles['red-error']}` } : {}}
                                 >
                                     {getFieldValue('duration') && getTokenExpireDate(getFieldValue('duration'))}
                                 </Typography.Text>
@@ -221,4 +236,6 @@ export default function CreateTokenModal({
             />
         </>
     );
-}
+};
+
+export default CreateTokenModal;

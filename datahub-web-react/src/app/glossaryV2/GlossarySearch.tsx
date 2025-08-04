@@ -1,12 +1,12 @@
-import { LoadingOutlined } from '@ant-design/icons';
+import { LoadingOutlined, SearchOutlined } from '@ant-design/icons';
 import { SearchBar } from '@components';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDebounce } from 'react-use';
 import styled from 'styled-components/macro';
 
-import { IconStyleType } from '@app/entityV2/Entity';
-import { ANTD_GRAY, REDESIGN_COLORS } from '@app/entityV2/shared/constants';
+import DomainSearchResultItem from '@app/domainV2/DomainSearchResultItem';
+import { REDESIGN_COLORS } from '@app/entityV2/shared/constants';
 import ClickOutside from '@app/shared/ClickOutside';
 import { useEntityRegistry } from '@app/useEntityRegistry';
 
@@ -15,16 +15,13 @@ import { EntityType } from '@types';
 
 const GlossarySearchWrapper = styled.div`
     position: relative;
-    border-bottom: 1px solid ${REDESIGN_COLORS.BORDER_3};
+    border-bottom: 1px solid ${(props) => props.theme.styles['border-color-base']};
 `;
 
 const ResultsWrapper = styled.div`
-    background-color: white;
+    background-color: ${(props) => props.theme.styles['component-background']};
     border-radius: 5px;
-    box-shadow:
-        0 3px 6px -4px rgb(0 0 0 / 12%),
-        0 6px 16px 0 rgb(0 0 0 / 8%),
-        0 9px 28px 8px rgb(0 0 0 / 5%);
+    box-shadow: ${(props) => props.theme.styles['box-shadow-navbar-redesign']};
     padding: 8px;
     position: absolute;
     max-height: 210px;
@@ -33,6 +30,7 @@ const ResultsWrapper = styled.div`
     left: 12px;
     top: 45px;
     z-index: 1;
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']};
 `;
 
 const LoadingWrapper = styled.div`
@@ -40,18 +38,19 @@ const LoadingWrapper = styled.div`
     justify-content: center;
     padding: 4px 0;
     font-size: 16px;
+    color: ${(props) => props.theme.styles['text-color']};
 `;
 
 const SearchResult = styled(Link)`
-    color: ${ANTD_GRAY[11]};
+    color: ${(props) => props.theme.styles['text-color']};
     display: inline-block;
     height: 100%;
     padding: 6px 8px;
     width: 100%;
 
     &:hover {
-        background-color: ${ANTD_GRAY[3]};
-        color: ${ANTD_GRAY[11]};
+        background-color: ${(props) => props.theme.styles['highlight-color']};
+        color: ${(props) => props.theme.styles['text-color']};
     }
 `;
 
@@ -92,13 +91,14 @@ function GlossarySearch() {
                         value={searchInput}
                         onChange={setSearchInput}
                         onFocus={() => setIsSearchBarFocused(true)}
+                        style={{ backgroundColor: (props) => props.theme.styles['component-background'], color: (props) => props.theme.styles['text-color']}}
                     />
                 </InputWrapper>
                 {isSearchBarFocused && (loading || !!searchResults?.length) && (
                     <ResultsWrapper>
                         {loading && (
                             <LoadingWrapper>
-                                <LoadingOutlined />
+                                <LoadingOutlined style={{ color: (props) => props.theme.styles['text-color'] }} />
                             </LoadingWrapper>
                         )}
                         {!loading &&

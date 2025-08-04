@@ -10,7 +10,7 @@ import { Icon } from '@src/alchemy-components';
 import { CorpUser, Entity } from '@types';
 
 const EntityItem = styled.div`
-    border-bottom: 1px solid ${ANTD_GRAY[4]};
+    border-bottom: 1px solid ${(props) => props.theme.styles['border-color-base']}; // Change
     display: flex;
     align-items: center;
     padding: 12px 0;
@@ -30,6 +30,7 @@ const NameAndLogoWrapper = styled.span`
 const EntityName = styled(Text)`
     font-size: 14px;
     font-weight: bold;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 const AvatarWrapper = styled.div`
@@ -56,7 +57,7 @@ export default function EntityEdge({ entity, removeEntity, createdOn, createdAct
     return (
         <EntityItem data-testid="lineage-entity-item">
             <NameAndLogoWrapper>
-                {platformLogoUrl && <PlatformLogo src={platformLogoUrl} alt="platform logo" />}{' '}
+                {platformLogoUrl && <PlatformLogo src={platformLogoUrl} alt="platform logo" />}
                 <EntityName ellipsis={{ tooltip: entityRegistry.getDisplayName(entity.type, entity) }}>
                     {entityRegistry.getDisplayName(entity.type, entity)}
                 </EntityName>
@@ -67,7 +68,14 @@ export default function EntityEdge({ entity, removeEntity, createdOn, createdAct
                         <UserAvatar createdActor={createdActor} createdOn={createdOn} />
                     </div>
                 )}
-                <Icon icon="X" source="phosphor" onClick={() => removeEntity(entity)} />
+                <Icon
+                    icon="X"
+                    source="phosphor"
+                    onClick={() => removeEntity(entity)}
+                    style={{
+                        color: `rgba(255, 255, 255, 0.45)`,
+                    }} // Change
+                />
             </AvatarWrapper>
         </EntityItem>
     );

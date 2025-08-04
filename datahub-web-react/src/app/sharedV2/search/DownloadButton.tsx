@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledButton = styled(Button)`
-    border: 1px solid ${colors.gray[100]};
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']};
 `;
 
 type Props = {

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const StyledIcon = styled(Icon)`
     flex-shrink: 0;
     margin: 0 2px;
-    color: ${colors.gray[200]};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 export default function ContextPathSeparator() {

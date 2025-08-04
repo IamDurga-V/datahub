@@ -83,7 +83,7 @@ const EntityCountsContainer = styled(FlexContainer)`
 
 const VerticalDivider = styled.div`
     width: 2px;
-    background-color: ${colors.gray[1400]};
+    background-color: ${(props) => props.theme.styles['component-background']};
     height: 80px;
     align-self: center;
 `;

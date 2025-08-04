@@ -6,11 +6,9 @@ import styled from 'styled-components';
 import { pluralize } from '@app/shared/textUtil';
 import { COLORS } from '@app/sharedV2/colors';
 
-import { Post } from '@types';
-
 const IconWrapper = styled.div<{ count: number }>`
     display: flex;
-    color: ${COLORS.blue_6};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     font-size: 20px;
     line-height: 1;
 `;

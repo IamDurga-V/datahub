@@ -33,18 +33,18 @@ const Contents = styled.div<{ $disabled?: boolean }>`
     gap: 4px;
     align-items: center;
     line-height: 22px;
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 
     && svg {
-        color: ${colors.gray[1700]};
+        color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     }
 
     :hover {
-        color: ${({ $disabled }) => ($disabled ? colors.gray[1700] : colors.violet[500])};
+        color: ${({ $disabled, theme }) => ($disabled ? theme.styles['text-color-secondary'] : theme.styles['link-color'])}; // Change
         cursor: ${({ $disabled }) => ($disabled ? 'default' : 'pointer')};
 
         && svg {
-            color: ${({ $disabled }) => ($disabled ? colors.gray[1700] : colors.violet[500])};
+            color: ${({ $disabled, theme }) => ($disabled ? theme.styles['text-color-secondary'] : theme.styles['link-color'])}; // Change
         }
     }
 `;

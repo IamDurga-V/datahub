@@ -29,9 +29,12 @@ const SearchInput = styled(Input)`
 
 const LoadingWrapper = styled.div`
     min-width: 20px;
+    color: ${(props) => props.theme.styles['text-color']};
 `;
 
-const SearchMatchesText = styled(Text)``;
+const SearchMatchesText = styled(Text)`
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
+`;
 
 interface Props {
     data: LineageFilter;

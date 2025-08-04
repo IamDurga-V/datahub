@@ -2,6 +2,8 @@ import { NetworkStatus } from '@apollo/client';
 import { Table } from '@components';
 import { message } from 'antd';
 import React, { useCallback, useMemo, useState } from 'react';
+import styled from 'styled-components';
+import { Modal } from 'antd';
 
 import {
     ApplicationActionsColumn,
@@ -17,6 +19,41 @@ import { EntityType } from '@src/types.generated';
 
 import { useDeleteApplicationMutation } from '@graphql/application.generated';
 
+const StyledTable = styled(Table)`
+    // CHANGE: Table styling for dark mode
+    .ant-table-container {
+        border: 1px solid ${(props) => props.theme.styles['border-color-base']} !important;
+        background-color: ${(props) => props.theme.styles['component-background']} !important;
+        color: ${(props) => props.theme.styles['text-color']} !important;
+        border-radius: 8px !important;
+    }
+    .ant-table-thead > tr > th {
+        background-color: ${(props) => props.theme.styles['component-background']} !important;
+        border-color: ${(props) => props.theme.styles['border-color-base']} !important;
+        color: ${(props) => props.theme.styles['text-color']} !important;
+    }
+    .ant-table-tbody > tr > td {
+        background-color: ${(props) => props.theme.styles['component-background']} !important;
+        border-color: ${(props) => props.theme.styles['border-color-base']} !important;
+        color: ${(props) => props.theme.styles['text-color']} !important;
+    }
+    .ant-table-cell-fix-right {
+        background-color: ${(props) => props.theme.styles['component-background']} !important;
+    }
+`;
+
+const StyledModal = styled(Modal)`
+    // CHANGE: Modal styling for dark mode
+    &&& .ant-modal-content {
+        background-color: ${(props) => props.theme.styles['component-background']} !important;
+        color: ${(props) => props.theme.styles['text-color']} !important;
+    }
+    &&& .ant-modal-header {
+        background-color: ${(props) => props.theme.styles['component-background']} !important;
+        border-color: ${(props) => props.theme.styles['border-color-base']} !important;
+    }
+`;
+
 interface Props {
     searchQuery: string;
     searchData: GetSearchResultsForMultipleQuery | undefined;
@@ -29,17 +66,14 @@ const ApplicationsTable = ({ searchQuery, searchData, loading: propLoading, netw
     const entityRegistry = useEntityRegistry();
     const [deleteApplicationMutation] = useDeleteApplicationMutation();
 
-    // Optimize the applicationsData with useMemo to prevent unnecessary filtering on re-renders
     const applicationsData = useMemo(() => {
         return searchData?.searchAcrossEntities?.searchResults || [];
     }, [searchData]);
 
-    // Simplified state for delete confirmation modal
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [applicationUrnToDelete, setApplicationUrnToDelete] = useState('');
     const [applicationDisplayName, setApplicationDisplayName] = useState('');
 
-    // Filter applications based on search query and sort by name - optimized with useMemo
     const filteredApplications = useMemo(() => {
         return applicationsData
             .filter((result) => {
@@ -57,10 +91,8 @@ const ApplicationsTable = ({ searchQuery, searchData, loading: propLoading, netw
 
     const isLoading = propLoading || networkStatus === NetworkStatus.refetch;
 
-    // Simplified function to initiate tag deletion
     const showDeleteConfirmation = useCallback(
         (applicationUrn: string) => {
-            // Find the application entity from applicationsData
             const applicationData = applicationsData.find((result) => result.entity.urn === applicationUrn);
             if (!applicationData) {
                 message.error('Failed to find application information');
@@ -76,7 +108,6 @@ const ApplicationsTable = ({ searchQuery, searchData, loading: propLoading, netw
         [entityRegistry, applicationsData],
     );
 
-    // Function to handle the actual application deletion
     const handleDeleteApplication = useCallback(() => {
         deleteApplicationMutation({
             variables: {
@@ -85,7 +116,7 @@ const ApplicationsTable = ({ searchQuery, searchData, loading: propLoading, netw
         })
             .then(() => {
                 message.success(`Application "${applicationDisplayName}" has been deleted`);
-                refetch(); // Refresh the application list
+                refetch();
             })
             .catch((e: any) => {
                 message.error(`Failed to delete application: ${e.message}`);
@@ -164,7 +195,6 @@ const ApplicationsTable = ({ searchQuery, searchData, loading: propLoading, netw
         [entityRegistry, searchQuery, showDeleteConfirmation],
     );
 
-    // Generate table data once with memoization
     const tableData = useMemo(() => {
         return filteredApplications.map((application) => ({
             ...application,
@@ -174,7 +204,7 @@ const ApplicationsTable = ({ searchQuery, searchData, loading: propLoading, netw
 
     return (
         <>
-            <Table columns={columns} data={tableData} isLoading={isLoading} isScrollable rowKey="key" />
+            <StyledTable columns={columns} data={tableData} isLoading={isLoading} isScrollable rowKey="key" />
             <ConfirmationModal
                 isOpen={showDeleteModal}
                 handleClose={handleDeleteClose}
@@ -187,5 +217,4 @@ const ApplicationsTable = ({ searchQuery, searchData, loading: propLoading, netw
         </>
     );
 };
-
 export default ApplicationsTable;

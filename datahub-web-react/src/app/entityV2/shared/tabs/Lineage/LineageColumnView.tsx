@@ -62,8 +62,7 @@ const StyledCaretDown = styled(CaretDownFilled)`
 
 const StyledSelect = styled(Select)`
     &:hover {
-        background-color: ${ANTD_GRAY[2]};
-    }
+        background-color: ${(props) => props.theme.styles['component-background']}; // Change
 `;
 
 const RefreshCacheButton = styled(Button)`

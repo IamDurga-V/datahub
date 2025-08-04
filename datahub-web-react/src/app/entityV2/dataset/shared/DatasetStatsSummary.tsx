@@ -11,13 +11,13 @@ import { formatNumber, formatNumberWithoutAbbreviation } from '@app/shared/forma
 import { countFormatter, needsFormatting } from '@utils/formatter';
 
 const StatText = styled.span<{ color: string }>`
-    color: ${(props) => props.color};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     @media (min-width: 1160px) {
         white-space: nowrap;
     }
     font-size: 12px;
     font-family: 'Mulish', sans-serif;
-    color: #8894a9;
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 type Props = {

@@ -3,6 +3,8 @@ import { Button, Empty, Typography } from 'antd';
 import React from 'react';
 import styled from 'styled-components/macro';
 
+import { ANTD_GRAY } from '@app/entity/shared/constants';
+
 const StyledEmpty = styled(Empty)`
     padding: 80px 40px;
     .ant-empty-footer {
@@ -14,6 +16,11 @@ const StyledEmpty = styled(Empty)`
 
 const StyledButton = styled(Button)`
     margin-right: 8px;
+`;
+
+const IconContainer = styled.span`
+    color: ${(props) => props.theme.styles['text-color']};
+    font-size: 40px;
 `;
 
 interface Props {
@@ -31,12 +38,25 @@ function EmptyGlossarySection(props: Props) {
             <StyledEmpty
                 description={
                     <>
-                        <Typography.Title level={4}>{title}</Typography.Title>
-                        <Typography.Paragraph type="secondary">{description}</Typography.Paragraph>
+                        <IconContainer>
+                            <span style={{ color: (props) => props.theme.styles['text-color'] }}>
+                                {props.icon}
+                            </span>
+                        </IconContainer>
+                        <Typography.Title level={4}>
+                            <span style={{ color: (props) => props.theme.styles['text-color'] }}>
+                                {title}
+                            </span>
+                        </Typography.Title>
+                        <Typography.Paragraph type="secondary">
+                            <span style={{ color: (props) => props.theme.styles['text-color-secondary'] }}>
+                                {description}
+                            </span>
+                        </Typography.Paragraph>
                     </>
                 }
+                image={Empty.PRESENTED_IMAGE_SIMPLE}
             >
-                {/* not disabled on acryl-main due to ability to propose */}
                 <StyledButton data-testid="add-term-button" onClick={onAddTerm}>
                     <PlusOutlined /> Add Term
                 </StyledButton>

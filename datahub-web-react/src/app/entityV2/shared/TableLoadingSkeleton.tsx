@@ -12,10 +12,13 @@ const Header = styled.div`
     padding-right: 40px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid ${ANTD_GRAY[4.5]};
+    border-bottom: 1px solid ${(props) => props.theme.styles['border-color-base']}; // Change
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
 `;
 
-const Body = styled.div``;
+const Body = styled.div`
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
+`;
 
 const HeaderSkeleton = styled(Skeleton.Input)`
     && {
@@ -23,6 +26,7 @@ const HeaderSkeleton = styled(Skeleton.Input)`
         height: 60px;
         border-radius: 8px;
         width: 540px;
+        background-color: ${(props) => props.theme.styles['background-color-light']}; // Change
     }
 `;
 
@@ -36,6 +40,7 @@ const CardSkeleton = styled(Skeleton.Input)`
         height: 60px;
         border-radius: 8px;
         width: 100%;
+        background-color: ${(props) => props.theme.styles['background-color-light']}; // Change
     }
 `;
 

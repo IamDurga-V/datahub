@@ -1,6 +1,7 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, Modal, message } from 'antd';
 import React from 'react';
+import styled from 'styled-components';
 
 import { MenuIcon } from '@app/entity/shared/EntityDropdown/EntityDropdown';
 import handleGraphQLError from '@app/shared/handleGraphQLError';
@@ -56,7 +57,7 @@ export default function PostItemMenu({ title, urn, onDelete, onEdit }: Props) {
         <Dropdown
             trigger={['click']}
             overlay={
-                <Menu>
+                <Menu >
                     <Menu.Item onClick={onConfirmDelete} key="delete">
                         <DeleteOutlined /> &nbsp;Delete
                     </Menu.Item>

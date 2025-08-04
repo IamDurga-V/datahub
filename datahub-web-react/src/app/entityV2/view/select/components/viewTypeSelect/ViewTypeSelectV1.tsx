@@ -10,14 +10,17 @@ import { useShowNavBarRedesign } from '@app/useShowNavBarRedesign';
 
 const GridViewIconStyle = styled(GridViewIcon)<{ $isShowNavBarRedesign?: boolean }>`
     font-size: ${(props) => (props.$isShowNavBarRedesign ? '14px' : '13px')} !important;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 const LockOutlinedIconStyle = styled(LockOutlinedIcon)<{ $isShowNavBarRedesign?: boolean }>`
     font-size: ${(props) => (props.$isShowNavBarRedesign ? '14px' : '13px')} !important;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 const PublicIconStyle = styled(PublicIcon)<{ $isShowNavBarRedesign?: boolean }>`
     font-size: ${(props) => (props.$isShowNavBarRedesign ? '14px' : '13px')} !important;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 const Wrapper = styled.div<{ $isShowNavBarRedesign?: boolean }>`
@@ -26,10 +29,10 @@ const Wrapper = styled.div<{ $isShowNavBarRedesign?: boolean }>`
         gap: 1rem;
         align-items: center;
         .select-view-icon {
-            color: ${(props) => (props.$isShowNavBarRedesign ? colors.gray[1800] : REDESIGN_COLORS.BLACK)};
+            color: ${(props) => (props.$isShowNavBarRedesign ? props.theme.styles['text-color'] : props.theme.styles['text-color'])}; // Change
             display: flex;
             gap: 0.5rem;
-            background: ${(props) => (props.$isShowNavBarRedesign ? colors.white : ANTD_GRAY[1])};
+            background: ${(props) => (props.$isShowNavBarRedesign ? props.theme.styles['component-background'] : props.theme.styles['component-background'])}; // Change
             border-radius: 30px;
             padding: ${(props) => (props.$isShowNavBarRedesign ? '4px' : '2px')};
             > div {
@@ -40,13 +43,14 @@ const Wrapper = styled.div<{ $isShowNavBarRedesign?: boolean }>`
                 cursor: pointer;
                 &.active {
                     background: ${(props) => props.theme.styles['primary-color']};
-                    color: ${ANTD_GRAY[1]};
+                    color: ${(props) => props.theme.styles['layout-header-color']}; // Change
                 }
             }
         }
         .select-view-label {
             font-size: 14px;
             font-weight: 700;
+            color: ${(props) => props.theme.styles['text-color']}; // Change
         }
     }
 `;

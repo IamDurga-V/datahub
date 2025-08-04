@@ -15,13 +15,14 @@ type Props = {
     highlightedText?: string;
 };
 
-const computeColor = (enabled?: boolean, active?: boolean) => {
-    let color = '#b0a2c2';
+// Change `computeColor` to use theme properties
+const computeColor = (enabled?: boolean, active?: boolean, theme?: any) => {
+    let color = theme.styles['disabled-color']; // Line 14: Replaced '#b0a2c2'
     if (enabled) {
         if (active) {
-            color = 'white';
+            color = theme.styles['text-color']; // Line 17: Replaced 'white'
         } else {
-            color = '#81879F';
+            color = theme.styles['text-color-secondary']; // Line 19: Replaced '#81879F'
         }
     }
     return color;
@@ -31,7 +32,7 @@ export const PillContainer = styled.div<{ enabled?: boolean; active?: boolean; i
     height: 24px;
     padding-left: 8px;
     padding-right: ${({ isHighlightedTextPresent }) => (isHighlightedTextPresent ? '0px' : '8px')};
-    background-color: ${({ active, theme }) => (active ? `${theme.styles['primary-color']}` : '#f7f7f7')};
+    background-color: ${({ active, theme }) => (active ? `${theme.styles['primary-color']}` : `${theme.styles['component-background']}`)}; // Line 29: Replaced '#f7f7f7'
     cursor: pointer;
     border-radius: 20px;
     text-align: center;
@@ -40,23 +41,23 @@ export const PillContainer = styled.div<{ enabled?: boolean; active?: boolean; i
     justify-content: center;
     align-items: center;
     gap: 6px;
-    color: ${(props) => computeColor(props.enabled, props.active)};
+    color: ${(props) => computeColor(props.enabled, props.active, props.theme)}; // Line 36: Added 'props.theme' argument
     font-size: 10px;
     font-weight: 400;
 
     & svg {
         font-size: 12px;
-        color: ${(props) => computeColor(props.enabled, props.active)};
-        fill: ${(props) => computeColor(props.enabled, props.active)};
+        color: ${(props) => computeColor(props.enabled, props.active, props.theme)}; // Line 41: Added 'props.theme' argument
+        fill: ${(props) => computeColor(props.enabled, props.active, props.theme)}; // Line 42: Added 'props.theme' argument
     }
 
     :hover {
-        color: ${({ enabled }) => (enabled ? 'white' : '#b0a2c2')};
-        background-color: ${({ enabled, theme }) => (enabled ? `${theme.styles['primary-color']}` : '#f7f7f7')};
+        color: ${({ enabled, theme }) => (enabled ? `${theme.styles['text-color']}` : `${theme.styles['disabled-color']}`)}; // Line 46: Replaced 'white' and '#b0a2c2'
+        background-color: ${({ enabled, theme }) => (enabled ? `${theme.styles['primary-color']}` : `${theme.styles['component-background']}`)}; // Line 47: Replaced '#f7f7f7'
 
         svg {
-            color: ${({ enabled }) => (enabled ? 'white' : '#b0a2c2')};
-            fill: ${({ enabled }) => (enabled ? 'white' : '#b0a2c2')};
+            color: ${({ enabled, theme }) => (enabled ? `${theme.styles['text-color']}` : `${theme.styles['disabled-color']}`)}; // Line 50: Replaced 'white' and '#b0a2c2'
+            fill: ${({ enabled, theme }) => (enabled ? `${theme.styles['text-color']}` : `${theme.styles['disabled-color']}`)}; // Line 51: Replaced 'white' and '#b0a2c2'
         }
 
         >div: last-child {
@@ -73,7 +74,7 @@ const Container = styled.div`
 `;
 
 const CountContainer = styled.div<{ active?: boolean }>`
-    background-color: ${({ active }) => (active ? 'rgba(255, 255, 255, 0.2)' : '#eee')};
+    background-color: ${({ active, theme }) => (active ? 'rgba(255, 255, 255, 0.2)' : `${theme.styles['background-color-light']}`)}; // Line 68: Replaced '#eee'
     border-radius: 20px;
     height: 24px;
     min-width: 35px;

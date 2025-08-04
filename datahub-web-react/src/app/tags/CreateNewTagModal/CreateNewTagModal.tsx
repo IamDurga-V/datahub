@@ -11,6 +11,7 @@ import TagDetailsSection from '@app/tags/CreateNewTagModal/TagDetailsSection';
 import { useBatchAddOwnersMutation, useSetTagColorMutation } from '@graphql/mutations.generated';
 import { useCreateTagMutation } from '@graphql/tag.generated';
 
+
 type CreateNewTagModalProps = {
     open: boolean;
     onClose: () => void;

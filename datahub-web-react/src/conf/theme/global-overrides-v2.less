@@ -1,5 +1,7 @@
 .ant-message-notice-content {
     padding: 0;
+    background: #232339; /* fallback if no child class sets bg */
+    color: #fafbff;
 }
 
 .ant-message-custom-content {
@@ -10,46 +12,53 @@
     border-radius: 6px;
 }
 
+/* Success message */
 .ant-message-notice-content .ant-message-success {
-    background-color: #d5e9c9;
-    border-left: 5px solid #6ca749;
-    color: #548239;
-
-    .anticon {
-        color: #548239;
-    }
+    background-color: #283c1c;
+    border-left: 5px solid #8fcc5b;
+    color: #b0ea88;
 }
 
+.ant-message-notice-content .ant-message-success .anticon {
+    color: #b0ea88;
+}
+
+/* Error message */
 .ant-message-notice-content .ant-message-error {
-    background-color: #f6d5d5;
+    background-color: #3a2323;
     border-left: 5px solid #e37878;
-    color: #e37878;
-
-    .anticon {
-        color: #e37878;
-    }
+    color: #fa9898;
 }
 
+.ant-message-notice-content .ant-message-error .anticon {
+    color: #fa9898;
+}
+
+/* Warning message */
 .ant-message-notice-content .ant-message-warning {
-    background-color: #fcedc7;
-    border-left: 5px solid #eeae09;
-    color: #eeae09;
-
-    .anticon {
-        color: #eeae09;
-    }
+    background-color: #3a321c;
+    border-left: 5px solid #ffd058;
+    color: #ffd058;
 }
 
+.ant-message-notice-content .ant-message-warning .anticon {
+    color: #ffd058;
+}
+
+/* Info message */
 .ant-message-notice-content .ant-message-info {
-    background-color: #d7eff8;
-    border-left: 5px solid #5abde1;
-    color: #5abde1;
-
-    .anticon {
-        color: #5abde1;
-    }
+    background-color: #1b313d;
+    border-left: 5px solid #55c2e8;
+    color: #b1eaff;
 }
 
+.ant-message-notice-content .ant-message-info .anticon {
+    color: #b1eaff;
+}
+
+/* Tooltip section */
 .sectioned-tooltip .ant-popover-inner-content {
     padding: 0;
+    background-color: #232339;
+    color: #fafbff;
 }

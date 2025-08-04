@@ -36,12 +36,12 @@ const NodeWrapper = styled.div<{
     isSearchedEntity: boolean;
 }>`
     align-items: center;
-    background-color: white;
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
     border: 1px solid
-        ${({ color, selected, isGhost }) => {
+        ${({ color, selected, isGhost, theme }) => { // Change
             if (selected) return color;
-            if (isGhost) return `${LINEAGE_COLORS.NODE_BORDER}50`;
-            return LINEAGE_COLORS.NODE_BORDER;
+            if (isGhost) return `${theme.styles['border-color-base']}50`; // Change
+            return theme.styles['border-color-base']; // Change
         }};
     box-shadow: ${({ isSearchedEntity, theme }) =>
         isSearchedEntity ? `0 0 4px 4px ${theme.styles['primary-color']}95` : 'none'};
@@ -102,7 +102,7 @@ const CustomHandle = styled(Handle)<{ position: Position }>`
 
 const IconsWrapper = styled.div`
     align-items: center;
-    color: ${ANTD_GRAY[10]};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     display: flex;
     flex-direction: column;
     font-size: 24px;
@@ -144,7 +144,7 @@ const ParentLine = styled.span`
     height: min-content;
     gap: 4px;
 
-    color: ${REDESIGN_COLORS.SUBTITLE};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     font-weight: 600;
 `;
 
@@ -156,7 +156,7 @@ const InvalidSchemaFieldLine = styled.span`
 
     font-size: 1.1em;
     font-weight: 700;
-    color: inherit;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 const SchemaFieldLine = styled(Link)`
@@ -168,10 +168,10 @@ const SchemaFieldLine = styled(Link)`
 
     font-size: 1.1em;
     font-weight: 700;
-    color: inherit;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 
     :hover {
-        color: inherit;
+        color: ${(props) => props.theme.styles['link-color']}; // Change
         text-decoration: underline;
     }
 `;

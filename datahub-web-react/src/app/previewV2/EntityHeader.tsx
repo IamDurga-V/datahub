@@ -36,7 +36,7 @@ const EntityTitle = styled.div<{ $titleSizePx?: number }>`
         vertical-align: middle;
 
         :hover {
-            color: ${(p) => getColor('primary', 700, p.theme)};
+            color: ${(p) => p.theme.styles['link-color']}; // Change
         }
     }
 
@@ -44,7 +44,7 @@ const EntityTitle = styled.div<{ $titleSizePx?: number }>`
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 13px;
-    color: ${(p) => p.theme.styles['primary-color']};
+    color: ${(p) => p.theme.styles['text-color']}; // Change
     height: 100%;
 `;
 
@@ -57,12 +57,12 @@ const CardEntityTitle = styled(EntityTitle)<{ $previewType?: Maybe<PreviewType> 
 
 const DegreeText = styled.div`
     border-radius: 18px;
-    background: ${REDESIGN_COLORS.COLD_GREY_TEXT_BLUE_1};
+    background: ${(props) => props.theme.styles['background-color-light']}; // Change
     padding: 3px 5px;
     font-size: 12px;
     font-weight: 700;
     width: fit-content;
-    color: ${REDESIGN_COLORS.SUB_TEXT};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 interface EntityHeaderProps {

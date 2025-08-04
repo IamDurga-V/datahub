@@ -10,7 +10,7 @@ import { pluralize } from '@app/shared/textUtil';
 import { SearchResultFields_Domain_Fragment } from '@graphql/search.generated';
 
 const Wrapper = styled.div`
-    color: ${ANTD_GRAY_V2[8]};
+    color: ${(props) => props.theme.styles['text-color']}; 
     font-size: 12px;
     display: flex;
     align-items: center;

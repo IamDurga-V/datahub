@@ -14,9 +14,7 @@ interface GlossaryItemCardHeaderProps {
     color: string;
 }
 
-// there may be a good constant for this but I couldn't find one --Gabe
-// feel free to replace this color at a later date
-const DISABLED_TEXT_COLOR = '#c5c6c9';
+const DISABLED_TEXT_COLOR = (props) => props.theme.styles['text-color-secondary'];
 
 const GlossaryItemCardHeader = styled.div<GlossaryItemCardHeaderProps>`
     display: flex;
@@ -32,7 +30,7 @@ const GlossaryItemCardHeader = styled.div<GlossaryItemCardHeaderProps>`
         height: 22px;
         width: 22px;
         path {
-            fill: white;
+            fill: ${(props) => props.theme.styles['text-color']};
         }
     }
 `;
@@ -43,7 +41,7 @@ const GlossaryItemCardWrapper = styled.div`
 
     &:hover {
         transition: 0.15s;
-        background-color: ${colors.gray[100]};
+        background-color: ${(props) => props.theme.styles['highlight-color']};
     }
 `;
 
@@ -51,8 +49,8 @@ const GlossaryItemCard = styled.div`
     display: flex;
     flex-direction: column;
     border-radius: 13px;
-    border: 1px solid ${REDESIGN_COLORS.LIGHT_GREY_BORDER};
-    background: ${ANTD_GRAY[1]};
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']};
+    background: ${(props) => props.theme.styles['component-background']};
     transition: 0.15s;
     height: 100%;
     width: 100%;
@@ -73,20 +71,20 @@ const GlossaryItemCount = styled.span<{ count: number }>`
     align-items: center;
     gap: 5px;
     border-radius: 20px;
-    background: ${(props) => (props.count > 0 ? ANTD_GRAY_V2[14] : ANTD_GRAY_V2[14])};
-    color: ${(props) => (props.count > 0 ? REDESIGN_COLORS.SUB_TEXT : DISABLED_TEXT_COLOR)};
+    background: ${(props) => (props.count > 0 ? props.theme.styles['background-color-light'] : props.theme.styles['background-color-light'])};
+    color: ${(props) => (props.count > 0 ? props.theme.styles['text-color-secondary'] : DISABLED_TEXT_COLOR)};
     padding: 5px 10px;
     width: max-content;
     svg {
         height: 14px;
         width: 14px;
         path {
-            fill: ${(props) => (props.count > 0 ? REDESIGN_COLORS.SUB_TEXT : DISABLED_TEXT_COLOR)};
+            fill: ${(props) => (props.count > 0 ? props.theme.styles['text-color-secondary'] : DISABLED_TEXT_COLOR)};
         }
     }
     border: 1px solid transparent;
     :hover {
-        border: 1px solid ${(props) => (props.count > 0 ? ANTD_GRAY_V2[13] : 'transparent')};
+        border: 1px solid ${(props) => (props.count > 0 ? props.theme.styles['border-color-base'] : 'transparent')};
     }
 `;
 
@@ -98,7 +96,7 @@ const GlossaryItemBadge = styled.span`
     transform: rotate(-45deg);
     padding: 8px;
     opacity: 1;
-    background-color: rgba(0, 0, 0, 0.17);
+    background-color: ${(props) => props.theme.styles['box-shadow']};
 `;
 
 const GlossaryItemCardDetails = styled.div`
@@ -109,7 +107,7 @@ const GlossaryItemCardDetails = styled.div`
 `;
 
 const GlossaryCardHeader = styled(Typography)`
-    color: #f9fafc;
+    color: ${(props) => props.theme.styles['text-color']};
     font-size: 16px;
     font-weight: 500;
     overflow: hidden;
@@ -118,7 +116,7 @@ const GlossaryCardHeader = styled(Typography)`
 `;
 
 const GlossaryItemCardDescription = styled(Typography)`
-    color: ${REDESIGN_COLORS.SUB_TEXT};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     font-size: 12px;
     font-weight: 400;
     margin-top: 1px;

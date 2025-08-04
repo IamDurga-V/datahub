@@ -27,7 +27,7 @@ import { EntityType } from '@types';
 
 const FolderStyled = styled(FolderOutlined)`
     font-size: 16px;
-    color: #374066;
+    color: ${(props) => props.theme.styles['icon-color']};
     margin-right: 4px;
 `;
 
@@ -37,10 +37,11 @@ const Count = styled(Typography.Text)`
     padding: 2px 8px;
     margin-left: 8px;
     border-radius: 12px;
-    background-color: ${ANTD_GRAY[1]};
+    background-color: ${(props) => props.theme.styles['tag-background-color']};
     display: block;
     flex-grow: 0;
 `;
+
 
 const BrowseNode = () => {
     const isBrowsePathPrefix = useIsBrowsePathPrefix();
@@ -75,7 +76,7 @@ const BrowseNode = () => {
         skip: !isOpen || !browseResultGroup.hasSubGroups,
     });
 
-    const color = '#374066';
+    const color = props.theme.styles['text-color-primary'];
 
     return (
         <ExpandableNode

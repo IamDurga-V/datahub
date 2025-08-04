@@ -17,7 +17,7 @@ const StyledCarousel = styled(Carousel)<{ $isShowNavBarRedesign?: boolean }>`
         .ant-select-item-option-content {
             display: flex;
             gap: 1rem;
-            color: ${ANTD_GRAY[1]};
+            color: ${(props) => props.theme.styles['text-color']}; // Change
             padding: 10px 0px;
         }
         .ant-select-item,

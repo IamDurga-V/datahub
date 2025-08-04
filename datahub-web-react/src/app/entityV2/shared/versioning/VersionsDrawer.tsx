@@ -49,6 +49,7 @@ const COLUMNS = [
 const LinkOutIcon = styled(LinkOut)`
     width: 14px;
     height: 14px;
+    color: ${(props) => props.theme.styles['link-color']}; // Change
 `;
 
 const Contents = styled.div`
@@ -62,18 +63,20 @@ const Title = styled(Text)`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 const CloseIcon = styled.div`
-    color: ${colors.gray[1800]};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     cursor: pointer;
 `;
 
 const MenuIcon = styled(Icon)`
     border-radius: 200px;
-    border: ${colors.gray[100]} 1px solid;
+    border: ${(props) => props.theme.styles['border-color-base']} 1px solid; // Change
     cursor: pointer;
     transition: border 0.3s ease;
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 
     svg {
         padding: 2px; // To match 3 dot icon in EntityDropdown

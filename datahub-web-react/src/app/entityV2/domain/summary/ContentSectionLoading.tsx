@@ -9,7 +9,7 @@ const TypeSkeleton = styled(Skeleton.Input)`
         width: 60px;
         height: 60px;
         border-radius: 8px;
-        background-color: ${ANTD_GRAY[3]};
+        background-color: ${(props) => props.theme.styles['component-background']}; // Change
     }
 `;
 

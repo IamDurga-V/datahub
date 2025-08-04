@@ -24,12 +24,12 @@ import { useGetSearchResultsForMultipleQuery } from '@graphql/search.generated';
 import { DataProduct, EntityType } from '@types';
 
 const ViewAllButton = styled.div`
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     padding: 2px;
 
     :hover {
         cursor: pointer;
-        color: ${ANTD_GRAY[8]};
+        color: ${(props) => props.theme.styles['text-color']}; // Change
         text-decoration: underline;
     }
 `;

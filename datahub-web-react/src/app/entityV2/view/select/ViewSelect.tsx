@@ -27,14 +27,14 @@ const ViewSelectContainer = styled.div`
             &.ant-select-open {
                 .ant-select-selection-placeholder,
                 .ant-select-selection-item {
-                    color: ${ANTD_GRAY[1]};
+                    color: ${(props) => props.theme.styles['text-color']}; // Change
                 }
             }
 
             &:not(.ant-select-open) {
                 .ant-select-selection-placeholder,
                 .ant-select-selection-item {
-                    color: #fff;
+                    color: ${(props) => props.theme.styles['text-color']}; // Change
                 }
             }
 
@@ -61,16 +61,16 @@ const overlayInnerStyle = {
     width: '100%',
 };
 
-const getOverlayInnerStyle = (isShowNavBarRedesign?: boolean) => {
+const getOverlayInnerStyle = (isShowNavBarRedesign?: boolean, theme?: any) => {
     if (isShowNavBarRedesign)
         return {
             display: 'flex',
             width: '100%',
             opacity: 0.97,
-            backgroundColor: colors.gray[1600],
+            backgroundColor: theme.styles['background-color-light'], // Change
             borderRadius: '0 0 12px 12px',
             paddingTop: '1px',
-            boxShadow: '0px 525px 20px 500px rgba(0, 0, 0, 0.12), 0px 65px 60px 0px rgba(0, 0, 0, 0.12)',
+            boxShadow: `0px 525px 20px 500px ${theme.styles['box-shadow']}, 0px 65px 60px 0px ${theme.styles['box-shadow']}`, // Change
         };
 
     return overlayInnerStyle;
@@ -78,7 +78,7 @@ const getOverlayInnerStyle = (isShowNavBarRedesign?: boolean) => {
 
 const overlayStyle = {
     left: '0px',
-    backgroundColor: REDESIGN_COLORS.BACKGROUND_OVERLAY_BLACK,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Change
     backdropFilter: 'blur(5px)',
     opacity: 0.97,
     zIndex: 13,
@@ -105,6 +105,7 @@ const Blur = styled.div<{ $isOpen?: boolean }>`
     width: 100%;
     height: calc(100vh - 69px);
     z-index: 12;
+    background-color: ${(props) => props.theme.styles['background-color-light']}; // Change
     backdrop-filter: blur(2px);
     ${(props) => !props.$isOpen && 'display: none;'}
 `;

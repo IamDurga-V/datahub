@@ -21,7 +21,7 @@ const GroupName = styled(Typography.Title)`
         margin-bottom: 0;
         word-break: break-all;
         font-size: 12px;
-        color: ${REDESIGN_COLORS.WHITE};
+        color: ${(props) => props.theme.styles['text-color']}; // Change
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;

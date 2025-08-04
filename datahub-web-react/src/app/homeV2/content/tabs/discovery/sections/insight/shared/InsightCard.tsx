@@ -13,14 +13,14 @@ const Card = styled.div<{
     $isShowNavBarRedesign?: boolean;
 }>`
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: ${(props) => props.theme.styles['component-background']};
     padding: 16px;
-    border: ${(props) => (props.$isShowNavBarRedesign ? `1px solid ${colors.gray[100]}` : '2px solid transparent')};
+    border: ${(props) => (props.$isShowNavBarRedesign ? `1px solid ${props.theme.styles['border-color-base']}` : '2px solid transparent')};
     ${(props) => props.$isShowNavBarRedesign && 'border-radius: 8px;'}
     max-width: ${(props) => props.maxWidth}px;
     min-width: ${(props) => props.minWidth}px;
     :hover {
-        ${(props) => props.clickable && `border: 2px solid ${REDESIGN_COLORS.BLUE};`}
+        ${(props) => props.clickable && `border: 2px solid ${props.theme.styles['primary-color-dark']};`}
         ${(props) => props.clickable && 'cursor: pointer;'}
     }
     overflow: hidden;
@@ -28,7 +28,7 @@ const Card = styled.div<{
 
 const Title = styled.div`
     font-size: 16px;
-    color: #403d5c;
+    color: ${(props) => props.theme.styles['text-color']};
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

@@ -20,7 +20,7 @@ const Container = styled.div<{ $isShowNavBarRedesign?: boolean }>`
     display: flex;
     width: 100%;
     padding: ${(props) => (props.$isShowNavBarRedesign ? '0 8px 8px 8px' : '0px 20px 0px 80px')};
-    color: ${ANTD_GRAY[1]};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     gap: ${(props) => (props.$isShowNavBarRedesign ? '4px' : '0.5rem')};
     flex-direction: column;
     position: relative;

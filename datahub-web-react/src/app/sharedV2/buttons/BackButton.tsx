@@ -7,20 +7,22 @@ import styled from 'styled-components';
 const StyledButton = styled(Button)`
     height: 25px;
     width: 25px;
-    color: ${(p) => p.theme.styles['primary-color']};
+    color: ${(p) => p.theme.styles['text-color-secondary']};
     padding: 0px;
     border-radius: 20px;
-    border: 1px solid ${(p) => p.theme.styles['primary-color']};
+    border: 1px solid ${(p) => p.theme.styles['border-color-base']};
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: -4px;
     margin-right: 10px;
     margin-top: 2px;
+    background-color: transparent;
 
     &:hover {
-        color: ${(p) => p.theme.styles['primary-color']};
-        border-color: ${(p) => p.theme.styles['primary-color']};
+        color: ${(p) => p.theme.styles['primary-color-dark']};
+        border-color: ${(p) => p.theme.styles['primary-color-dark']};
+        background-color: ${(p) => p.theme.styles['highlight-color']};
     }
 `;
 

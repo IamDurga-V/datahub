@@ -20,16 +20,26 @@ import { DateInterval } from '@types';
 const HeaderRow = styled(Row)`
     padding-top: 24px;
     padding-bottom: 28px;
-    background-color: white;
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 const SubHeaderText = styled(Typography.Text)`
-    color: gray;
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     font-size: 16px;
 `;
 
 const EmbeddedSelect = styled(Select)`
     padding-left: 8px;
+    background-color: ${(props) => props.theme.styles['component-background']};
+    .ant-select-selector {
+        background-color: ${(props) => props.theme.styles['component-background']} !important;
+        color: ${(props) => props.theme.styles['text-color-secondary']};
+        border-color: ${(props) => props.theme.styles['border-color-base']} !important;
+    }
+    .ant-select-arrow {
+        color: ${(props) => props.theme.styles['text-color-secondary']};
+    }
 `;
 
 /**
@@ -87,7 +97,7 @@ export default function HistoricalStatsView({ urn, toggleView }: Props) {
     const [selectedFieldPath, setSelectedFieldPath] = useState('');
 
     /**
-     *  Change handlers.
+     * Change handlers.
      */
     const onChangeSelectedLookbackWindow = (text) => {
         const newWindowSize = getLookbackWindowSize(text);
@@ -121,7 +131,9 @@ export default function HistoricalStatsView({ urn, toggleView }: Props) {
             <SubHeaderText>Viewing stats for column</SubHeaderText>
             <EmbeddedSelect style={{ width: 200 }} value={selectedFieldPath} onChange={onChangeSelectedFieldPath}>
                 {allFieldPaths.map((fieldPath) => (
-                    <Select.Option value={fieldPath}>{fieldPath}</Select.Option>
+                    <Select.Option key={fieldPath} value={fieldPath}>
+                        {fieldPath}
+                    </Select.Option>
                 ))}
             </EmbeddedSelect>
         </span>
@@ -163,12 +175,16 @@ export default function HistoricalStatsView({ urn, toggleView }: Props) {
             <Affix offsetTop={127}>
                 <HeaderRow justify="space-between" align="middle">
                     <div>
-                        <Typography.Title level={2}>Profiling History</Typography.Title>
+                        <Typography.Title level={2} style={{color: "inherit"}}>
+                            Profiling History
+                        </Typography.Title>
                         <span>
                             <SubHeaderText>Viewing profiling history for the past</SubHeaderText>
                             <EmbeddedSelect value={selectedLookbackWindow} onChange={onChangeSelectedLookbackWindow}>
                                 {LOOKBACK_WINDOWS.map((lookbackWindow) => (
-                                    <Select.Option value={lookbackWindow.text}>{lookbackWindow.text}</Select.Option>
+                                    <Select.Option key={lookbackWindow.text} value={lookbackWindow.text}>
+                                        {lookbackWindow.text}
+                                    </Select.Option>
                                 ))}
                             </EmbeddedSelect>
                         </span>

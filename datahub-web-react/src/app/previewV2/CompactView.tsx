@@ -41,7 +41,7 @@ const PlatformDivider = styled.div`
     font-size: 16px;
     margin-right: 0.5rem;
     margin-top: -3px;
-    color: ${REDESIGN_COLORS.TEXT_GREY};
+    color: ${(props) => props.theme.styles['divider-color']}; // Change
 `;
 
 interface Props {

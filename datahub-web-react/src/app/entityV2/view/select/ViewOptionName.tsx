@@ -39,8 +39,8 @@ const ViewType = styled.span`
     position: absolute;
     bottom: 0px;
     right: 0px;
-    background-color: ${ANTD_GRAY[1]};
-    color: ${REDESIGN_COLORS.BLACK};
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     display: flex;
     align-items: center;
     border-radius: 8px 1px;
@@ -53,8 +53,8 @@ const DefaultViewIconContainer = styled.div<{ selected?: boolean; $isShowNavBarR
             if (props.$isShowNavBarRedesign) {
                 return props.selected ? props.theme.styles['primary-color'] : 'transparent';
             }
-            return props.selected ? props.theme.styles['primary-color'] : REDESIGN_COLORS.BACKGROUND_OVERLAY_BLACK;
-        }};
+            return props.selected ? props.theme.styles['primary-color'] : props.theme.styles['background-color-light'];
+        }}; // Change
     border-radius: 100%;
 `;
 
@@ -121,7 +121,7 @@ export const ViewOptionName = ({
                                 >
                                     <GlobalDefaultViewIcon
                                         title="Your organization's default View."
-                                        color={colors.gray[200]}
+                                        color={theme?.styles['text-color']} // Change
                                         size={5}
                                     />
                                 </DefaultViewIconContainer>
@@ -164,7 +164,7 @@ export const ViewOptionName = ({
                             <DefaultViewIconContainer selected={selected}>
                                 <UserDefaultViewIcon
                                     title="Your default View."
-                                    color={REDESIGN_COLORS.TERTIARY_GREEN}
+                                    color={theme?.styles['primary-color']} // Change
                                     size={10}
                                 />
                             </DefaultViewIconContainer>

@@ -6,9 +6,15 @@ import styled from 'styled-components';
 
 const StyledButton = styled(Button)`
     && {
-        margin: 0px;
+        margin: 0;
         margin-left: 6px;
-        padding: 0px;
+        padding: 0;
+        color: ${(props) => props.theme.styles['text-color-secondary']};
+        background: transparent;
+
+        &:hover {
+            color: ${(props) => props.theme.styles['text-color']};
+        }
     }
 `;
 
@@ -26,6 +32,11 @@ const SaveAsViewText = styled.span`
 
 const ToolTipHeader = styled.div`
     margin-bottom: 12px;
+    color: ${(props) => props.theme.styles['text-color']};
+`;
+
+const ToolTipDescription = styled.div`
+    color: ${(props) => props.theme.styles['text-color-secondary']};
 `;
 
 type Props = {
@@ -39,7 +50,9 @@ export const SaveAsViewButton = ({ onClick }: Props) => {
             title={
                 <>
                     <ToolTipHeader>Save these filters as a new View.</ToolTipHeader>
-                    <div>Views allow you to easily save or share search filters.</div>
+                    <ToolTipDescription>
+                        Views allow you to easily save or share search filters.
+                    </ToolTipDescription>
                 </>
             }
         >

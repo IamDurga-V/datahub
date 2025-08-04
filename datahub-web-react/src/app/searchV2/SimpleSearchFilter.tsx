@@ -25,6 +25,7 @@ type Props = {
 
 const SearchFilterWrapper = styled.div`
     padding: 0 25px 15px 25px;
+    color: ${(props) => props.theme.styles['text-color']};
 `;
 
 const Title = styled.div`
@@ -34,6 +35,7 @@ const Title = styled.div`
     display: flex;
     justify-content: space-between;
     cursor: pointer;
+    color: ${(props) => props.theme.styles['text-color']};
 `;
 
 const CheckBox = styled(Checkbox)`
@@ -44,15 +46,19 @@ const ExpandButton = styled(Button)`
     &&& {
         padding: 4px;
         font-size: 12px;
+        color: ${(props) => props.theme.styles['text-color-secondary']};
+        background-color: transparent;
     }
 `;
 
 const StyledUpOutlined = styled(UpOutlined)`
     font-size: 10px;
+    color: ${(props) => props.theme.styles['text-color-secondary']};
 `;
 
 const StyledDownOutlined = styled(DownOutlined)`
     font-size: 10px;
+    color: ${(props) => props.theme.styles['text-color-secondary']};
 `;
 
 export const SimpleSearchFilter = ({ facet, selectedFilters, onFilterSelect, defaultDisplayFilters }: Props) => {
@@ -63,12 +69,10 @@ export const SimpleSearchFilter = ({ facet, selectedFilters, onFilterSelect, def
         return selectedFilters.find((f) => f.field === field && f.values?.includes(value)) !== undefined;
     };
 
-    // Aggregations filtered for count > 0 or selected = true
     const filteredAggregations = facet.aggregations.filter(
         (agg) => agg.count > 0 || isFacetSelected(facet.field, agg.value) || isGraphDegreeFilter(facet.field),
     );
 
-    // By default, render a Filter as open if it is selected
     const isFilterSelected = !!filteredAggregations.find((agg) => isFacetSelected(facet.field, agg.value));
     useEffect(() => {
         if (isFilterSelected) {

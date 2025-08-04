@@ -22,7 +22,7 @@ const Header = styled.div`
 const Title = styled.div`
     font-weight: 600;
     font-size: 14px;
-    color: #434863;
+    color: ${(props) => props.theme.styles['text-color']};
     word-break: break-word;
     display: flex;
     align-items: center;
@@ -30,7 +30,7 @@ const Title = styled.div`
 
 const Icon = styled(BookmarkSimple)`
     margin-right: 8px;
-    color: #9884d4;
+    color: ${(props) => props.theme.styles['primary-color']};
     font-size: 16px;
 `;
 
@@ -42,15 +42,15 @@ const Section = styled.div`
 `;
 
 const Card = styled.div`
-    border: 1px solid ${ANTD_GRAY[4]};
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']};
     border-radius: 8px;
-    background-color: #ffffff;
+    background-color: ${(props) => props.theme.styles['component-background']};
     overflow: hidden;
     padding: 12px 20px 20px 20px;
 `;
 
 const ResourceLink = styled.a`
-    color: ${ANTD_GRAY[8]};
+    color: ${(props) => props.theme.styles['text-color']};
     padding: 0px 16px;
     font-size: 14px;
     display: flex;
@@ -63,21 +63,21 @@ const ResourceLink = styled.a`
         color 0.3s ease,
         opacity 0.3s ease;
     :hover {
-        transform: scale(1.05); // Slightly scale up the link on hover
+        transform: scale(1.05);
         opacity: 1;
-        color: #9884d4;
+        color: ${(props) => props.theme.styles['link-color']};
         text-decoration: underline;
     }
 `;
 
 const ResourceTitle = styled.div`
     margin-top: 8px;
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     text-align: center;
     opacity: 0.9;
     :hover {
         opacity: 1;
-        color: #9884d4;
+        color: ${(props) => props.theme.styles['link-color']};
         text-decoration: underline;
     }
 `;

@@ -43,7 +43,7 @@ import AcrylIcon from '@images/acryl-light-mark.svg?react';
 
 const Container = styled.div`
     height: 100vh;
-    background-color: ${colors.gray[1600]};
+    background-color: ${(props) => props.theme.styles['layout-body-background']};
     display: flex;
     flex: column;
     align-items: center;
@@ -309,8 +309,8 @@ export const NavSidebar = () => {
                 focusable="false"
             >
                 <linearGradient id="menu-item-selected-gradient" x2="1" y2="1">
-                    <stop offset="1%" stopColor={getColor('primary', 300, themeConfig)} />
-                    <stop offset="99%" stopColor={getColor('primary', 500, themeConfig)} />
+                    <stop offset="1%" stopColor={themeConfig.styles['primary-color-dark']} />
+                    <stop offset="99%" stopColor={themeConfig.styles['primary-color']} />
                 </linearGradient>
             </svg>
         );

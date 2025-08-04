@@ -26,7 +26,7 @@ const CloseButton = styled.div`
         cursor: pointer;
     }
     && {
-        color: ${ANTD_GRAY[7]};
+        color: ${(props) => props.theme.styles['text-color-secondary']};
     }
 `;
 
@@ -64,7 +64,7 @@ function DataProductContent({ dataProduct, name, closable, onClose, tagStyle, fo
     return (
         <StyledTag style={tagStyle} fontSize={fontSize}>
             <IconWrapper>
-                {entityRegistry.getIcon(EntityType.DataProduct, fontSize || 10, IconStyleType.ACCENT, ANTD_GRAY[9])}
+                    {entityRegistry.getIcon(EntityType.DataProduct, fontSize || 10, IconStyleType.ACCENT, (props) => props.theme.styles['text-color'])}
             </IconWrapper>
             {displayName}
             {closable && (

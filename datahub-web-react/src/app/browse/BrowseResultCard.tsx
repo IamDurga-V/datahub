@@ -13,6 +13,7 @@ const styles = {
 
 const ResultCard = styled(Card)`
     && {
+        background-color: ${(props) => props.theme.styles['component-background']};
         border-color: ${(props) => props.theme.styles['border-color-base']};
         box-shadow: ${(props) => props.theme.styles['box-shadow']};
     }
@@ -39,7 +40,7 @@ export default function BrowseResultCard({ url, count, name, type, onClick }: Br
             <ResultCard hoverable>
                 <Row style={styles.row} justify="space-between">
                     <Space size="middle" align="center">
-                        <FolderOutlined width={28} />
+                        <FolderOutlined width={28} style={{ color: (props) => props.theme.styles['text-color'] }}/>
                         <Typography.Title style={styles.title} level={5}>
                             {name}
                         </Typography.Title>
@@ -47,10 +48,12 @@ export default function BrowseResultCard({ url, count, name, type, onClick }: Br
                     <Space>
                         {count && (
                             <Typography.Text strong>
-                                {count} {displayType}
+                                <span style={{ color: (props) => props.theme.styles['text-color'] }}>
+                                    {count} {displayType}
+                                </span>
                             </Typography.Text>
                         )}
-                        <ArrowRightOutlined />
+                        <ArrowRightOutlined style={{ color: (props) => props.theme.styles['text-color'] }} />
                     </Space>
                 </Row>
             </ResultCard>

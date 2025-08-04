@@ -43,18 +43,18 @@ export const SideBarSubSection = styled.div`
     &::-webkit-scrollbar {
         height: 12px;
         width: 1px;
-        background: #d6d6d6;
+        background: ${(props) => props.theme.styles['background-color-light']}; // Change
     }
     &::-webkit-scrollbar-thumb {
-        background: #d6d6d6;
-        -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+        background: ${(props) => props.theme.styles['text-color-secondary']}; // Change
+        -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75); // Change
     }
 `;
 
 export const EmptyValue = styled.div<{ color?: string }>`
     &:after {
         content: 'None';
-        color: ${(props) => (props.color ? props.color : '#b7b7b7')};
+        color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
         font-style: italic;
         font-weight: 100;
     }
@@ -63,7 +63,7 @@ export const EmptyValue = styled.div<{ color?: string }>`
 export const Name = styled.div`
     font-size: 12px;
     line-height: 18px;
-    color: ${ANTD_GRAY_V2['11']};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     text-align: left;
     display: flex;
     align-items: center;
@@ -74,26 +74,26 @@ export const Name = styled.div`
         white-space: nowrap;
     }
     @media only screen and (min-width: 1200px) {
-        color: ${REDESIGN_COLORS.WHITE};
+        color: ${(props) => props.theme.styles['text-color']}; // Change
     }
 `;
 
 export const TitleRole = styled.div`
     font-size: 12px;
     line-height: 18px;
-    color: ${ANTD_GRAY_V2['11']};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     text-align: left;
     white-space: wrap;
     @media only screen and (min-width: 1200px) {
-        color: ${REDESIGN_COLORS.WHITE};
+        color: ${(props) => props.theme.styles['text-color']}; // Change
     }
 `;
 
 export const RoleName = styled.div`
     text-align: center;
-    color: ${REDESIGN_COLORS.WHITE};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     border-radius: 30px;
-    background-color: #565657;
+    background-color: ${(props) => props.theme.styles['background-color-light']}; // Change
     padding: 3px 5px;
     text-transform: uppercase;
     font-size: 7px;
@@ -101,14 +101,14 @@ export const RoleName = styled.div`
     position: relative;
     z-index: 2;
     @media only screen and (min-width: 1200px) {
-        background-color: ${ANTD_GRAY[1]}4a;
+        background-color: ${(props) => props.theme.styles['text-color-secondary']}4a; // Change
     }
 `;
 
 export const Team = styled.div`
     font-size: 12px;
     line-height: 20px;
-    color: #8c8c8c;
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 export const SocialDetails = styled.div`
@@ -117,7 +117,7 @@ export const SocialDetails = styled.div`
     gap: 0.4rem;
     font-size: 12px;
     line-height: 20px;
-    color: ${ANTD_GRAY_V2['11']};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     text-align: left;
     span {
         text-overflow: ellipsis;
@@ -144,7 +144,7 @@ export const EditButton = styled.div`
         width: 100%;
         font-size: 12px;
         line-height: 20px;
-        color: #262626;
+        color: ${(props) => props.theme.styles['text-color']}; // Change
     }
 `;
 
@@ -153,14 +153,14 @@ export const AboutSection = styled.div`
     font-weight: bold;
     font-size: 14px;
     line-height: 22px;
-    color: #262626;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 export const AboutSectionText = styled.div`
     font-size: 12px;
     font-weight: 100;
     line-height: 15px;
-    color: #434863;
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 
     &&& .ant-typography {
         margin-bottom: 0;
@@ -189,7 +189,7 @@ export const TagsSection = styled.div`
 
 export const NoDataFound = styled.span`
     font-size: 12px;
-    color: #262626;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     font-weight: 100;
 `;
 
@@ -201,7 +201,7 @@ export const GroupsSeeMoreText = styled.span`
     font-weight: 500;
     font-size: 12px;
     line-height: 20px;
-    color: #1890ff;
+    color: ${(props) => props.theme.styles['link-color']}; // Change
     cursor: pointer;
 `;
 
@@ -211,7 +211,7 @@ export const DisplayCount = styled.span`
     font-weight: 500;
     font-size: 12px;
     line-height: 20px;
-    color: #8c8c8c;
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 export const GroupSectionTitle = styled.span`
@@ -227,6 +227,7 @@ export const Content = styled.div`
     flex-direction: column;
     align-items: start;
     justify-content: start;
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 
     & > div {
         padding-top: 12px;
@@ -234,7 +235,7 @@ export const Content = styled.div`
         width: 100%;
         &:not(:last-child) {
             border-bottom: 1px solid;
-            border-color: ${colors.gray[100]};
+            border-color: ${(props) => props.theme.styles['border-color-base']}; // Change
         }
     }
 `;
@@ -253,7 +254,7 @@ export const UserInfo = styled(Row)`
     display: flex;
     gap: 1rem;
     padding: 10px 10px;
-    background: ${ANTD_GRAY_V2['14']};
+    background: ${(props) => props.theme.styles['component-background']}; // Change
     border-radius: 10px;
     justify-content: center;
     @media only screen and (min-width: 1200px) {
@@ -268,7 +269,7 @@ export const GroupInfo = styled.div`
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    background: ${ANTD_GRAY_V2['14']};
+    background: ${(props) => props.theme.styles['component-background']}; // Change
     border-radius: 10px;
     overflow: hidden;
 `;
@@ -284,7 +285,7 @@ export const SocialInfo = styled.div`
 
 export const GradientContainer = styled.div<{ gradient?: string; height?: number }>`
     border-radius: 10px 10px 0px 0px;
-    background: ${(props) => (props.gradient ? props.gradient : REDESIGN_COLORS.PROFILE_AVATAR_STYLE_GRADIENT)};
+    background: ${(props) => props.theme.styles['background-color-light']}; // Change
     height: 65px;
     width: 100%;
     z-index: 1;
@@ -312,13 +313,13 @@ export const EditProfileButtonContainer = styled.div`
     cursor: pointer;
     display: none;
     &&& div {
-        border-color: ${REDESIGN_COLORS.WHITE};
+        border-color: ${(props) => props.theme.styles['text-color']}; // Change
         height: 18px;
         width: 18px;
         display: flex;
         align-items: center;
         &:hover {
-            border-color: ${REDESIGN_COLORS.BORDER_4};
+            border-color: ${(props) => props.theme.styles['border-color-base']}; // Change
         }
     }
 `;
@@ -354,7 +355,7 @@ export const OwnershipContainer = styled(Row)`
 `;
 
 export const DisplayNameText = styled.span`
-    color: ${ANTD_GRAY_V2[12]};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     font-family: Mulish;
     font-size: 12px;
     font-style: normal;
@@ -368,13 +369,13 @@ export const NameTitleContainer = styled.div`
 `;
 
 export const WhiteEditOutlinedIconStyle = styled(EditOutlinedIcon)`
-    color: ${REDESIGN_COLORS.WHITE};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     height: 18px !important;
     width: 18px !important;
     &:hover,
     &:focus {
-        color: ${REDESIGN_COLORS.WHITE};
-        border-color: ${REDESIGN_COLORS.WHITE};
+        color: ${(props) => props.theme.styles['link-color']}; // Change
+        border-color: ${(props) => props.theme.styles['link-color']}; // Change
     }
 `;
 

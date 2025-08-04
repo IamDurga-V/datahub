@@ -14,7 +14,7 @@ const NameContainer = styled.div`
 `;
 
 const TextContainer = styled(Typography.Text)`
-    color: ${colors.gray[1700]};
+    color:${(props) => props.theme.styles['text-primary']}
 `;
 
 const DisplayNameContainer = styled.div`
@@ -60,7 +60,7 @@ export function SourceNameColumn({ type, record }: TypeColumnProps) {
                         tooltip: {
                             title: record.name,
                             color: 'white',
-                            overlayInnerStyle: { color: colors.gray[1700] },
+                            overlayInnerStyle: { color: ${(props) => props.theme.styles['text-primary']}},
                             showArrow: false,
                         },
                     }}

@@ -33,7 +33,7 @@ const ResultsWrapper = styled.div`
     flex-direction: column;
     padding: 16px;
     gap: 12px;
-    background: ${REDESIGN_COLORS.BACKGROUND};
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
 `;
 
 const StyledLoading = styled(LoadingOutlined)`

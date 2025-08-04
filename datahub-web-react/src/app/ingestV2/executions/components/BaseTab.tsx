@@ -19,8 +19,9 @@ export const DetailsContainer = styled.div`
     margin-top: 12px;
 
     pre {
-        background-color: ${colors.gray[1500]};
-        border: 1px solid ${colors.gray[1400]};
+        background-color: ${(props) => props.theme.styles['component-background']};
+        color: ${(props) => props.theme.styles['text-primary']};
+        border: 1px solid ${(props) => props.theme.styles['border-color-base']};
         border-radius: 8px;
         padding: 16px;
         margin: 0;

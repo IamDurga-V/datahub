@@ -24,9 +24,9 @@ const StyledEntitySidebarContainer = styled.div<{
     flex: 1;
     overflow: hidden;
     display: ${(props) => (props.isHidden ? 'none' : undefined)};
-
     ${(props) => !props.isCollapsed && props.$width && `max-width: ${props.$width}px;`}
     ${(props) => props.isCollapsed && 'min-width: 63px; max-width: 63px;'}
+
     &::-webkit-scrollbar {
         display: none;
     }
@@ -41,7 +41,7 @@ const StyledEntitySidebarContainer = styled.div<{
         max-width ${PLATFORM_BROWSE_TRANSITION_MS}ms ease-in-out,
         min-width ${PLATFORM_BROWSE_TRANSITION_MS}ms ease-in-out;
 
-    background-color: #ffffff;
+    background-color: ${(props) => props.theme.styles['component-background']};
     border-radius: ${(props) =>
         props.$isShowNavBarRedesign ? props.theme.styles['border-radius-navbar-redesign'] : '8px'};
     box-shadow: ${(props) =>

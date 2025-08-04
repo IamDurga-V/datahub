@@ -18,12 +18,9 @@ const DomainSearchWrapper = styled.div`
 `;
 
 const ResultsWrapper = styled.div`
-    background-color: white;
+    background-color: ${(props) => props.theme.styles['component-background']};
     border-radius: 5px;
-    box-shadow:
-        0 3px 6px -4px rgb(0 0 0 / 12%),
-        0 6px 16px 0 rgb(0 0 0 / 8%),
-        0 9px 28px 8px rgb(0 0 0 / 5%);
+    box-shadow: ${(props) => props.theme.styles['box-shadow-navbar-redesign']};
     padding: 8px;
     position: absolute;
     max-height: 210px;
@@ -32,6 +29,7 @@ const ResultsWrapper = styled.div`
     left: 4px;
     top: 55px;
     z-index: 1;
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']};
 `;
 
 const LoadingWrapper = styled(ResultsWrapper)`
@@ -39,6 +37,7 @@ const LoadingWrapper = styled(ResultsWrapper)`
     justify-content: center;
     padding: 16px 0;
     font-size: 16px;
+    color: ${(props) => props.theme.styles['text-color']};
 `;
 
 const InputWrapper = styled.div`
@@ -46,7 +45,7 @@ const InputWrapper = styled.div`
 `;
 
 const SearchIcon = styled(SearchOutlined)`
-    color: ${REDESIGN_COLORS.TEXT_HEADING_SUB_LINK};
+    color: ${(props) => props.theme.styles['text-color']};
     padding: 16px;
     width: 100%;
     font-size: 20px;
@@ -92,7 +91,7 @@ function DomainSearch({ isCollapsed, unhideSidebar }: Props) {
                     </InputWrapper>
                     {loading && isSearchBarFocused && (
                         <LoadingWrapper>
-                            <LoadingOutlined />
+                            <LoadingOutlined style={{ color: (props) => props.theme.styles['text-color'] }}/>
                         </LoadingWrapper>
                     )}
                     {!loading && isSearchBarFocused && !!entities?.length && (

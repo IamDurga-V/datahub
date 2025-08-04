@@ -7,9 +7,10 @@ import { colors } from '@components/theme';
 
 const StyledCard = styled(Card)`
     && {
+        background-color: ${(props) => props.theme.styles['component-background']};
         border-radius: 12px;
-        border: 1px solid ${colors.gray[100]};
-        box-shadow: 0px 1px 2px 0px rgba(33, 23, 95, 0.07);
+        border: 1px solid ${(props) => props.theme.styles['border-color-base']};
+        box-shadow: ${(props) => props.theme.styles['box-shadow']};
         margin-bottom: 24px;
 
         .ant-card-body {
@@ -21,7 +22,7 @@ const StyledCard = styled(Card)`
 const Title = styled.div`
     font-size: 16px;
     font-weight: 700;
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-color']};
     display: flex;
     align-items: center;
     gap: 8px;
@@ -29,7 +30,7 @@ const Title = styled.div`
 
 const TitleDescriptionText = styled.div`
     font-size: 14px;
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
 `;
 
 const SettingTitle = styled.div`
@@ -56,7 +57,7 @@ const FeatureOptionRow = styled.div`
 `;
 
 const StyledDivider = styled(Divider)`
-    color: ${colors.gray[100]};
+    color: ${(props) => props.theme.styles['divider-color']};
 `;
 
 const SettingsOptionRow = styled.div`
@@ -71,7 +72,7 @@ const SettingsOptionRow = styled.div`
 `;
 
 const DescriptionText = styled.div`
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     font-size: 12px;
 `;
 
@@ -80,7 +81,7 @@ const OptionTitle = styled.div`
     align-items: center;
     gap: 8px;
     font-size: 14px;
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-color']};
     font-weight: 600;
 `;
 

@@ -25,7 +25,7 @@ import {
 } from '@types';
 
 const StatText = styled(Typography.Text)`
-    color: ${ANTD_GRAY[8]};
+        color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 export const Preview = ({

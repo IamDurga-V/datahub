@@ -9,11 +9,12 @@ const TitleContainer = styled.span`
     align-items: center;
     justify-content: left;
     padding-left: 0px;
+    color: ${(props) => props.theme.styles['text-color-secondary']};
 `;
 
 const IconContainer = styled.span`
     && {
-        color: ${ANTD_GRAY[8]};
+        color: ${(props) => props.theme.styles['text-color-secondary']};
         margin-right: 12px;
         display: flex;
         align-items: center;

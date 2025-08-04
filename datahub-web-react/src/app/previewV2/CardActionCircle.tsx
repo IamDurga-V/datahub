@@ -12,7 +12,7 @@ type Props = {
 const IconContainer = styled.div<{ enabled?: boolean }>`
     width: 28px;
     height: 28px;
-    background-color: #f7f7f7;
+    background-color: ${(props) => props.theme.styles['background-color-light']}; // Change
     cursor: pointer;
     border-radius: 50%;
     text-align: center;
@@ -22,11 +22,11 @@ const IconContainer = styled.div<{ enabled?: boolean }>`
     align-items: center;
     & svg {
         font-size: 14px;
-        color: #5d668b;
+        color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     }
-    border: 1px solid #eee;
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']}; // Change
     :hover {
-        border: 1px solid ${({ enabled }) => (enabled ? '#3F54D1' : ANTD_GRAY['4'])};
+        border: 1px solid ${({ enabled, theme }) => (enabled ? theme.styles['highlight-border-color'] : theme.styles['border-color-base'])}; // Change
     }
 `;
 

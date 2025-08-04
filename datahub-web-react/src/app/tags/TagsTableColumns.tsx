@@ -19,7 +19,7 @@ import { Entity, EntityType } from '@src/types.generated';
 const TagName = styled.div`
     font-size: 14px;
     font-weight: 600;
-    color: ${colors.gray[600]};
+    color: ${(props) => props.theme.styles['text-color']};
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -28,7 +28,7 @@ const TagName = styled.div`
 const TagDescription = styled.div`
     font-size: 14px;
     font-weight: 400;
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     white-space: normal;
     line-height: 1.4;
 `;
@@ -51,7 +51,7 @@ const MenuItem = styled.div`
     padding: 5px 70px 5px 5px;
     font-size: 14px;
     font-weight: 400;
-    color: ${colors.gray[600]};
+    color: ${(props) => props.theme.styles['text-color']};
     font-family: ${typography.fonts.body};
 `;
 
@@ -206,7 +206,7 @@ export const TagAppliedToColumn = React.memo(({ tagUrn }: { tagUrn: string }) =>
                     }
                 }}
             >
-                <Text style={{ color: colors.violet[500] }}>
+                <Text style={{ color: (props) => props.theme.styles['link-color'] }}>
                     {totalCount} {totalCount === 1 ? 'entity' : 'entities'}
                 </Text>
             </div>
@@ -226,7 +226,7 @@ export const TagAppliedToColumn = React.memo(({ tagUrn }: { tagUrn: string }) =>
                             }
                         }}
                     >
-                        <Text style={{ color: colors.violet[500] }}>
+                        <Text style={{ color: (props) => props.theme.styles['link-color'] }}>
                             {agg.count} {entityRegistry.getCollectionName(agg.value as unknown as EntityType)}
                         </Text>
                     </div>
@@ -277,7 +277,7 @@ export const TagActionsColumn = React.memo(
                               <MenuItem
                                   onClick={onDelete}
                                   data-testid="action-delete"
-                                  style={{ color: colors.red[500] }}
+                                  style={{ color: (props) => props.theme.styles['red-error'] }}
                               >
                                   Delete
                               </MenuItem>

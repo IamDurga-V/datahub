@@ -30,9 +30,9 @@ const LineageIconGroup = styled.div`
 const HoverableVscPreview = styled(({ isSelected: _, ...props }: IconBaseProps & { isSelected: boolean }) => (
     <VscPreview {...props} />
 ))`
-    color: ${(props) => (props.isSelected ? 'black' : grey[2])};
+    color: ${(props) => (props.isSelected ? props.theme.styles['text-color'] : props.theme.styles['text-color-secondary'])};
     &:hover {
-        color: ${(props) => (props.isSelected ? 'black' : blue[4])};
+        color: ${(props) => (props.isSelected ? props.theme.styles['text-color'] : props.theme.styles['primary-color'])};
         cursor: pointer;
     }
 `;
@@ -40,9 +40,9 @@ const HoverableVscPreview = styled(({ isSelected: _, ...props }: IconBaseProps &
 const HoverableVscRepoForked = styled(({ isSelected: _, ...props }: IconBaseProps & { isSelected: boolean }) => (
     <VscRepoForked {...props} />
 ))`
-    color: ${(props) => (props.isSelected ? 'black' : grey[2])};
+    color: ${(props) => (props.isSelected ? props.theme.styles['text-color'] : props.theme.styles['text-color-secondary'])};
     &:hover {
-        color: ${(props) => (props.isSelected ? 'black' : blue[4])};
+        color: ${(props) => (props.isSelected ? props.theme.styles['text-color'] : props.theme.styles['primary-color'])};
         cursor: pointer;
     }
     transform: rotate(90deg);
@@ -50,15 +50,12 @@ const HoverableVscRepoForked = styled(({ isSelected: _, ...props }: IconBaseProp
 
 const BrowseRow = styled(Row)`
     padding: 10px 100px;
-    border-bottom: 1px solid #dcdcdc;
+    border-bottom: 1px solid ${(props) => props.theme.styles['border-color-base']};
     background-color: ${(props) => props.theme.styles['body-background']};
     display: flex;
     justify-content: space-between;
 `;
 
-/**
- * Responsible for rendering a clickable browse path view.
- */
 export const LegacyBrowsePath = ({ type, path, lineageSupported, isProfilePage, isBrowsable }: Props) => {
     const entityRegistry = useEntityRegistry();
     const history = useHistory();

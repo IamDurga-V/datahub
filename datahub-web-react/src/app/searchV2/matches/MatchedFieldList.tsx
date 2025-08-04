@@ -26,7 +26,7 @@ const MatchContainer = styled.div`
     padding: 0px 2px;
     align-items: center;
     border-radius: 30px;
-    background: #ebe9f4;
+    background: ${(props) => props.theme.styles['component-background']};
     margin-right: 4px;
     white-space: nowrap;
 `;
@@ -36,11 +36,8 @@ const MatchHeader = styled(Typography.Text)`
     padding: 4px 2px 4px 10px;
     align-items: center;
     gap: 4px;
-    color: #6c6b88;
-    font-family: Mulish;
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     font-size: 12px;
-    font-style: normal;
-    line-height: normal;
 `;
 
 const MatchText = styled(Typography.Text)`
@@ -48,14 +45,11 @@ const MatchText = styled(Typography.Text)`
     justify-content: center;
     align-items: center;
     border-radius: 50px;
-    background: #ebe9f4;
-    color: #374066;
-    font-family: Mulish;
+    background: ${(props) => props.theme.styles['component-background']};
+    color: ${(props) => props.theme.styles['text-color']};
     font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
 `;
+
 
 const MATCH_GROUP_LIMIT = 3;
 

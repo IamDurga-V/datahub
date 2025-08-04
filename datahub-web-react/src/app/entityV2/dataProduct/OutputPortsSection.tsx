@@ -36,7 +36,8 @@ const LoadMoreButton = styled(Card)`
     font-weight: 400;
     font-family: Mulish;
     padding: 10px 14px;
-    color: ${ANTD_GRAY[8]};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
 `;
 
 const COUNT = 10;

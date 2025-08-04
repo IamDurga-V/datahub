@@ -3,14 +3,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 import KeyIcon from '@app/searchV2/searchBarV2/components/KeyIcon';
-import { Text, colors } from '@src/alchemy-components';
+import { Text } from '@src/alchemy-components';
 
 const Container = styled.div`
     position: sticky;
     bottom: 0;
 
-    border-top: 1px solid ${colors.gray[100]};
-    border-radius: 0 0 12px 12px;
+    border-top: 1px solid ${(props) => props.theme.styles['border-color-base']};
+    border-radius: 0 0 ${(props) => props.theme.styles['border-radius-navbar-redesign']} ${(props) => props.theme.styles['border-radius-navbar-redesign']};
 
     display: flex;
     flex-direction: row;
@@ -18,7 +18,7 @@ const Container = styled.div`
     justify-content: flex-end;
     gap: 16px;
 
-    background-color: ${colors.white};
+    background-color: ${(props) => props.theme.styles['component-background']};
     height: 36px;
     width: 100%;
 

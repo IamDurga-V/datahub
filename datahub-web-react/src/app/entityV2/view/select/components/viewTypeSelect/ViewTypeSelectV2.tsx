@@ -10,16 +10,16 @@ const Wrapper = styled.div<{ $bordered?: boolean }>`
     display: flex;
     gap: 2px;
     align-items: center;
-    background: ${colors.white};
+    background: ${(props) => props.theme.styles['background-color-light']};
     padding: 2px;
     border-radius: 16px;
-    ${(props) => props.$bordered && `border: ${borders['1px']} ${colors.gray[100]};`}
+    ${(props) => props.$bordered && `border: ${borders['1px']} ${props.theme.styles['border-color-base']};`}
 `;
 
 const IconWrapper = styled.div<{ $active?: boolean }>`
     flex-shrink: 0;
     padding: 2px;
-    background: ${(props) => (props.$active ? colors.primary[500] : colors.white)};
+    background: ${(props) => (props.$active ? props.theme.styles['primary-color'] : 'transparent')};
     border-radius: 100%;
     cursor: pointer;
     width: 20px;

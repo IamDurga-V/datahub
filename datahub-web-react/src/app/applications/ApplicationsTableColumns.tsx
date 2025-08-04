@@ -1,7 +1,8 @@
-import { Icon, colors, typography } from '@components';
+import { Icon, Text, colors, typography } from '@components';
 import { Dropdown } from 'antd';
 import React from 'react';
 import Highlight from 'react-highlighter';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
 
 import { CardIcons } from '@app/govern/structuredProperties/styledComponents';
@@ -12,7 +13,8 @@ import { EntityType, Ownership } from '@src/types.generated';
 const ApplicationName = styled.div`
     font-size: 14px;
     font-weight: 600;
-    color: ${colors.gray[600]};
+    // CHANGE: Use theme variable for text color
+    color: ${(props) => props.theme.styles['text-color']};
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -25,7 +27,8 @@ const ApplicationName = styled.div`
 const ApplicationDescription = styled.div`
     font-size: 14px;
     font-weight: 400;
-    color: ${colors.gray[1700]};
+    // CHANGE: Use theme variable for text color
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     white-space: normal;
     line-height: 1.4;
 `;
@@ -48,7 +51,8 @@ const MenuItem = styled.div`
     padding: 5px 70px 5px 5px;
     font-size: 14px;
     font-weight: 400;
-    color: ${colors.gray[600]};
+    // CHANGE: Use theme variable for text color
+    color: ${(props) => props.theme.styles['text-color']};
     font-family: ${typography.fonts.body};
 `;
 

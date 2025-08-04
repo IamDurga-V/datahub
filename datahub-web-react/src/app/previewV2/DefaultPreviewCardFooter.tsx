@@ -60,7 +60,7 @@ const EntityLink = styled.div`
         height: 100%;
 
         :hover {
-            color: ${REDESIGN_COLORS.HOVER_PURPLE};
+            color: ${(props) => props.theme.styles['link-color']}; // Change
         }
 
         > span:first-child {
@@ -73,7 +73,7 @@ const EntityLink = styled.div`
 `;
 
 const HorizontalDivider = styled(Divider)`
-    color: ${REDESIGN_COLORS.FOUNDATION_BLUE_2};
+    color: ${(props) => props.theme.styles['divider-color']}; // Change
     margin-top: 14px;
     margin-bottom: 8px;
     width: calc(100% + 40px) !important;

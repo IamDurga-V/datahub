@@ -48,7 +48,7 @@ export default function BrowsePaths(props: Props) {
             <ParentNodesWrapper>
                 {showEllipsis && (
                     <>
-                        <span>...</span>
+                        <span style={{ color: `${(props) => props.theme.styles['text-color']}` }}>...</span> // Change
                         <ContextPathSeparator />
                     </>
                 )}

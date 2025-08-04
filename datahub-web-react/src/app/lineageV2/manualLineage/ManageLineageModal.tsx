@@ -26,6 +26,17 @@ const MODAL_WIDTH_PX = 1400;
 const StyledModal = styled(Modal)`
     top: 30px;
     padding: 0;
+    .ant-modal-content {
+        background-color: ${(props) => props.theme.styles['component-background']}; // Change
+        color: ${(props) => props.theme.styles['text-color']}; // Change
+    }
+    .ant-modal-header {
+        background-color: ${(props) => props.theme.styles['component-background']}; // Change
+        border-bottom: 1px solid ${(props) => props.theme.styles['border-color-base']}; // Change
+    }
+    .ant-modal-title {
+        color: ${(props) => props.theme.styles['heading-color']}; // Change
+    }
 `;
 
 const ModalContentContainer = styled.div`
@@ -46,7 +57,7 @@ const SearchSection = styled.div`
 const CurrentSection = styled.div`
     flex: 1;
     width: 40%;
-    border-left: 1px solid ${colors.gray[100]};
+    border-left: 1px solid ${(props) => props.theme.styles['border-color-base']}; // Change
     display: flex;
     flex-direction: column;
 `;
@@ -56,7 +67,7 @@ const SectionHeader = styled.div`
     margin-top: 10px;
     font-size: 16px;
     font-weight: 500;
-    color: ${colors.gray[600]};
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 const ScrollableContent = styled.div`

@@ -8,9 +8,9 @@ import { toRelativeTimeString } from '@app/shared/time/timeUtils';
 import { Post } from '@types';
 
 const Card = styled.div`
-    border: 1px solid ${ANTD_GRAY[4]};
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']};
     border-radius: 8px;
-    background-color: #ffffff;
+    background-color: ${(props) => props.theme.styles['component-background']};
     overflow: auto;
 `;
 
@@ -22,6 +22,7 @@ const Text = styled.div`
     padding: 20px;
     &&&&& .remirror-editor.ProseMirror {
         padding: 0px;
+        color: ${(props) => props.theme.styles['text-color']};
     }
 `;
 
@@ -30,11 +31,12 @@ const Title = styled.div`
     word-break: break-word;
     margin-bottom: 10px;
     font-weight: 600;
+    color: ${(props) => props.theme.styles['text-color']};
 `;
 
 const Time = styled.div`
     font-size: 12px;
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
 `;
 
 type Props = {

@@ -23,8 +23,9 @@ import LoadingSvg from '@images/datahub-logo-color-loading_pendulum.svg?react';
 
 const ExternalUrlLink = styled.a`
     font-size: 16px;
-    color: ${ANTD_GRAY[8]};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
+
 
 const PaginationControlContainer = styled.div`
     padding-top: 16px;

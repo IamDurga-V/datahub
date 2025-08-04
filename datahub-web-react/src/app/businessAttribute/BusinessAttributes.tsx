@@ -43,6 +43,7 @@ const BusinessAttributesContainer = styled.div`
 const BusinessAttributeHeaderContainer = styled.div`
     && {
         padding-left: 0px;
+        background-color: ${(props) => props.theme.styles['component-background']};
     }
 `;
 
@@ -60,11 +61,14 @@ const PaginationContainer = styled.div`
 const searchBarStyle = {
     maxWidth: 220,
     padding: 0,
+    backgroundColor: (props) => props.theme.styles['component-background'],
+    color: (props) => props.theme.styles['text-color']
 };
 
 const searchBarInputStyle = {
     height: 32,
     fontSize: 12,
+    color: (props) => props.theme.styles['text-color'],
 };
 
 const DEFAULT_PAGE_SIZE = 10;

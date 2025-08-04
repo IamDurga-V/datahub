@@ -21,6 +21,9 @@ const StyledSidebarWrapper = styled(SidebarWrapper)<{ $isEntityProfile?: boolean
         margin: ${props.$isEntityProfile ? '5px 0px 6px 5px' : '0px 4px 0px 0px'};
     `}
     padding-bottom: 16px;
+    background-color: ${(props) => props.theme.styles['component-background']};
+    border-radius: ${(props) =>
+        props.$isShowNavBarRedesign ? props.theme.styles['border-radius-navbar-redesign'] : '8px'};
 `;
 
 const SidebarTitleWrapper = styled.div`
@@ -28,7 +31,7 @@ const SidebarTitleWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 12px;
-    border-bottom: 1px solid ${REDESIGN_COLORS.BORDER_3};
+    border-bottom: 1px solid ${(props) => props.theme.styles['border-color-base']};
     height: 50px;
     font-size: 20px;
 `;
@@ -36,7 +39,7 @@ const SidebarTitleWrapper = styled.div`
 const GlossaryTitle = styled.div`
     font-size: 16px;
     font-weight: bold;
-    color: #374066;
+    color: ${(props) => props.theme.styles['text-color']};
 `;
 
 const StyledButton = styled(Button)`

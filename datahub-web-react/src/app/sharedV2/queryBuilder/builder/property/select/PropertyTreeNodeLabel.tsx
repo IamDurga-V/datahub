@@ -8,7 +8,7 @@ import { Property } from '@app/sharedV2/queryBuilder/builder/property/types/prop
 
 const StyledCaret = styled(CaretRightFilled)`
     padding: 4px;
-    color: ${ANTD_GRAY[5]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     font-size: 12px;
 `;
 

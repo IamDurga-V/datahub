@@ -16,9 +16,9 @@ import { Domain, EntityType } from '@types';
 
 const Card = styled(Link)<{ $isShowNavBarRedesign?: boolean }>`
     border-radius: ${(props) => (props.$isShowNavBarRedesign ? '8px' : '10px')};
-    background-color: #ffffff;
+    background-color: ${(props) => props.theme.styles['component-background']};
     padding: 16px;
-    border: ${(props) => (props.$isShowNavBarRedesign ? `1px solid ${colors.gray[100]}` : '2px solid transparent')};
+    border: ${(props) => (props.$isShowNavBarRedesign ? `1px solid ${props.theme.styles['border-color-base']}` : '2px solid transparent')};
 
     :hover {
         border: ${(props) => (props.$isShowNavBarRedesign ? '1px' : '2px')} solid ${SEARCH_COLORS.LINK_BLUE};
@@ -39,7 +39,7 @@ const Text = styled.div`
 
 const Name = styled.div`
     font-size: 16px;
-    color: ${ANTD_GRAY[9]};
+    color: ${(props) => props.theme.styles['text-color']};
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -54,7 +54,7 @@ const Counts = styled.div`
 
 const Count = styled.div`
     font-size: 14px;
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     overflow: hidden;
     text-overflow: ellipsis;
 `;

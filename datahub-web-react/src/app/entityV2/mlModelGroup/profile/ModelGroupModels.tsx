@@ -37,7 +37,7 @@ const NameLink = styled.a`
     font-size: 0.9rem;
 
     &:hover {
-        color: ${colors.blue[400]} !important;
+            color: ${(props) => props.theme.styles['primary-color']} !important; // Change
     }
 `;
 
@@ -47,7 +47,7 @@ const TagContainer = styled.div`
     margin-top: 3px;
     flex-wrap: wrap;
     margin-right: 8px;
-    backgroundcolor: white;
+    backgroundcolor: {( props ) => props.theme.styles['component-background']}; // Change
     gap: 5px;
 `;
 

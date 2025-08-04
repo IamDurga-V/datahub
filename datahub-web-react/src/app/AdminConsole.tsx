@@ -10,7 +10,7 @@ import { ANTD_GRAY } from '@app/entity/shared/constants';
 import { useAppConfig } from '@app/useAppConfig';
 
 const ToggleContainer = styled.div`
-    background-color: ${ANTD_GRAY[4]};
+    background-color: ${(props) => props.theme.styles['component-background']};
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
 `;
@@ -59,7 +59,7 @@ export const AdminConsole = (): JSX.Element => {
 
     const toggleView = (
         <ToggleContainer style={{}}>
-            <MenuOutlined style={{ color: ANTD_GRAY[9] }} />
+            <MenuOutlined style={{ color: (props) => props.theme.styles['text-color'] }} />
         </ToggleContainer>
     );
 

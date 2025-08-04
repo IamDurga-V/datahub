@@ -5,11 +5,15 @@ import styled from 'styled-components';
 import { NavMenuItem } from '@app/homeV2/layout/types';
 import { Pill } from '@src/alchemy-components';
 
-const OptionContainer = styled.div``;
+// This is where we define the link's overall style, using theme variables
+const OptionContainer = styled.div`
+    // No specific styles here, just a wrapper
+`;
 
 const LinkTitle = styled.span`
     display: block;
-    color: #fff;
+    // Using a theme variable for text color
+    color: ${(props) => props.theme.styles['text-color']};
     font: 700 12px/20px Mulish;
     white-space: break-spaces;
 `;
@@ -21,7 +25,8 @@ const TitleWrapper = styled.div`
 
 const DescriptionWrapper = styled.span`
     display: block;
-    color: #fff;
+    // Using a theme variable for text color
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     white-space: break-spaces;
 
     display: block;
@@ -45,7 +50,8 @@ const CustomNavLink: React.FC<Props> = ({
         return null;
     }
 
-    if (link === null) {
+    // This is a simple link without a sub-menu or special onClick handler
+    if (link === null && !onClick) {
         return <LinkTitle key={key}>{title}</LinkTitle>;
     }
 

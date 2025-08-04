@@ -38,7 +38,7 @@ const LoadingWrapper = styled.div`
     svg {
         height: 15px;
         width: 15px;
-        color: ${ANTD_GRAY[8]};
+        color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
     }
 `;
 

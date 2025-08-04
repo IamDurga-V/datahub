@@ -12,6 +12,7 @@ const NavigatorWrapper = styled.div`
     font-size: 14px;
     max-height: calc(100% - 65px);
     overflow: auto;
+    color: ${(props) => props.theme.styles['text-color']};
 `;
 
 interface Props {
@@ -32,7 +33,7 @@ export default function DomainNavigator({ domainUrnToHide, isCollapsed, selectDo
                 <Empty
                     description="No Domains Found"
                     image={Empty.PRESENTED_IMAGE_SIMPLE}
-                    style={{ color: ANTD_GRAY[7] }}
+                    style={{ color: (props) => props.theme.styles['text-color-secondary'] }}
                 />
             )}
             {!noDomainsFound &&

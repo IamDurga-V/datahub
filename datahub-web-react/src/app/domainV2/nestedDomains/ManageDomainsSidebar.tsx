@@ -11,7 +11,6 @@ import { useShowNavBarRedesign } from '@src/app/useShowNavBarRedesign';
 
 const PLATFORM_BROWSE_TRANSITION_MS = 300;
 
-// TODO: Clean up how we do expand / collapse
 const StyledEntitySidebarContainer = styled.div<{
     isCollapsed: boolean;
     $width?: number;
@@ -26,7 +25,8 @@ const StyledEntitySidebarContainer = styled.div<{
     margin-bottom: ${(props) => (props.$isShowNavBarRedesign ? '0' : '12px')};
     transition: width ${PLATFORM_BROWSE_TRANSITION_MS}ms ease-in-out;
 
-    background-color: #ffffff;
+    // CHANGE: Use theme variable for background color
+    background-color: ${(props) => props.theme.styles['component-background']};
     border-radius: ${(props) =>
         props.$isShowNavBarRedesign ? props.theme.styles['border-radius-navbar-redesign'] : '8px'};
     display: flex;
@@ -49,8 +49,10 @@ const Controls = styled.div<{ isCollapsed: boolean }>`
 `;
 
 const ThinDivider = styled(Divider)`
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
+    // CHANGE: Use theme variable for divider color
+    background-color: ${(props) => props.theme.styles['divider-color']};
 `;
 
 const StyledSidebar = styled.div`

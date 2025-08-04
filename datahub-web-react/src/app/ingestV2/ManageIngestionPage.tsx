@@ -22,7 +22,7 @@ import { useShowNavBarRedesign } from '@app/useShowNavBarRedesign';
 
 const PageContainer = styled.div<{ $isShowNavBarRedesign?: boolean }>`
     padding-top: 20px;
-    background-color: white;
+    background-color: ${(props) => props.theme.styles['component-background']};
     border-radius: ${(props) =>
         props.$isShowNavBarRedesign ? props.theme.styles['border-radius-navbar-redesign'] : '8px'};
     ${(props) =>

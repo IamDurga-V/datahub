@@ -15,17 +15,17 @@ function EmptyDomainDescription() {
     return (
         <>
             <StyledParagraph type="secondary">
-                <strong style={{ color: ANTD_GRAY[8] }}>Welcome to your Data Domains!</strong> It looks like this space
+                <strong style={{ color: (props) => props.theme.styles['text-color'] }}>Welcome to your Data Domains!</strong> It looks like this space
                 is ready to be transformed into a well-organized data universe. Start by creating your first domain - a
                 high-level category for your data assets.
             </StyledParagraph>
             <StyledParagraph type="secondary">
-                <strong style={{ color: ANTD_GRAY[8] }}> Create Nested Domains:</strong> Want to dive deeper? You can
+                <strong style={{ color: (props) => props.theme.styles['text-color'] }}> Create Nested Domains:</strong> Want to dive deeper? You can
                 also create nested domains to add granularity and structure. Just like nesting Russian dolls, its all
                 about refining your organization.
             </StyledParagraph>
             <StyledParagraph type="secondary">
-                <strong style={{ color: ANTD_GRAY[8] }}>Build Data Products</strong>: Once your domains are set, go a
+                <strong style={{ color: (props) => props.theme.styles['text-color'] }}>Build Data Products</strong>: Once your domains are set, go a
                 step further! Organize your data assets into data products to realize a data mesh architecture. Data
                 products empower you to treat data as a product, making it more accessible and manageable.
             </StyledParagraph>

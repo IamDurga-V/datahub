@@ -63,7 +63,7 @@ const PlatformIcon: React.FC<PlatformIconProps> = ({
         const img = imgRef.current;
         if (img) {
             img.removeAttribute('crossOrigin');
-            setBackground(REDESIGN_COLORS.BACKGROUND_GREY);
+            setBackground(props.theme.styles['background-color-light']);
         }
         onError?.();
     }, [onError, setBackground]);

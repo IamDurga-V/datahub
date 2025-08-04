@@ -40,7 +40,7 @@ const DisplayNameContainer = styled.span<{ maxWidth?: number }>`
     }
 `;
 
-const highlightMatchStyle = { background: '#ffe58f', padding: '0' };
+const highlightMatchStyle = { background: '#2e2e3a', padding: '0' };
 
 interface Props {
     tag: TagAssociation;

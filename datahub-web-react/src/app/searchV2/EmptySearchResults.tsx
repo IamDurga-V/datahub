@@ -1,12 +1,11 @@
 import { RocketOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
+import { Button as AntButton } from 'antd';
 import React, { useCallback } from 'react';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
 
 import analytics, { EventType } from '@app/analytics';
 import { useUserContext } from '@app/context/useUserContext';
-import { ANTD_GRAY_V2 } from '@app/entity/shared/constants';
 import { SuggestedText } from '@app/searchV2/suggestions/SearchQuerySugggester';
 import useGetSearchQueryInputs from '@app/searchV2/useGetSearchQueryInputs';
 import { navigateToSearchUrl } from '@app/searchV2/utils/navigateToSearchUrl';
@@ -16,24 +15,35 @@ import { FacetFilterInput, SearchSuggestion } from '@types';
 const NoDataContainer = styled.div`
     margin: 40px auto;
     font-size: 16px;
-    color: ${ANTD_GRAY_V2[8]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
+    text-align: center;
+    background-color: ${(props) => props.theme.styles['component-background']};
 `;
 
 const Section = styled.div`
     margin-bottom: 16px;
+    color: ${(props) => props.theme.styles['text-color']};
+`;
+
+const StyledButton = styled(AntButton)`
+    && {
+        margin-top: 16px;
+        background-color: ${(props) => props.theme.styles['component-background']};
+        color: ${(props) => props.theme.styles['text-color']};
+        border-color: ${(props) => props.theme.styles['border-color-base']};
+
+        &:hover {
+            color: ${(props) => props.theme.styles['primary-color']};
+            border-color: ${(props) => props.theme.styles['primary-color']};
+        }
+    }
 `;
 
 function getRefineSearchText(filters: FacetFilterInput[], viewUrn?: string | null) {
-    let text = '';
-    if (filters.length && viewUrn) {
-        text = 'clearing all filters and selected view';
-    } else if (filters.length) {
-        text = 'clearing all filters';
-    } else if (viewUrn) {
-        text = 'clearing the selected view';
-    }
-
-    return text;
+    if (filters.length && viewUrn) return 'clearing all filters and selected view';
+    if (filters.length) return 'clearing all filters';
+    if (viewUrn) return 'clearing the selected view';
+    return '';
 }
 
 interface Props {
@@ -72,20 +82,22 @@ export default function EmptySearchResults({ suggestions }: Props) {
                     Try <SuggestedText onClick={clearFiltersAndView}>{refineSearchText}</SuggestedText>{' '}
                     {suggestText && (
                         <>
-                            or searching for <SuggestedText onClick={searchForSuggestion}>{suggestText}</SuggestedText>
+                            or searching for{' '}
+                            <SuggestedText onClick={searchForSuggestion}>{suggestText}</SuggestedText>
                         </>
                     )}
                 </>
             )}
             {!refineSearchText && suggestText && (
                 <>
-                    Did you mean <SuggestedText onClick={searchForSuggestion}>{suggestText}</SuggestedText>
+                    Did you mean{' '}
+                    <SuggestedText onClick={searchForSuggestion}>{suggestText}</SuggestedText>
                 </>
             )}
             {!refineSearchText && !suggestText && (
-                <Button onClick={onClickExploreAll}>
+                <StyledButton onClick={onClickExploreAll}>
                     <RocketOutlined /> Explore all
-                </Button>
+                </StyledButton>
             )}
         </NoDataContainer>
     );

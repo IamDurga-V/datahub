@@ -16,7 +16,7 @@ const Content = styled.div`
     gap: 8px;
     min-width: 180px;
 
-    color: ${REDESIGN_COLORS.TEXT_HEADING};
+    color: ${(props) => props.theme.styles['text-color']}; // Change
     font-size: 16px;
 `;
 
@@ -37,7 +37,7 @@ const StyledLink = styled(Link)`
     border-radius: 14px;
 
     :hover {
-        background-color: ${REDESIGN_COLORS.BACKGROUND_SECONDARY_GRAY};
+        background-color: ${(props) => props.theme.styles['highlight-color']}; // Change
 
         ${Message} {
             text-decoration: underline;
@@ -53,9 +53,9 @@ const Icon = styled.div`
     align-items: center;
     border-radius: 50%;
     padding: 5px;
-    background: #f7f7f7;
-    border: 1px solid #eeeeee;
-    color: ${REDESIGN_COLORS.DARK_GREY};
+    background: ${(props) => props.theme.styles['background-color-light']}; // Change
+    border: 1px solid ${(props) => props.theme.styles['border-color-base']}; // Change
+    color: ${(props) => props.theme.styles['text-color-secondary']}; // Change
 `;
 
 interface Props {

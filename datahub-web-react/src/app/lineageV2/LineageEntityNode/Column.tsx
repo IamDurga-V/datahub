@@ -43,20 +43,20 @@ const ColumnWrapper = styled.div<{
 }>`
     border: 1px solid transparent;
 
-    ${({ selected, highlighted, fromSelect }) => {
+    ${({ selected, highlighted, fromSelect, theme }) => {
         if (selected) {
-            return `border: ${SELECT_COLOR} 1px solid; background-color: ${SELECT_COLOR}20;`;
+            return `border: ${theme.styles['primary-color']} 1px solid; background-color: ${theme.styles['primary-color']}20;`;
         }
         if (highlighted) {
             if (fromSelect) {
-                return `background-color: ${SELECT_COLOR}20;`;
+                return `background-color: ${theme.styles['primary-color']}20;`;
             }
-            return `background-color: ${HOVER_COLOR}20;`;
+            return `background-color: ${theme.styles['highlight-color']}50;`;
         }
-        return 'background-color: white;';
+        return `background-color: ${theme.styles['component-background']};`;
     }}
     border-radius: 4px;
-    color: ${({ disabled }) => (disabled ? ANTD_GRAY[11] : ANTD_GRAY[7])};
+    color: ${({ disabled, theme }) => (disabled ? theme.styles['disabled-color'] : theme.styles['text-color'])};
     display: flex;
     font-size: 10px;
     gap: 4px;
@@ -87,7 +87,7 @@ const CustomHandle = styled(Handle)<{ position: Position }>`
 `;
 
 const TypeWrapper = styled.div`
-    color: ${ANTD_GRAY[7]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     width: 11px;
 `;
 
@@ -109,6 +109,7 @@ const ColumnText = styled(Typography.Text)`
 const StyledLoadingIndicator = styled(LoadingOutlined)`
     display: flex;
     font-size: inherit;
+    color: ${(props) => props.theme.styles['text-color-secondary']};
 `;
 
 type Props = LineageDisplayColumn & { parentUrn: string; entityType: EntityType; allNeighborsFetched: boolean };

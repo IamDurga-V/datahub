@@ -30,21 +30,22 @@ const ButtonsContainer = styled.div`
     gap: 8px;
 
     button {
-        border: 1px solid ${colors.gray[100]};
-        border-radius: 20px;
-        width: 24px;
-        height: 24px;
-        padding: 3px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: none;
-        color: ${colors.gray[1800]};
+    border: 1px solid ${(props) => props.theme.styles['border-default']};
+    border-radius: ${(props) => props.theme.styles['border-radius-pill']};
+    width: 24px;
+    height: 24px;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: ${(props) => props.theme.styles['text-primary']};
 
-        :hover {
-            cursor: pointer;
-        }
+    :hover {
+        cursor: pointer;
     }
+}
+
 `;
 
 const SecretsContainer = styled.div`
@@ -77,7 +78,7 @@ const TableContainer = styled.div`
 `;
 
 const TextContainer = styled(Typography.Text)`
-    color: ${colors.gray[1700]};
+    color: ${(props) => props.theme.styles['text-primary']}
 `;
 
 type TableDataType = {

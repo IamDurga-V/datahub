@@ -23,28 +23,28 @@ const FormInput = styled(Input)`
     &&& {
         height: 32px;
         font-size: 12px;
-        border: 1px solid #555555;
+        border: 1px solid ${(props) => props.theme.styles['border-color-base']};
         border-radius: 5px;
-        background-color: transparent;
-        color: white;
+        background-color: ${(props) => props.theme.styles['component-background']};
+        color: ${(props) => props.theme.styles['text-color']};
         line-height: 1.5715;
     }
     > .ant-input {
-        color: white;
+        color: ${(props) => props.theme.styles['text-color']};
         font-size: 14px;
-        background-color: transparent;
+        background-color: ${(props) => props.theme.styles['component-background']};
     }
     > .ant-input:hover {
-        color: white;
+        color: ${(props) => props.theme.styles['text-color']};
         font-size: 14px;
-        background-color: transparent;
+        background-color: ${(props) => props.theme.styles['component-background']};
     }
 `;
 
 const StyledFormItem = styled(Form.Item)`
     .ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(
-            .ant-input-affix-wrapper-borderless
-        ).ant-input-affix-wrapper {
+        .ant-input-affix-wrapper-borderless
+    ).ant-input-affix-wrapper {
         background-color: transparent;
     }
 `;
@@ -108,8 +108,7 @@ export const ResetCredentials: React.VFC<ResetCredentialsProps> = () => {
                         <StyledFormItem
                             rules={[{ required: true, message: 'Please fill in your email' }]}
                             name="email"
-                            // eslint-disable-next-line jsx-a11y/label-has-associated-control
-                            label={<label style={{ color: 'white' }}>Email</label>}
+                            label={<label style={{ color: (props) => props.theme.styles['text-color'] }}>Email</label>}
                         >
                             <FormInput prefix={<UserOutlined />} data-testid="email" />
                         </StyledFormItem>
@@ -128,8 +127,7 @@ export const ResetCredentials: React.VFC<ResetCredentialsProps> = () => {
                                 }),
                             ]}
                             name="password"
-                            // eslint-disable-next-line jsx-a11y/label-has-associated-control
-                            label={<label style={{ color: 'white' }}>Password</label>}
+                            label={<label style={{ color: (props) => props.theme.styles['text-color'] }}>Password</label>}
                         >
                             <FormInput prefix={<LockOutlined />} type="password" data-testid="password" />
                         </StyledFormItem>
@@ -146,8 +144,7 @@ export const ResetCredentials: React.VFC<ResetCredentialsProps> = () => {
                                 }),
                             ]}
                             name="confirmPassword"
-                            // eslint-disable-next-line jsx-a11y/label-has-associated-control
-                            label={<label style={{ color: 'white' }}>Confirm Password</label>}
+                            label={<label style={{ color: (props) => props.theme.styles['text-color'] }}>Confirm Password</label>}
                         >
                             <FormInput prefix={<LockOutlined />} type="password" data-testid="confirmPassword" />
                         </StyledFormItem>

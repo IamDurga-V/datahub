@@ -27,7 +27,7 @@ import { DataHubView, DataHubViewType } from '@types';
 
 const MenuButton = styled(MoreVertIcon)<{ $isShowNavBarRedesign?: boolean }>`
     width: 20px;
-    ${(props) => props.$isShowNavBarRedesign && `color: ${colors.gray[1800]};`}
+    ${(props) => props.$isShowNavBarRedesign && `color: ${props.theme.styles['text-color-secondary']};`} // Change
     &&& {
         padding-left: 0px;
         padding-right: 0px;
@@ -41,12 +41,15 @@ const MenuButton = styled(MoreVertIcon)<{ $isShowNavBarRedesign?: boolean }>`
 const MenuStyled = styled(Menu)`
     border-radius: 12px;
     padding: 10px 0px;
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
     &&& {
         .ant-dropdown-menu-item:not(:hover) {
             background: none;
+            color: ${(props) => props.theme.styles['text-color']}; // Change
         }
         .ant-dropdown-menu-item:hover {
-            background: #f5f5f5;
+            background: ${(props) => props.theme.styles['highlight-color']}; // Change
+            color: ${(props) => props.theme.styles['text-color']}; // Change
         }
     }
 `;

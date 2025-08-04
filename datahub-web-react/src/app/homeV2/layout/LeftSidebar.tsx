@@ -22,6 +22,7 @@ const Container = styled.div<{ $isShowNavBarRedesign?: boolean }>`
     flex: 1;
     max-width: 380px;
     overflow-y: auto;
+    background-color: ${(props) => props.theme.styles['component-background']};
     ${(props) => !props.$isShowNavBarRedesign && 'padding: 0px 12px 12px 0px;'}
     height: ${(props) => (props.$isShowNavBarRedesign ? 'calc(100vh - 88px)' : 'calc(100vh - 72px)')};
     ${(props) =>
@@ -32,18 +33,17 @@ const Container = styled.div<{ $isShowNavBarRedesign?: boolean }>`
         box-shadow: ${props.theme.styles['box-shadow-navbar-redesign']};
     `}
 
-    /* Hide scrollbar for Chrome, Safari, and Opera */
     &::-webkit-scrollbar {
         display: none;
     }
 `;
 
 const Content = styled.div<{ $isShowNavBarRedesign?: boolean }>`
-    background-color: #ffffff;
+    background-color: ${(props) => props.theme.styles['component-background']};
     border-radius: ${(props) =>
         props.$isShowNavBarRedesign ? props.theme.styles['border-radius-navbar-redesign'] : '18px'};
     min-height: 100%;
-    ${(props) => !props.$isShowNavBarRedesign && 'border: 1.5px solid #efefef;'}
+    ${(props) => !props.$isShowNavBarRedesign && `border: 1.5px solid ${props.theme.styles['border-color-base']};`}
 `;
 
 const Body = styled.div<{ $isShowNavBarRedesign?: boolean }>`
@@ -117,10 +117,6 @@ const ALL_SECTIONS: ReferenceSection[] = [
     },
 ];
 
-/**
- * Sorts sections so that the section matching firstInPersonalSidebar appears first,
- * while maintaining the original order for all other sections.
- */
 export const sortSectionsByFirstInPersonalSidebar = (
     sections: ReferenceSection[],
     firstInPersonalSidebar: PersonalSidebarSection,
@@ -143,7 +139,6 @@ const trackClickInSection = (title: string) => {
     };
 };
 
-// TODO: Make section ordering dynamic based on populated data.
 export const LeftSidebar = () => {
     const isShowNavBarRedesign = useShowNavBarRedesign();
     const currentUserPersona = useUserPersona();
@@ -159,7 +154,7 @@ export const LeftSidebar = () => {
             <Content $isShowNavBarRedesign={isShowNavBarRedesign}>
                 <UserHeader />
                 <Body $isShowNavBarRedesign={isShowNavBarRedesign}>
-                    {finalSections.length > 0 && <Divider style={{ margin: '0 0 16px 0' }} />}
+                    {finalSections.length > 0 && <Divider style={{ margin: '0 0 16px 0', borderColor: (props) => props.theme.styles['divider-color'] }} />}
                     {finalSections.map((section) => (
                         <section.component
                             key={section.id}

@@ -13,7 +13,7 @@ const StyledCard = styled(Card)`
 const Content = styled.div`
     border-radius: 8px;
     margin-top: 8px;
-    background-color: white;
+    background-color: ${(props) => props.theme.styles['component-background']};
     padding: 8px;
 `;
 
@@ -25,7 +25,7 @@ const HeaderContainer = styled.div`
 `;
 
 const ChevronIcon = styled(Icon)`
-    color: ${colors.gray[400]};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
     font-size: 12px;
 `;
 

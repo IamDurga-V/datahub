@@ -39,12 +39,13 @@ const ButtonContainer = styled.div<{ left?: boolean; right?: boolean }>`
     z-index: 2;
 
     border-radius: 100px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    color: ${REDESIGN_COLORS.BLACK};
-    background-color: ${REDESIGN_COLORS.WHITE};
+    box-shadow: ${(props) => props.theme.styles['box-shadow']}; 
+    color: ${(props) => props.theme.styles['text-color']};
+    background-color: ${(props) => props.theme.styles['component-background']};
+ 
 
     :hover {
-        color: ${REDESIGN_COLORS.WHITE};
+        color: ${(props) => props.theme.styles['text-color']};
         background-color: ${(props) => props.theme.styles['primary-color']};
     }
 

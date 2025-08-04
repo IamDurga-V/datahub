@@ -9,7 +9,8 @@ import { DatasetProfile } from '@types';
 const HeaderRow = styled(Row)`
     padding-top: 24px;
     padding-bottom: 28px;
-    background-color: white;
+    background-color: ${(props) => props.theme.styles['component-background']}; // Change
+    color: ${(props) => props.theme.styles['text-color']}; // Change
 `;
 
 export type Props = {
@@ -24,8 +25,10 @@ export default function LatestStatsView({ profile, toggleView }: Props) {
             <Affix offsetTop={127}>
                 <HeaderRow justify="space-between" align="middle">
                     <div>
-                        <Typography.Title level={2}>Latest Stats</Typography.Title>
-                        <Typography.Text style={{ color: 'gray' }}>
+                        <Typography.Title level={2} style={{ color: 'inherit' }}>
+                            Latest Stats
+                        </Typography.Title>
+                        <Typography.Text style={{ color: 'inherit' }}>
                             Reported on {reportedAtDate.toLocaleDateString()} at {reportedAtDate.toLocaleTimeString()}
                         </Typography.Text>
                     </div>

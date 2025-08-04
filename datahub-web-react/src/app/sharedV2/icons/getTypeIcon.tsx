@@ -10,7 +10,7 @@ import { EntityRegistry } from '@src/entityRegistryContext';
 import { EntityType } from '@types';
 
 const StyledTooltip = styled(Tooltip)`
-    color: ${REDESIGN_COLORS.TEXT_GREY};
+    color: ${(props) => props.theme.styles['text-color-secondary']};
 `;
 
 export default function getTypeIcon(

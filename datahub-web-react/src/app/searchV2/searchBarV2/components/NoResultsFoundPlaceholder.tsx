@@ -52,10 +52,10 @@ export default function NoResultsFoundPlaceholder({
 
     return (
         <Container>
-            <Text color="gray" colorLevel={600} size="md">
+            <Text color="text-primary" size="md">
                 No results found
             </Text>
-            <Text color="gray" size="sm">
+            <Text color="text-secondary" size="sm">
                 {message}
                 {clearText && (
                     <>
